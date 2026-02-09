@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chakrit Surakhumhang | Full Stack Developer</title>
+    <title>Chakrit Surakhumhang | Senior Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,91 +19,68 @@
                     colors: {
                         flutterBlue: '#02569B',
                         flutterLight: '#0175C2',
-                        laravelRed: '#FF2D20',
                         nodeGreen: '#339933',
+                        darkBg: '#0f172a',
                     }
                 }
             }
         }
     </script>
     <style>
+        /* Custom Animations */
         .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s; }
-        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
         .typing-cursor::after { content: '|'; animation: blink 1s step-start infinite; }
         @keyframes blink { 50% { opacity: 0; } }
+        
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Language Toggle Switch */
-        .switch-lang { cursor: pointer; user-select: none; }
-
-        /* Skill Bar Animation */
         .skill-bar-fill { width: 0; transition: width 1.5s ease-out; }
+        
+        /* Language Switcher */
+        .lang-switch { cursor: pointer; user-select: none; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased selection:bg-flutterLight selection:text-white">
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-flutterBlue selection:text-white">
 
-    <div onclick="toggleLanguage()" class="fixed top-4 right-4 z-50 bg-white/90 backdrop-blur shadow-lg rounded-full px-4 py-2 cursor-pointer border border-gray-200 hover:bg-gray-100 transition flex items-center gap-2">
-        <i class="fa-solid fa-globe text-flutterBlue"></i>
-        <span id="lang-btn-text" class="font-bold text-sm">TH</span>
+    <div onclick="toggleLanguage()" class="lang-switch fixed top-5 right-5 z-50 bg-white/80 backdrop-blur-md border border-gray-200 shadow-lg px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white transition hover:scale-105">
+        <img src="https://flagcdn.com/w20/th.png" id="lang-flag" class="w-5 h-auto rounded shadow-sm">
+        <span id="lang-text" class="font-bold text-sm text-gray-700">TH</span>
     </div>
 
-    <header class="relative bg-gradient-to-br from-gray-900 via-blue-900 to-flutterBlue text-white pt-24 pb-32 overflow-hidden rounded-b-[40px] shadow-2xl">
-        <div class="absolute inset-0 opacity-10 pattern-dots"></div>
+    <header class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-flutterBlue text-white pt-28 pb-36 rounded-b-[50px] shadow-2xl overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <i class="devicon-flutter-plain text-9xl absolute -left-10 top-20 rotate-12"></i>
+            <i class="devicon-nodejs-plain text-9xl absolute right-10 bottom-20 -rotate-12"></i>
+        </div>
+
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="relative w-40 h-40 mx-auto mb-6">
-                <div class="absolute inset-0 bg-blue-400 rounded-full blur-lg opacity-50 animate-pulse"></div>
-                <img src="boat.png" alt="Chakrit" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-xl hover:scale-105 transition duration-500">
-                <div class="absolute bottom-2 right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white" title="Available for work"></div>
+            <div class="relative w-44 h-44 mx-auto mb-6 group">
+                <div class="absolute inset-0 bg-blue-400 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition duration-500 animate-pulse"></div>
+                <img src="boat.png" alt="Chakrit" class="relative w-full h-full object-cover rounded-full border-[5px] border-white/90 shadow-2xl transform group-hover:scale-105 transition duration-500">
+                <div class="absolute bottom-3 right-3 bg-green-500 w-7 h-7 rounded-full border-4 border-white z-20" title="Online"></div>
             </div>
             
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Chakrit Surakhumhang</h1>
-            <div class="text-xl md:text-2xl text-blue-200 font-light h-8 mb-8">
+            <h1 class="text-4xl md:text-6xl font-bold mb-3 tracking-tight drop-shadow-lg">Chakrit Surakhumhang</h1>
+            <div class="text-lg md:text-2xl text-blue-200 font-light h-8 mb-8 flex justify-center items-center gap-2">
                 <span id="typewriter" class="typing-cursor font-mono"></span>
             </div>
 
             <div class="flex flex-wrap justify-center gap-3 mt-8">
-                <a href="#projects" class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition shadow-lg flex items-center gap-2">
-                    <i class="fa-solid fa-rocket"></i> <span class="lang-view-work">View My Work</span>
-                </a>
-                <a href="https://github.com/chakrit3523" target="_blank" class="bg-white/20 text-white px-6 py-2 rounded-full font-bold hover:bg-white/30 transition backdrop-blur flex items-center gap-2 border border-white/30">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
+                <span class="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm"><i class="fa-solid fa-check-circle text-green-400 mr-1"></i> Clean Code</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm"><i class="fa-solid fa-mobile-screen text-blue-400 mr-1"></i> Mobile Expert</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm"><i class="fa-solid fa-server text-purple-400 mr-1"></i> Infra & Server</span>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 -mt-20 relative z-20 pb-20">
+    <main class="max-w-6xl mx-auto px-6 -mt-24 relative z-20 pb-20">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="bg-white p-8 rounded-2xl shadow-xl hover-lift reveal border-t-4 border-flutterBlue">
-                <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4 text-flutterBlue text-2xl">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 lang-skill-mobile">Mobile Development</h3>
-                <p class="text-gray-600 text-sm mb-4 lang-skill-mobile-desc">Expert in Flutter (Dart). Capable of building production-ready apps, managing state, and deploying to both iOS & Android stores.</p>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-xl hover-lift reveal border-t-4 border-nodeGreen">
-                <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4 text-nodeGreen text-2xl">
-                    <i class="fa-solid fa-server"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 lang-skill-backend">Backend & API</h3>
-                <p class="text-gray-600 text-sm mb-4 lang-skill-backend-desc">Strong background in Node.js and PHP. Experienced in designing clean APIs, handling databases, and real-time sockets.</p>
-            </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-xl hover-lift reveal border-t-4 border-purple-500">
-                <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4 text-purple-600 text-2xl">
-                    <i class="fa-solid fa-network-wired"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 lang-skill-infra">Infrastructure</h3>
-                <p class="text-gray-600 text-sm mb-4 lang-skill-infra-desc">Self-sufficient in server management using Plesk, SSL/HTTPS configuration, and CI/CD pipelines for deployment.</p>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-3xl shadow-xl p-8 mb-16 reveal border border-gray-100">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
-                <span class="w-2 h-8 bg-gray-800 rounded-full"></span>
+        <section class="bg-white rounded-3xl shadow-xl p-8 md:p-10 mb-16 reveal border border-gray-100">
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-3 text-gray-800">
+                <div class="w-2 h-10 bg-gradient-to-b from-flutterBlue to-blue-400 rounded-full"></div>
                 <span class="lang-stack-title">Tech Stack & Tools</span>
             </h2>
 
@@ -111,61 +88,61 @@
                 
                 <div>
                     <h3 class="text-xl font-bold mb-6 text-gray-700 flex items-center gap-2">
-                        <i class="fa-solid fa-code text-blue-500"></i> <span class="lang-lang-title">Languages</span>
+                        <i class="fa-solid fa-code text-blue-600"></i> <span class="lang-lang-title">Languages</span>
                     </h3>
-                    <div class="space-y-4">
+                    <div class="space-y-5">
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Flutter & Dart</span>
-                                <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded">Excellent</span>
+                                <span class="text-sm font-semibold text-gray-700"><i class="devicon-flutter-plain text-blue-500 mr-2"></i>Flutter & Dart</span>
+                                <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded">Excellent (ดีเยี่ยม)</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-blue-600 h-2.5 rounded-full skill-bar-fill" style="width: 95%"></div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-400 h-3 rounded-full skill-bar-fill shadow-sm" style="width: 95%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Node.js & JavaScript</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">Excellent</span>
+                                <span class="text-sm font-semibold text-gray-700"><i class="devicon-nodejs-plain text-green-500 mr-2"></i>Node.js & JS</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">Excellent (ดีเยี่ยม)</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-green-500 h-2.5 rounded-full skill-bar-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">PHP (5/7)</span>
-                                <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded">Excellent</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-purple-600 h-2.5 rounded-full skill-bar-fill" style="width: 90%"></div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-green-500 to-emerald-400 h-3 rounded-full skill-bar-fill shadow-sm" style="width: 90%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">SQL / Database</span>
-                                <span class="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded">Excellent</span>
+                                <span class="text-sm font-semibold text-gray-700"><i class="devicon-php-plain text-indigo-500 mr-2"></i>PHP (5/7)</span>
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2 py-1 rounded">Excellent (ดีเยี่ยม)</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-orange-500 h-2.5 rounded-full skill-bar-fill" style="width: 85%"></div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-indigo-500 to-purple-400 h-3 rounded-full skill-bar-fill shadow-sm" style="width: 90%"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">C / C++ (IoT)</span>
-                                <span class="text-xs font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded">Excellent</span>
+                                <span class="text-sm font-semibold text-gray-700"><i class="devicon-mysql-plain text-orange-500 mr-2"></i>SQL / Database</span>
+                                <span class="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-1 rounded">Excellent (ดีเยี่ยม)</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-gray-600 h-2.5 rounded-full skill-bar-fill" style="width: 80%"></div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-orange-500 to-yellow-400 h-3 rounded-full skill-bar-fill shadow-sm" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-semibold text-gray-700"><i class="devicon-cplusplus-plain text-blue-700 mr-2"></i>C/C++ (IoT)</span>
+                                <span class="text-xs font-bold text-blue-800 bg-blue-100 px-2 py-1 rounded">Excellent (ดีเยี่ยม)</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-700 to-blue-500 h-3 rounded-full skill-bar-fill shadow-sm" style="width: 80%"></div>
                             </div>
                         </div>
                          <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">SwiftUI</span>
-                                <span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded">Fair</span>
+                                <span class="text-sm font-semibold text-gray-700"><i class="devicon-swift-plain text-orange-500 mr-2"></i>SwiftUI</span>
+                                <span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded">Fair (พอใช้)</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-gray-400 h-2.5 rounded-full skill-bar-fill" style="width: 50%"></div>
+                            <div class="w-full bg-gray-100 rounded-full h-3">
+                                <div class="bg-gray-400 h-3 rounded-full skill-bar-fill shadow-sm" style="width: 50%"></div>
                             </div>
                         </div>
                     </div>
@@ -173,197 +150,178 @@
 
                 <div>
                     <h3 class="text-xl font-bold mb-6 text-gray-700 flex items-center gap-2">
-                        <i class="fa-solid fa-toolbox text-red-500"></i> <span class="lang-tools-title">Development Tools</span>
+                        <i class="fa-solid fa-toolbox text-red-500"></i> <span class="lang-tools-title">My Weapon of Choice</span>
                     </h3>
-                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 text-center">
-                        <div class="p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition border border-gray-100">
-                            <i class="devicon-vscode-plain text-3xl text-blue-500 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">VS Code</span>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-blue-400 hover:bg-blue-50 transition group">
+                            <i class="devicon-vscode-plain text-4xl text-blue-500 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600">VS Code</span>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl hover:bg-green-50 transition border border-gray-100">
-                            <i class="devicon-androidstudio-plain text-3xl text-green-600 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">Android Studio</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-green-400 hover:bg-green-50 transition group">
+                            <i class="devicon-androidstudio-plain text-4xl text-green-600 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600 text-center">Android Studio</span>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition border border-gray-100">
-                            <i class="devicon-xcode-plain text-3xl text-blue-600 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">Xcode</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-blue-400 hover:bg-blue-50 transition group">
+                            <i class="devicon-xcode-plain text-4xl text-blue-600 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600">Xcode</span>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl hover:bg-orange-50 transition border border-gray-100">
-                            <i class="devicon-postman-plain text-3xl text-orange-500 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">Postman</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-purple-400 hover:bg-purple-50 transition group">
+                            <i class="fa-brands fa-github text-4xl text-gray-800 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600 text-center">GitHub Desktop</span>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl hover:bg-purple-50 transition border border-gray-100">
-                            <i class="devicon-figma-plain text-3xl text-purple-500 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">Figma</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-pink-400 hover:bg-pink-50 transition group">
+                            <i class="devicon-figma-plain text-4xl text-pink-500 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600">Figma</span>
                         </div>
-                         <div class="p-3 bg-gray-50 rounded-xl hover:bg-gray-200 transition border border-gray-100">
-                            <i class="devicon-github-original text-3xl text-gray-800 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">GitHub Desktop</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-orange-400 hover:bg-orange-50 transition group">
+                            <i class="devicon-postman-plain text-4xl text-orange-500 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600">Postman</span>
                         </div>
-                        <div class="p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition border border-gray-100">
-                            <i class="devicon-docker-plain text-3xl text-blue-500 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">Docker</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-blue-400 hover:bg-blue-50 transition group">
+                            <i class="devicon-docker-plain text-4xl text-blue-500 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600">Docker</span>
                         </div>
-                         <div class="p-3 bg-gray-50 rounded-xl hover:bg-indigo-50 transition border border-gray-100">
-                            <i class="fa-solid fa-server text-3xl text-indigo-500 mb-1 block"></i>
-                            <span class="text-xs font-medium text-gray-600">Plesk</span>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl border hover:border-indigo-400 hover:bg-indigo-50 transition group">
+                            <i class="fa-solid fa-server text-4xl text-indigo-500 mb-2 group-hover:scale-110 transition"></i>
+                            <span class="text-[10px] font-bold text-gray-600">Plesk</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div id="projects" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 reveal">
-                <span class="w-2 h-8 bg-flutterBlue rounded-full"></span>
+            <h2 class="text-3xl font-bold mb-10 flex items-center gap-3 reveal text-gray-800">
+                <div class="w-2 h-10 bg-gradient-to-b from-nodeGreen to-green-400 rounded-full"></div>
                 <span class="lang-projects-title">Featured Projects</span>
             </h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative bg-gray-100 flex items-center justify-center p-4">
-                        <img src="400x400ia-75.jpg" alt="Worksite" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift reveal border border-gray-100 flex flex-col sm:flex-row h-full">
+                    <div class="sm:w-2/5 relative bg-gray-50 flex items-center justify-center p-6 border-r border-gray-100">
+                        <img src="400x400ia-75.jpg" alt="Worksite" class="w-32 h-32 rounded-[22px] shadow-lg object-cover">
                     </div>
-                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Worksite</h3>
-                            <p class="text-blue-500 text-sm font-semibold mb-2">Enterprise Management App</p>
-                            <p class="text-gray-600 text-sm mb-4 lang-desc-worksite">A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3 for better performance.</p>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-2xl font-bold text-gray-800">Worksite</h3>
+                                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded uppercase">Enterprise</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-worksite leading-relaxed">A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3 for better performance.</p>
                         </div>
-                        <div class="flex gap-3 mt-4">
-                            <a href="https://apps.apple.com/th/app/worksite/id1447497133" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                        <div class="grid grid-cols-2 gap-3 mt-auto">
+                            <a href="https://apps.apple.com/th/app/worksite/id1447497133" target="_blank" class="bg-gray-900 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-gray-700 transition flex items-center justify-center gap-2">
                                 <i class="fa-brands fa-apple text-lg"></i> App Store
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=th.go.cityvariety.worksite" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
+                            <a href="https://play.google.com/store/apps/details?id=th.go.cityvariety.worksite" target="_blank" class="bg-green-600 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-green-700 transition flex items-center justify-center gap-2">
                                 <i class="fa-brands fa-google-play text-lg"></i> Play Store
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative bg-blue-50 flex items-center justify-center p-4">
-                        <img src="400x400bb-75.jpg" alt="IsmartLogin" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift reveal border border-gray-100 flex flex-col sm:flex-row h-full">
+                    <div class="sm:w-2/5 relative bg-blue-50 flex items-center justify-center p-6 border-r border-gray-100">
+                        <img src="400x400bb-75.jpg" alt="IsmartLogin" class="w-32 h-32 rounded-[22px] shadow-lg object-cover">
                     </div>
-                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">iSmartLogin</h3>
-                            <p class="text-blue-500 text-sm font-semibold mb-2">Secure Authentication System</p>
-                            <p class="text-gray-600 text-sm mb-4 lang-desc-ismart">Advanced login system with high security. Successfully migrated codebase and improved UI/UX.</p>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-2xl font-bold text-gray-800">iSmartLogin</h3>
+                                <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded uppercase">Security</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-ismart leading-relaxed">Advanced login system with high security. Successfully migrated codebase and improved UI/UX.</p>
                         </div>
-                        <div class="flex gap-3 mt-4">
-                            <a href="https://apps.apple.com/th/app/ismartlogin/id1561564431" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-apple"></i> App Store
+                        <div class="grid grid-cols-2 gap-3 mt-auto">
+                            <a href="https://apps.apple.com/th/app/ismartlogin/id1561564431" target="_blank" class="bg-gray-900 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-gray-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple text-lg"></i> App Store
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.ismart_login" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-google-play"></i> Play Store
+                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.ismart_login" target="_blank" class="bg-green-600 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play text-lg"></i> Play Store
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative bg-sky-50 flex items-center justify-center p-4">
-                        <img src="400x400bb-76.jpg" alt="Khao Wai" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift reveal border border-gray-100 flex flex-col sm:flex-row h-full">
+                    <div class="sm:w-2/5 relative bg-sky-50 flex items-center justify-center p-6 border-r border-gray-100">
+                        <img src="400x400bb-76.jpg" alt="Khao Wai" class="w-32 h-32 rounded-[22px] shadow-lg object-cover">
                     </div>
-                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">ข่าวไว (Khao Wai)</h3>
-                            <p class="text-blue-500 text-sm font-semibold mb-2">News & Alerts App</p>
-                            <p class="text-gray-600 text-sm mb-4 lang-desc-khaowai">Fast news delivery application featuring real-time Push Notifications and Badge counts for unread alerts.</p>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-2xl font-bold text-gray-800">ข่าวไว (Khao Wai)</h3>
+                                <span class="px-2 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold rounded uppercase">News</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-khaowai leading-relaxed">Fast news delivery application featuring real-time Push Notifications and Badge counts for unread alerts.</p>
                         </div>
-                        <div class="flex gap-3 mt-4">
-                            <a href="https://apps.apple.com/th/app/%E0%B8%82-%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%A7-khao-wai/id6742871320" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-apple"></i> App Store
+                        <div class="grid grid-cols-2 gap-3 mt-auto">
+                            <a href="https://apps.apple.com/th/app/%E0%B8%82-%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%A7-khao-wai/id6742871320" target="_blank" class="bg-gray-900 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-gray-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple text-lg"></i> App Store
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=th.co.cityvariety.iconnect" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-google-play"></i> Play Store
+                            <a href="https://play.google.com/store/apps/details?id=th.co.cityvariety.iconnect" target="_blank" class="bg-green-600 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play text-lg"></i> Play Store
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative bg-yellow-50 flex items-center justify-center p-4">
-                        <img src="petword.jpg" alt="Petword" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift reveal border border-gray-100 flex flex-col sm:flex-row h-full">
+                    <div class="sm:w-2/5 relative bg-yellow-50 flex items-center justify-center p-6 border-r border-gray-100">
+                        <img src="petword.jpg" alt="Petword" class="w-32 h-32 rounded-[22px] shadow-lg object-cover">
                     </div>
-                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Petword</h3>
-                            <p class="text-yellow-600 text-sm font-semibold mb-2">EdTech & Gamification</p>
-                            <p class="text-gray-600 text-sm mb-4 lang-desc-petword">English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.</p>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-2xl font-bold text-gray-800">Petword</h3>
+                                <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-[10px] font-bold rounded uppercase">EdTech</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-petword leading-relaxed">English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.</p>
                         </div>
-                        <div class="flex gap-3 mt-4">
-                            <a href="https://apps.apple.com/th/app/%E0%B8%97-%E0%B8%AD%E0%B8%87%E0%B8%A8-%E0%B8%9E%E0%B8%97-petword/id6504467794" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-apple"></i> App Store
+                        <div class="grid grid-cols-2 gap-3 mt-auto">
+                            <a href="https://apps.apple.com/th/app/%E0%B8%97-%E0%B8%AD%E0%B8%87%E0%B8%A8-%E0%B8%9E%E0%B8%97-petword/id6504467794" target="_blank" class="bg-gray-900 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-gray-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple text-lg"></i> App Store
                             </a>
-                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.petword2" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-google-play"></i> Play Store
+                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.petword2" target="_blank" class="bg-green-600 text-white py-2.5 rounded-xl text-center text-xs font-bold hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play text-lg"></i> Play Store
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl p-6 shadow-lg text-white hover-lift reveal">
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2"><i class="fa-solid fa-house-flood-water mr-2"></i> Hatyai Flood Relief</h3>
-                        <p class="opacity-90 lang-desc-flood">A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination.</p>
+            <div class="mt-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-3xl p-8 shadow-xl text-white hover-lift reveal relative overflow-hidden group">
+                <div class="absolute right-0 top-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-110 transition"></div>
+                <div class="flex flex-col md:flex-row items-center justify-between relative z-10">
+                    <div class="mb-6 md:mb-0">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-house-flood-water text-3xl"></i>
+                            <h3 class="text-2xl font-bold">Hatyai Flood Relief</h3>
+                        </div>
+                        <p class="opacity-90 max-w-xl lang-desc-flood text-sm leading-relaxed">A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination.</p>
                     </div>
-                    <a href="https://hatyaifight.com/frontpage" target="_blank" class="mt-4 md:mt-0 bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-red-50 transition">
+                    <a href="https://hatyaifight.com/frontpage" target="_blank" class="bg-white text-red-600 px-8 py-3 rounded-full font-bold shadow-lg hover:bg-red-50 transition transform hover:-translate-y-1">
                         Visit Website <i class="fa-solid fa-arrow-right ml-1"></i>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="reveal">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
-                <span class="w-2 h-8 bg-nodeGreen rounded-full"></span>
-                <span class="lang-exp-title">Experience</span>
-            </h2>
-            <div class="relative border-l-4 border-gray-200 ml-3 space-y-10">
-                <div class="ml-8 relative">
-                    <span class="absolute -left-[42px] top-1 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow"></span>
-                    <h3 class="text-xl font-bold text-gray-800">Full Stack Developer</h3>
-                    <p class="text-blue-600 font-semibold text-sm">City Variety Corporation Co., Ltd. | 2024 - Present</p>
-                    <ul class="mt-3 text-gray-600 text-sm list-disc ml-4 space-y-1 lang-exp-current">
-                        <li>Developed "Khao Wai", "Worksite" and "Petword" apps.</li>
-                        <li>Migrated legacy PHP CodeIgniter 2 systems to CI4.</li>
-                        <li>Implemented Battle Realtime Game using Nakama Framework.</li>
-                        <li>Mentored interns on Flutter development.</li>
-                    </ul>
-                </div>
-
-                <div class="ml-8 relative">
-                    <span class="absolute -left-[42px] top-1 w-6 h-6 bg-gray-400 rounded-full border-4 border-white shadow"></span>
-                    <h3 class="text-xl font-bold text-gray-800">Developer Intern</h3>
-                    <p class="text-gray-500 font-semibold text-sm">City Variety Corporation Co., Ltd. | 2023 - 2024</p>
-                    <ul class="mt-3 text-gray-600 text-sm list-disc ml-4 space-y-1 lang-exp-intern">
-                        <li>Developed 2 Donation Web Platforms.</li>
-                        <li>Built Hatyai Flood Relief Information System.</li>
-                        <li>Assisted in Petword initial development phase.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
     </main>
 
-    <footer class="bg-gray-900 text-white py-12 mt-12 text-center">
+    <footer class="bg-slate-900 text-white py-12 mt-12 text-center border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-2xl font-bold mb-6">Let's Work Together</h2>
-            <div class="flex justify-center gap-4 mb-8">
-                <a href="mailto:chakrit.lco@gmail.com" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition">
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="mailto:chakrit.lco@gmail.com" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition hover:scale-110 border border-white/10">
                     <i class="fa-solid fa-envelope text-xl"></i>
                 </a>
-                <a href="tel:+66820267154" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition">
+                <a href="tel:+66820267154" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition hover:scale-110 border border-white/10">
                     <i class="fa-solid fa-phone text-xl"></i>
                 </a>
             </div>
-            <p class="text-gray-500 text-sm">&copy; 2026 Chakrit Surakhumhang. <br>Built with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> and clean code.</p>
+            <p class="text-slate-500 text-sm">&copy; 2026 Chakrit Surakhumhang. <br>Built with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> and clean code.</p>
         </div>
     </footer>
 
@@ -371,46 +329,26 @@
         // Data for Translations
         const content = {
             en: {
-                viewWork: "View My Work",
-                mobileTitle: "Mobile Development",
-                mobileDesc: "Expert in Flutter (Dart). Capable of building production-ready apps, managing state, and deploying to both iOS & Android stores.",
-                backendTitle: "Backend & API",
-                backendDesc: "Strong background in Node.js and PHP. Experienced in designing clean APIs, handling databases, and real-time sockets.",
-                infraTitle: "Infrastructure",
-                infraDesc: "Self-sufficient in server management using Plesk, SSL/HTTPS configuration, and CI/CD pipelines for deployment.",
                 stackTitle: "Tech Stack & Tools",
                 langTitle: "Languages",
-                toolsTitle: "Development Tools",
+                toolsTitle: "My Weapon of Choice",
                 projectsTitle: "Featured Projects",
                 descWorksite: "A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3 for better performance.",
                 descIsmart: "Advanced login system with high security. Successfully migrated codebase and improved UI/UX.",
                 descKhaowai: "Fast news delivery application featuring real-time Push Notifications and Badge counts for unread alerts.",
                 descPetword: "English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.",
-                descFlood: "A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination.",
-                expTitle: "Experience",
-                expCurrent: `<li>Developed "Khao Wai", "Worksite" and "Petword" apps.</li><li>Migrated legacy PHP CodeIgniter 2 systems to CI4.</li><li>Implemented Battle Realtime Game using Nakama Framework.</li><li>Mentored interns on Flutter development.</li>`,
-                expIntern: `<li>Developed 2 Donation Web Platforms.</li><li>Built Hatyai Flood Relief Information System.</li><li>Assisted in Petword initial development phase.</li>`
+                descFlood: "A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination."
             },
             th: {
-                viewWork: "ดูผลงานของผม",
-                mobileTitle: "การพัฒนาโมบายแอป",
-                mobileDesc: "เชี่ยวชาญ Flutter (Dart) เน้นโครงสร้าง Clean Code ที่พร้อมใช้งานจริง จัดการ State ได้ดี และนำแอปขึ้น Store ได้เองทั้ง iOS/Android",
-                backendTitle: "Backend & API",
-                backendDesc: "มีพื้นฐานแน่นทั้ง Node.js และ PHP สามารถออกแบบ API ที่สะอาด จัดการ Database และทำระบบ Real-time Socket ได้",
-                infraTitle: "Infrastructure",
-                infraDesc: "ดูแล Server ได้ด้วยตัวเองผ่าน Plesk, ติดตั้ง SSL/HTTPS และทำระบบ CI/CD สำหรับ Deployment",
                 stackTitle: "ภาษาและเครื่องมือที่ใช้",
                 langTitle: "ภาษาที่เชี่ยวชาญ",
-                toolsTitle: "เครื่องมือพัฒนา (Tools)",
+                toolsTitle: "เครื่องมือคู่ใจ (Tools)",
                 projectsTitle: "ผลงานเด่น",
                 descWorksite: "แอปพลิเคชันบริหารจัดการงานและไซต์งาน อัปเกรดจาก Flutter 2 เป็น 3 เพื่อประสิทธิภาพที่ดีขึ้น",
                 descIsmart: "ระบบ Login ที่มีความปลอดภัยสูง ทำการย้าย Codebase ใหม่และปรับปรุง UI/UX ให้ทันสมัย",
                 descKhaowai: "แอปข่าวสารที่เน้นความไว มาพร้อมระบบ Push Notifications และตัวเลขแจ้งเตือน (Badge) แบบ Real-time",
                 descPetword: "แอปเรียนศัพท์ภาษาอังกฤษสำหรับเด็ก มีระบบเลี้ยงสัตว์เสมือนจริง จัดอันดับ (Ranking) และแบบทดสอบรายวัน",
-                descFlood: "เว็บแพลตฟอร์มประสานงานช่วยน้ำท่วมหาดใหญ่ รองรับคนเข้าใช้งานจำนวนมากและข้อมูลเร่งด่วนได้ดี",
-                expTitle: "ประสบการณ์ทำงาน",
-                expCurrent: `<li>พัฒนาแอป "ข่าวไว", "Worksite" และ "Petword"</li><li>อัปเกรดระบบเก่า PHP CodeIgniter 2 เป็น CI4</li><li>ทำระบบเกม Battle Realtime ด้วย Nakama Framework</li><li>เป็นพี่เลี้ยงสอนงาน Flutter ให้นักศึกษาฝึกงาน</li>`,
-                expIntern: `<li>พัฒนาเว็บไซต์บริจาคการกุศล 2 ระบบ</li><li>สร้างระบบข้อมูลช่วยเหลือผู้ประสบภัยน้ำท่วมหาดใหญ่</li><li>ช่วยพัฒนาแอป Petword ในระยะเริ่มต้น</li>`
+                descFlood: "เว็บแพลตฟอร์มประสานงานช่วยน้ำท่วมหาดใหญ่ รองรับคนเข้าใช้งานจำนวนมากและข้อมูลเร่งด่วนได้ดี"
             }
         };
 
@@ -418,22 +356,15 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'th' : 'en';
-            document.getElementById('lang-btn-text').innerText = currentLang.toUpperCase();
+            
+            // Toggle Button Appearance
+            document.getElementById('lang-text').innerText = currentLang.toUpperCase();
+            document.getElementById('lang-flag').src = currentLang === 'en' ? 'https://flagcdn.com/w20/th.png' : 'https://flagcdn.com/w20/gb.png';
             
             // Apply text changes
-            document.querySelector('.lang-view-work').innerText = content[currentLang].viewWork;
-            document.querySelector('.lang-skill-mobile').innerText = content[currentLang].mobileTitle;
-            document.querySelector('.lang-skill-mobile-desc').innerText = content[currentLang].mobileDesc;
-            document.querySelector('.lang-skill-backend').innerText = content[currentLang].backendTitle;
-            document.querySelector('.lang-skill-backend-desc').innerText = content[currentLang].backendDesc;
-            document.querySelector('.lang-skill-infra').innerText = content[currentLang].infraTitle;
-            document.querySelector('.lang-skill-infra-desc').innerText = content[currentLang].infraDesc;
-            
-            // Tech Stack Translations
             document.querySelector('.lang-stack-title').innerText = content[currentLang].stackTitle;
             document.querySelector('.lang-lang-title').innerText = content[currentLang].langTitle;
             document.querySelector('.lang-tools-title').innerText = content[currentLang].toolsTitle;
-
             document.querySelector('.lang-projects-title').innerText = content[currentLang].projectsTitle;
             
             document.querySelector('.lang-desc-worksite').innerText = content[currentLang].descWorksite;
@@ -441,10 +372,6 @@
             document.querySelector('.lang-desc-khaowai').innerText = content[currentLang].descKhaowai;
             document.querySelector('.lang-desc-petword').innerText = content[currentLang].descPetword;
             document.querySelector('.lang-desc-flood').innerText = content[currentLang].descFlood;
-            
-            document.querySelector('.lang-exp-title').innerText = content[currentLang].expTitle;
-            document.querySelector('.lang-exp-current').innerHTML = content[currentLang].expCurrent;
-            document.querySelector('.lang-exp-intern').innerHTML = content[currentLang].expIntern;
         }
 
         // Typewriter Effect
@@ -470,7 +397,6 @@
                     // Trigger skill bars when visible
                     var bars = reveals[i].querySelectorAll('.skill-bar-fill');
                     bars.forEach(bar => {
-                        // Re-trigger animation by resetting width
                         let w = bar.style.width;
                         bar.style.width = '0';
                         setTimeout(() => bar.style.width = w, 100);
