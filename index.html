@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chakrit Surakhumhang | Flutter Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Kanit', 'sans-serif'],
+                        mono: ['Roboto', 'monospace'],
+                    },
+                    colors: {
+                        flutterBlue: '#02569B',
+                        flutterLight: '#0175C2',
+                        surface: '#F8F9FA',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Flutter-like Transitions */
+        .widget-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .widget-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Typing Effect Cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-surface text-gray-800 antialiased">
+
+    <nav class="bg-flutterBlue text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-code text-xl"></i>
+                <span class="font-bold text-xl tracking-wide">Chakrit.Dev</span>
+            </div>
+            <a href="https://github.com/chakrit3523" target="_blank" class="bg-white/20 hover:bg-white/30 px-4 py-1 rounded-full text-sm transition">
+                <i class="fa-brands fa-github mr-1"></i> GitHub
+            </a>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-b from-flutterBlue to-flutterLight text-white pt-16 pb-24 rounded-b-[3rem] shadow-md relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <i class="fa-brands fa-flutter text-9xl absolute -left-10 top-10 transform -rotate-12"></i>
+            <i class="fa-brands fa-node text-9xl absolute right-10 bottom-10 transform rotate-12"></i>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <div class="w-32 h-32 mx-auto bg-white rounded-full p-1 shadow-xl mb-6 overflow-hidden border-4 border-white/50">
+                <img src="https://avatars.githubusercontent.com/u/108399320?v=4" alt="Chakrit" class="w-full h-full object-cover rounded-full">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">Chakrit Surakhumhang</h1>
+            <div class="text-xl md:text-2xl font-light opacity-90 h-8 flex justify-center items-center gap-2">
+                <span id="typewriter" class="typing-cursor font-mono"></span>
+            </div>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <span class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-white/30">🚀 Production Ready</span>
+                <span class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-white/30">📱 iOS & Android Deploy</span>
+                <span class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-white/30">⚡ WebRTC & Socket</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 -mt-16 relative z-20 pb-20">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="widget-card bg-white p-6 rounded-2xl shadow-md border-t-4 border-blue-500 reveal">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Mobile Expert</h3>
+                    <i class="fa-solid fa-mobile-screen text-blue-500 text-2xl"></i>
+                </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    [cite_start]<li class="flex items-start"><i class="fa-brands fa-flutter text-blue-400 mt-1 mr-2"></i> <span>Flutter 2 to 3 Migration [cite: 21, 22]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-brands fa-app-store-ios text-blue-400 mt-1 mr-2"></i> <span>App Store & Play Store Deployment [cite: 39, 40]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-certificate text-blue-400 mt-1 mr-2"></i> <span>App Signing & Certificate Management [cite: 42]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-video text-blue-400 mt-1 mr-2"></i> <span>WebRTC & iOS CallKit Integration [cite: 58, 59]</span></li>
+                </ul>
+            </div>
+
+            <div class="widget-card bg-white p-6 rounded-2xl shadow-md border-t-4 border-green-500 reveal">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Backend & API</h3>
+                    <i class="fa-solid fa-server text-green-500 text-2xl"></i>
+                </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    [cite_start]<li class="flex items-start"><i class="fa-brands fa-node-js text-green-500 mt-1 mr-2"></i> <span>Node.js & Express (Clean Logic) [cite: 2]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-brands fa-php text-green-500 mt-1 mr-2"></i> <span>PHP 5/7 & CodeIgniter 2/4 [cite: 28]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-bolt text-green-500 mt-1 mr-2"></i> <span>Real-time WebSocket (Production) [cite: 36]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-gamepad text-green-500 mt-1 mr-2"></i> <span>Nakama Framework (Battle Realtime) [cite: 24]</span></li>
+                </ul>
+            </div>
+
+            <div class="widget-card bg-white p-6 rounded-2xl shadow-md border-t-4 border-purple-500 reveal">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Infrastructure</h3>
+                    <i class="fa-solid fa-network-wired text-purple-500 text-2xl"></i>
+                </div>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-sliders text-purple-500 mt-1 mr-2"></i> <span>Plesk Control Panel Management [cite: 33]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-lock text-purple-500 mt-1 mr-2"></i> <span>HTTPS (SSL) Configuration [cite: 35]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-bell text-purple-500 mt-1 mr-2"></i> <span>Push Notifications (FCM) & Badges [cite: 53, 54]</span></li>
+                    [cite_start]<li class="flex items-start"><i class="fa-solid fa-database text-purple-500 mt-1 mr-2"></i> <span>SQL Database Optimization [cite: 30]</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-flutterBlue pl-3 reveal">Selected Projects</h2>
+        <div class="space-y-6">
+            
+            <div class="widget-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row reveal">
+                <div class="bg-gray-100 p-6 flex items-center justify-center md:w-1/4">
+                    <i class="fa-solid fa-newspaper text-5xl text-gray-400"></i>
+                </div>
+                <div class="p-6 md:w-3/4">
+                    <div class="flex justify-between items-start">
+                        [cite_start]<h3 class="text-xl font-bold">ข่าวไว (Khao Wai) [cite: 20]</h3>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">iOS & Android</span>
+                    </div>
+                    <p class="text-gray-600 mt-2 text-sm">แอปพลิเคชันข่าวสารที่เน้นความเร็ว พร้อมระบบแจ้งเตือนแบบ Real-time</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Flutter 3</span>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Push Notification</span>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Store Deployment</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row reveal">
+                <div class="bg-gray-100 p-6 flex items-center justify-center md:w-1/4">
+                    <i class="fa-solid fa-paw text-5xl text-gray-400"></i>
+                </div>
+                <div class="p-6 md:w-3/4">
+                    <div class="flex justify-between items-start">
+                        [cite_start]<h3 class="text-xl font-bold">Petword [cite: 18]</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">EdTech</span>
+                    </div>
+                    <p class="text-gray-600 mt-2 text-sm">แพลตฟอร์มเรียนรู้คำศัพท์ภาษาอังกฤษสำหรับเด็ก พร้อมระบบสัตว์เลี้ยงเสมือนจริงและ Ranking</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Gamification</span>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Interactive UI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row reveal">
+                <div class="bg-gray-100 p-6 flex items-center justify-center md:w-1/4">
+                    <i class="fa-solid fa-house-flood-water text-5xl text-gray-400"></i>
+                </div>
+                <div class="p-6 md:w-3/4">
+                    <div class="flex justify-between items-start">
+                        [cite_start]<h3 class="text-xl font-bold">Hatyai Flood Relief [cite: 17]</h3>
+                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Social Impact</span>
+                    </div>
+                    <p class="text-gray-600 mt-2 text-sm">ระบบประสานงานช่วยเหลือผู้ประสบภัยน้ำท่วมหาดใหญ่ เป็นศูนย์กลางข้อมูลเร่งด่วน</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">High Traffic</span>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Real-time Data</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 reveal">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-flutterBlue pl-3">Experience</h2>
+            <div class="bg-white rounded-2xl shadow-sm p-6 border-l-4 border-gray-300">
+                <div class="mb-4">
+                    <h3 class="text-lg font-bold">Full Stack Developer</h3>
+                    <p class="text-gray-500 text-sm">City Variety Corporation Co., Ltd. | [cite_start]2566 - Present [cite: 19]</p>
+                    <p class="text-gray-600 mt-2 text-sm">
+                        ดูแลการพัฒนาแอปพลิเคชันและระบบเว็บไซต์ทั้งหมด สอนงานนักศึกษาฝึกงาน และรับผิดชอบ Infrastructure ของบริษัท
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <a href="mailto:chakrit.lco@gmail.com" class="fixed bottom-6 right-6 bg-flutterBlue text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:bg-flutterLight transition transform hover:scale-110 z-50">
+        <i class="fa-solid fa-envelope text-xl"></i>
+    </a>
+
+    <footer class="text-center py-8 text-gray-500 text-sm">
+        <p>&copy; 2026 Chakrit Surakhumhang. Built with Flutter Heart 💙</p>
+    </footer>
+
+    <script>
+        // Typing Effect
+        const text = "Full Stack Developer (Flutter & Node.js/PHP)";
+        let index = 0;
+        function typeWriter() {
+            if (index < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        // Scroll Reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.onload = function() {
+            typeWriter();
+            reveal();
+        };
+    </script>
+</body>
+</html>
