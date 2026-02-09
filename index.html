@@ -68,6 +68,17 @@
             background: #e2e8f0;
             z-index: 0;
         }
+
+        /* Skill Level Dot Transition */
+        .skill-dot {
+            transition: all 0.5s ease;
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+        .reveal.active .skill-dot.active {
+            opacity: 1;
+            transform: scale(1);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden selection:bg-blue-600 selection:text-white pb-safe">
@@ -220,43 +231,79 @@
             <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center lang-stack-title">Tech Stack</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="space-y-4 reveal">
-                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Languages</h3>
+                <div class="space-y-6 reveal">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Languages Level</h3>
                     
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">Flutter</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-500 w-[95%]"></div></div>
-                        <span class="text-blue-600 font-bold text-[10px]">Excellent</span>
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm w-28">Flutter</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
                     </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">Node.js/JS</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-green-500 w-[95%]"></div></div>
-                        <span class="text-green-600 font-bold text-[10px]">Excellent</span>
+
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm w-28">Node.js/JS</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
                     </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">PHP</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 w-[95%]"></div></div>
-                        <span class="text-indigo-600 font-bold text-[10px]">Excellent</span>
+
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm w-28">PHP</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
                     </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">HTML/CSS</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-orange-500 w-[90%]"></div></div>
-                        <span class="text-orange-600 font-bold text-[10px]">Excellent</span>
+
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm w-28">SQL</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
                     </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">SQL</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-yellow-500 w-[95%]"></div></div>
-                        <span class="text-yellow-600 font-bold text-[10px]">Excellent</span>
+
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm w-28">C/C++ (IoT)</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
                     </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">C/C++ (IoT)</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-600 w-[95%]"></div></div>
-                        <span class="text-slate-600 font-bold text-[10px]">Excellent</span>
-                    </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold w-24">SwiftUI</span>
-                        <div class="flex-1 mx-3 h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-400 w-[50%]"></div></div>
-                        <span class="text-slate-400 font-bold text-[10px]">Fair</span>
+
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-sm w-28">SwiftUI</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-5 h-2 rounded-sm bg-orange-400 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-orange-400 skill-dot active"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-200 skill-dot"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-200 skill-dot"></div>
+                            <div class="w-5 h-2 rounded-sm bg-slate-200 skill-dot"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Beginner</span>
                     </div>
                 </div>
 
@@ -467,7 +514,7 @@
                 descKhaowai: "Fast news app with Real-time Push & Badges.",
                 descPetword: "Vocab learning with Virtual Pets & Battle Realtime.",
                 descFlood: "Emergency coordination center web system.",
-                descElection: "Real-time Mayor Election Score Counting System. High-concurrency support."
+                descElection: "Real-time Mayor Election Score Counting System. Handling massive concurrent traffic."
             },
             th: {
                 expertTitle: "ความเชี่ยวชาญหลัก",
