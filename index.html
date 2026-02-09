@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chakrit Surakhumhang | Flutter Expert</title>
+    <title>Chakrit Surakhumhang | Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -13,209 +13,328 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Kanit', 'sans-serif'],
-                        mono: ['Roboto', 'monospace'],
+                        sans: ['Poppins', 'Kanit', 'sans-serif'],
                     },
                     colors: {
                         flutterBlue: '#02569B',
                         flutterLight: '#0175C2',
-                        surface: '#F8F9FA',
+                        laravelRed: '#FF2D20',
+                        nodeGreen: '#339933',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Flutter-like Transitions */
-        .widget-card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .widget-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Typing Effect Cursor */
-        .typing-cursor::after {
-            content: '|';
-            animation: blink 1s step-start infinite;
-        }
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .typing-cursor::after { content: '|'; animation: blink 1s step-start infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-
-        /* Scroll Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Language Toggle Switch */
+        .switch-lang { cursor: pointer; user-select: none; }
     </style>
 </head>
-<body class="bg-surface text-gray-800 antialiased">
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-flutterLight selection:text-white">
 
-    <nav class="bg-flutterBlue text-white p-4 shadow-lg sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-code text-xl"></i>
-                <span class="font-bold text-xl tracking-wide">Chakrit.Dev</span>
-            </div>
-            <a href="https://github.com/chakrit3523" target="_blank" class="bg-white/20 hover:bg-white/30 px-4 py-1 rounded-full text-sm transition">
-                <i class="fa-brands fa-github mr-1"></i> GitHub
-            </a>
-        </div>
-    </nav>
+    <div onclick="toggleLanguage()" class="fixed top-4 right-4 z-50 bg-white/90 backdrop-blur shadow-lg rounded-full px-4 py-2 cursor-pointer border border-gray-200 hover:bg-gray-100 transition flex items-center gap-2">
+        <i class="fa-solid fa-globe text-flutterBlue"></i>
+        <span id="lang-btn-text" class="font-bold text-sm">TH</span>
+    </div>
 
-    <header class="bg-gradient-to-b from-flutterBlue to-flutterLight text-white pt-16 pb-24 rounded-b-[3rem] shadow-md relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10">
-            <i class="fa-brands fa-flutter text-9xl absolute -left-10 top-10 transform -rotate-12"></i>
-            <i class="fa-brands fa-node text-9xl absolute right-10 bottom-10 transform rotate-12"></i>
-        </div>
-        
-        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
-            <div class="w-32 h-32 mx-auto bg-white rounded-full p-1 shadow-xl mb-6 overflow-hidden border-4 border-white/50">
-                <img src="https://avatars.githubusercontent.com/u/108399320?v=4" alt="Chakrit" class="w-full h-full object-cover rounded-full">
-            </div>
-            <h1 class="text-4xl md:text-5xl font-bold mb-2">Chakrit Surakhumhang</h1>
-            <div class="text-xl md:text-2xl font-light opacity-90 h-8 flex justify-center items-center gap-2">
-                <span id="typewriter" class="typing-cursor font-mono"></span>
+    <header class="relative bg-gradient-to-br from-gray-900 via-blue-900 to-flutterBlue text-white pt-24 pb-32 overflow-hidden rounded-b-[40px] shadow-2xl">
+        <div class="absolute inset-0 opacity-10 pattern-dots"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="relative w-40 h-40 mx-auto mb-6">
+                <div class="absolute inset-0 bg-blue-400 rounded-full blur-lg opacity-50 animate-pulse"></div>
+                <img src="boat.png" alt="Chakrit" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-xl hover:scale-105 transition duration-500">
+                <div class="absolute bottom-2 right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white" title="Available for work"></div>
             </div>
             
-            <div class="mt-8 flex flex-wrap justify-center gap-3">
-                <span class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-white/30">🚀 Production Ready</span>
-                <span class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-white/30">📱 iOS & Android Deploy</span>
-                <span class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-white/30">⚡ WebRTC & Socket</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Chakrit Surakhumhang</h1>
+            <div class="text-xl md:text-2xl text-blue-200 font-light h-8 mb-8">
+                <span id="typewriter" class="typing-cursor font-mono"></span>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 mt-8">
+                <a href="#projects" class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition shadow-lg flex items-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> <span class="lang-view-work">View My Work</span>
+                </a>
+                <a href="https://github.com/chakrit3523" target="_blank" class="bg-white/20 text-white px-6 py-2 rounded-full font-bold hover:bg-white/30 transition backdrop-blur flex items-center gap-2 border border-white/30">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4 -mt-16 relative z-20 pb-20">
+    <main class="max-w-6xl mx-auto px-6 -mt-20 relative z-20 pb-20">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="widget-card bg-white p-6 rounded-2xl shadow-md border-t-4 border-blue-500 reveal">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-xl font-bold text-gray-800">Mobile Expert</h3>
-                    <i class="fa-solid fa-mobile-screen text-blue-500 text-2xl"></i>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="bg-white p-8 rounded-2xl shadow-xl hover-lift reveal border-t-4 border-flutterBlue">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4 text-flutterBlue text-2xl">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
                 </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-start"><i class="fa-brands fa-flutter text-blue-400 mt-1 mr-2"></i> <span>Flutter 2 to 3 Migration</span></li>
-                    <li class="flex items-start"><i class="fa-brands fa-app-store-ios text-blue-400 mt-1 mr-2"></i> <span>App Store & Play Store Deployment</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-certificate text-blue-400 mt-1 mr-2"></i> <span>App Signing & Certificate Management</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-video text-blue-400 mt-1 mr-2"></i> <span>WebRTC & iOS CallKit Integration</span></li>
-                </ul>
+                <h3 class="text-xl font-bold mb-3 lang-skill-mobile">Mobile Development</h3>
+                <p class="text-gray-600 text-sm mb-4 lang-skill-mobile-desc">Expert in Flutter (Dart). Capable of building production-ready apps, managing state, and deploying to both iOS & Android stores.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">Flutter 3</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">iOS/Android</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">CallKit</span>
+                </div>
             </div>
 
-            <div class="widget-card bg-white p-6 rounded-2xl shadow-md border-t-4 border-green-500 reveal">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-xl font-bold text-gray-800">Backend & API</h3>
-                    <i class="fa-solid fa-server text-green-500 text-2xl"></i>
+            <div class="bg-white p-8 rounded-2xl shadow-xl hover-lift reveal border-t-4 border-nodeGreen">
+                <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4 text-nodeGreen text-2xl">
+                    <i class="fa-solid fa-server"></i>
                 </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-start"><i class="fa-brands fa-node-js text-green-500 mt-1 mr-2"></i> <span>Node.js & Express (Clean Logic)</span></li>
-                    <li class="flex items-start"><i class="fa-brands fa-php text-green-500 mt-1 mr-2"></i> <span>PHP 5/7 & CodeIgniter 2/4</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-bolt text-green-500 mt-1 mr-2"></i> <span>Real-time WebSocket (Production)</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-gamepad text-green-500 mt-1 mr-2"></i> <span>Nakama Framework (Battle Realtime)</span></li>
-                </ul>
+                <h3 class="text-xl font-bold mb-3 lang-skill-backend">Backend & API</h3>
+                <p class="text-gray-600 text-sm mb-4 lang-skill-backend-desc">Strong background in Node.js and PHP. Experienced in designing clean APIs, handling databases, and real-time sockets.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">Node.js</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">PHP 7</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">WebSocket</span>
+                </div>
             </div>
 
-            <div class="widget-card bg-white p-6 rounded-2xl shadow-md border-t-4 border-purple-500 reveal">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-xl font-bold text-gray-800">Infrastructure</h3>
-                    <i class="fa-solid fa-network-wired text-purple-500 text-2xl"></i>
+            <div class="bg-white p-8 rounded-2xl shadow-xl hover-lift reveal border-t-4 border-purple-500">
+                <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-4 text-purple-600 text-2xl">
+                    <i class="fa-solid fa-network-wired"></i>
                 </div>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li class="flex items-start"><i class="fa-solid fa-sliders text-purple-500 mt-1 mr-2"></i> <span>Plesk Control Panel Management</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-lock text-purple-500 mt-1 mr-2"></i> <span>HTTPS (SSL) Configuration</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-bell text-purple-500 mt-1 mr-2"></i> <span>Push Notifications (FCM) & Badges</span></li>
-                    <li class="flex items-start"><i class="fa-solid fa-database text-purple-500 mt-1 mr-2"></i> <span>SQL Database Optimization</span></li>
-                </ul>
+                <h3 class="text-xl font-bold mb-3 lang-skill-infra">Infrastructure</h3>
+                <p class="text-gray-600 text-sm mb-4 lang-skill-infra-desc">Self-sufficient in server management using Plesk, SSL/HTTPS configuration, and CI/CD pipelines for deployment.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">Plesk</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">Linux</span>
+                    <span class="px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-600">Docker</span>
+                </div>
             </div>
         </div>
 
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-flutterBlue pl-3 reveal">Selected Projects</h2>
-        <div class="space-y-6">
-            
-            <div class="widget-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row reveal">
-                <div class="bg-gray-100 p-6 flex items-center justify-center md:w-1/4">
-                    <i class="fa-solid fa-newspaper text-5xl text-gray-400"></i>
-                </div>
-                <div class="p-6 md:w-3/4">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-bold">ข่าวไว (Khao Wai)</h3>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">iOS & Android</span>
+        <div id="projects" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3 reveal">
+                <span class="w-2 h-8 bg-flutterBlue rounded-full"></span>
+                <span class="lang-projects-title">Featured Projects</span>
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto relative bg-gray-100 flex items-center justify-center p-4">
+                        <img src="400x400ia-75.jpg" alt="Worksite" class="w-32 h-32 rounded-2xl shadow-md object-cover">
                     </div>
-                    <p class="text-gray-600 mt-2 text-sm">แอปพลิเคชันข่าวสารที่เน้นความเร็ว พร้อมระบบแจ้งเตือนแบบ Real-time</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Flutter 3</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Push Notification</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Store Deployment</span>
+                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Worksite</h3>
+                            <p class="text-blue-500 text-sm font-semibold mb-2">Enterprise Management App</p>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-worksite">A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3 for better performance.</p>
+                        </div>
+                        <div class="flex gap-3 mt-4">
+                            <a href="https://apps.apple.com/th/app/worksite/id1447497133" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple text-lg"></i> App Store
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=th.go.cityvariety.worksite" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play text-lg"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto relative bg-blue-50 flex items-center justify-center p-4">
+                        <img src="400x400bb-75.jpg" alt="IsmartLogin" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                    </div>
+                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">iSmartLogin</h3>
+                            <p class="text-blue-500 text-sm font-semibold mb-2">Secure Authentication System</p>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-ismart">Advanced login system with high security. Successfully migrated codebase and improved UI/UX.</p>
+                        </div>
+                        <div class="flex gap-3 mt-4">
+                            <a href="https://apps.apple.com/th/app/ismartlogin/id1561564431" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple"></i> App Store
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.ismart_login" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto relative bg-sky-50 flex items-center justify-center p-4">
+                        <img src="400x400bb-76.jpg" alt="Khao Wai" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                    </div>
+                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">ข่าวไว (Khao Wai)</h3>
+                            <p class="text-blue-500 text-sm font-semibold mb-2">News & Alerts App</p>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-khaowai">Fast news delivery application featuring real-time Push Notifications and Badge counts for unread alerts.</p>
+                        </div>
+                        <div class="flex gap-3 mt-4">
+                            <a href="https://apps.apple.com/th/app/%E0%B8%82-%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%A7-khao-wai/id6742871320" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple"></i> App Store
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=th.co.cityvariety.iconnect" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift reveal flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto relative bg-yellow-50 flex items-center justify-center p-4">
+                        <img src="petword.jpg" alt="Petword" class="w-32 h-32 rounded-2xl shadow-md object-cover">
+                    </div>
+                    <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Petword</h3>
+                            <p class="text-yellow-600 text-sm font-semibold mb-2">EdTech & Gamification</p>
+                            <p class="text-gray-600 text-sm mb-4 lang-desc-petword">English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.</p>
+                        </div>
+                        <div class="flex gap-3 mt-4">
+                            <a href="https://apps.apple.com/th/app/%E0%B8%97-%E0%B8%AD%E0%B8%87%E0%B8%A8-%E0%B8%9E%E0%B8%97-petword/id6504467794" target="_blank" class="flex-1 bg-black text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-apple"></i> App Store
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.petword2" target="_blank" class="flex-1 bg-green-600 text-white py-2 rounded-lg text-center text-sm font-medium hover:bg-green-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-google-play"></i> Play Store
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="widget-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row reveal">
-                <div class="bg-gray-100 p-6 flex items-center justify-center md:w-1/4">
-                    <i class="fa-solid fa-paw text-5xl text-gray-400"></i>
-                </div>
-                <div class="p-6 md:w-3/4">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-bold">Petword</h3>
-                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">EdTech</span>
+            <div class="mt-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl p-6 shadow-lg text-white hover-lift reveal">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2"><i class="fa-solid fa-house-flood-water mr-2"></i> Hatyai Flood Relief</h3>
+                        <p class="opacity-90 lang-desc-flood">A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination.</p>
                     </div>
-                    <p class="text-gray-600 mt-2 text-sm">แพลตฟอร์มเรียนรู้คำศัพท์ภาษาอังกฤษสำหรับเด็ก พร้อมระบบสัตว์เลี้ยงเสมือนจริงและ Ranking</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Gamification</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Interactive UI</span>
-                    </div>
+                    <a href="https://hatyaifight.com/frontpage" target="_blank" class="mt-4 md:mt-0 bg-white text-red-600 px-6 py-3 rounded-lg font-bold hover:bg-red-50 transition">
+                        Visit Website <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
                 </div>
             </div>
-
-            <div class="widget-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row reveal">
-                <div class="bg-gray-100 p-6 flex items-center justify-center md:w-1/4">
-                    <i class="fa-solid fa-house-flood-water text-5xl text-gray-400"></i>
-                </div>
-                <div class="p-6 md:w-3/4">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-xl font-bold">Hatyai Flood Relief</h3>
-                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Social Impact</span>
-                    </div>
-                    <p class="text-gray-600 mt-2 text-sm">ระบบประสานงานช่วยเหลือผู้ประสบภัยน้ำท่วมหาดใหญ่ เป็นศูนย์กลางข้อมูลเร่งด่วน</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">High Traffic</span>
-                        <span class="text-xs bg-gray-100 px-2 py-1 rounded border">Real-time Data</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <div class="mt-12 reveal">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-flutterBlue pl-3">Experience</h2>
-            <div class="bg-white rounded-2xl shadow-sm p-6 border-l-4 border-gray-300">
-                <div class="mb-4">
-                    <h3 class="text-lg font-bold">Full Stack Developer</h3>
-                    <p class="text-gray-500 text-sm">City Variety Corporation Co., Ltd. | 2566 - Present</p>
-                    <p class="text-gray-600 mt-2 text-sm">
-                        ดูแลการพัฒนาแอปพลิเคชันและระบบเว็บไซต์ทั้งหมด สอนงานนักศึกษาฝึกงาน และรับผิดชอบ Infrastructure ของบริษัท
-                    </p>
+        <div class="reveal">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="w-2 h-8 bg-nodeGreen rounded-full"></span>
+                <span class="lang-exp-title">Experience</span>
+            </h2>
+            <div class="relative border-l-4 border-gray-200 ml-3 space-y-10">
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[42px] top-1 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow"></span>
+                    <h3 class="text-xl font-bold text-gray-800">Full Stack Developer</h3>
+                    <p class="text-blue-600 font-semibold text-sm">City Variety Corporation Co., Ltd. | 2024 - Present</p>
+                    <ul class="mt-3 text-gray-600 text-sm list-disc ml-4 space-y-1 lang-exp-current">
+                        <li>Developed "Khao Wai", "Worksite" and "Petword" apps.</li>
+                        <li>Migrated legacy PHP CodeIgniter 2 systems to CI4.</li>
+                        <li>Implemented Battle Realtime Game using Nakama Framework.</li>
+                        <li>Mentored interns on Flutter development.</li>
+                    </ul>
+                </div>
+
+                <div class="ml-8 relative">
+                    <span class="absolute -left-[42px] top-1 w-6 h-6 bg-gray-400 rounded-full border-4 border-white shadow"></span>
+                    <h3 class="text-xl font-bold text-gray-800">Developer Intern</h3>
+                    <p class="text-gray-500 font-semibold text-sm">City Variety Corporation Co., Ltd. | 2023 - 2024</p>
+                    <ul class="mt-3 text-gray-600 text-sm list-disc ml-4 space-y-1 lang-exp-intern">
+                        <li>Developed 2 Donation Web Platforms.</li>
+                        <li>Built Hatyai Flood Relief Information System.</li>
+                        <li>Assisted in Petword initial development phase.</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <a href="mailto:chakrit.lco@gmail.com" class="fixed bottom-6 right-6 bg-flutterBlue text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:bg-flutterLight transition transform hover:scale-110 z-50">
-        <i class="fa-solid fa-envelope text-xl"></i>
-    </a>
-
-    <footer class="text-center py-8 text-gray-500 text-sm">
-        <p>&copy; 2026 Chakrit Surakhumhang. Built with Flutter Heart 💙</p>
+    <footer class="bg-gray-900 text-white py-12 mt-12 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-6">Let's Work Together</h2>
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="mailto:chakrit.lco@gmail.com" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition">
+                    <i class="fa-solid fa-envelope text-xl"></i>
+                </a>
+                <a href="tel:+66820267154" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition">
+                    <i class="fa-solid fa-phone text-xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2026 Chakrit Surakhumhang. <br>Built with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> and clean code.</p>
+        </div>
     </footer>
 
     <script>
-        // Typing Effect
+        // Data for Translations
+        const content = {
+            en: {
+                viewWork: "View My Work",
+                mobileTitle: "Mobile Development",
+                mobileDesc: "Expert in Flutter (Dart). Capable of building production-ready apps, managing state, and deploying to both iOS & Android stores.",
+                backendTitle: "Backend & API",
+                backendDesc: "Strong background in Node.js and PHP. Experienced in designing clean APIs, handling databases, and real-time sockets.",
+                infraTitle: "Infrastructure",
+                infraDesc: "Self-sufficient in server management using Plesk, SSL/HTTPS configuration, and CI/CD pipelines for deployment.",
+                projectsTitle: "Featured Projects",
+                descWorksite: "A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3 for better performance.",
+                descIsmart: "Advanced login system with high security. Successfully migrated codebase and improved UI/UX.",
+                descKhaowai: "Fast news delivery application featuring real-time Push Notifications and Badge counts for unread alerts.",
+                descPetword: "English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.",
+                descFlood: "A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination.",
+                expTitle: "Experience",
+                expCurrent: `<li>Developed "Khao Wai", "Worksite" and "Petword" apps.</li><li>Migrated legacy PHP CodeIgniter 2 systems to CI4.</li><li>Implemented Battle Realtime Game using Nakama Framework.</li><li>Mentored interns on Flutter development.</li>`,
+                expIntern: `<li>Developed 2 Donation Web Platforms.</li><li>Built Hatyai Flood Relief Information System.</li><li>Assisted in Petword initial development phase.</li>`
+            },
+            th: {
+                viewWork: "ดูผลงานของผม",
+                mobileTitle: "การพัฒนาโมบายแอป",
+                mobileDesc: "เชี่ยวชาญ Flutter (Dart) เน้นโครงสร้าง Clean Code ที่พร้อมใช้งานจริง จัดการ State ได้ดี และนำแอปขึ้น Store ได้เองทั้ง iOS/Android",
+                backendTitle: "Backend & API",
+                backendDesc: "มีพื้นฐานแน่นทั้ง Node.js และ PHP สามารถออกแบบ API ที่สะอาด จัดการ Database และทำระบบ Real-time Socket ได้",
+                infraTitle: "Infrastructure",
+                infraDesc: "ดูแล Server ได้ด้วยตัวเองผ่าน Plesk, ติดตั้ง SSL/HTTPS และทำระบบ CI/CD สำหรับ Deployment",
+                projectsTitle: "ผลงานเด่น",
+                descWorksite: "แอปพลิเคชันบริหารจัดการงานและไซต์งาน อัปเกรดจาก Flutter 2 เป็น 3 เพื่อประสิทธิภาพที่ดีขึ้น",
+                descIsmart: "ระบบ Login ที่มีความปลอดภัยสูง ทำการย้าย Codebase ใหม่และปรับปรุง UI/UX ให้ทันสมัย",
+                descKhaowai: "แอปข่าวสารที่เน้นความไว มาพร้อมระบบ Push Notifications และตัวเลขแจ้งเตือน (Badge) แบบ Real-time",
+                descPetword: "แอปเรียนศัพท์ภาษาอังกฤษสำหรับเด็ก มีระบบเลี้ยงสัตว์เสมือนจริง จัดอันดับ (Ranking) และแบบทดสอบรายวัน",
+                descFlood: "เว็บแพลตฟอร์มประสานงานช่วยน้ำท่วมหาดใหญ่ รองรับคนเข้าใช้งานจำนวนมากและข้อมูลเร่งด่วนได้ดี",
+                expTitle: "ประสบการณ์ทำงาน",
+                expCurrent: `<li>พัฒนาแอป "ข่าวไว", "Worksite" และ "Petword"</li><li>อัปเกรดระบบเก่า PHP CodeIgniter 2 เป็น CI4</li><li>ทำระบบเกม Battle Realtime ด้วย Nakama Framework</li><li>เป็นพี่เลี้ยงสอนงาน Flutter ให้นักศึกษาฝึกงาน</li>`,
+                expIntern: `<li>พัฒนาเว็บไซต์บริจาคการกุศล 2 ระบบ</li><li>สร้างระบบข้อมูลช่วยเหลือผู้ประสบภัยน้ำท่วมหาดใหญ่</li><li>ช่วยพัฒนาแอป Petword ในระยะเริ่มต้น</li>`
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'th' : 'en';
+            document.getElementById('lang-btn-text').innerText = currentLang.toUpperCase();
+            
+            // Apply text changes
+            document.querySelector('.lang-view-work').innerText = content[currentLang].viewWork;
+            document.querySelector('.lang-skill-mobile').innerText = content[currentLang].mobileTitle;
+            document.querySelector('.lang-skill-mobile-desc').innerText = content[currentLang].mobileDesc;
+            document.querySelector('.lang-skill-backend').innerText = content[currentLang].backendTitle;
+            document.querySelector('.lang-skill-backend-desc').innerText = content[currentLang].backendDesc;
+            document.querySelector('.lang-skill-infra').innerText = content[currentLang].infraTitle;
+            document.querySelector('.lang-skill-infra-desc').innerText = content[currentLang].infraDesc;
+            document.querySelector('.lang-projects-title').innerText = content[currentLang].projectsTitle;
+            
+            document.querySelector('.lang-desc-worksite').innerText = content[currentLang].descWorksite;
+            document.querySelector('.lang-desc-ismart').innerText = content[currentLang].descIsmart;
+            document.querySelector('.lang-desc-khaowai').innerText = content[currentLang].descKhaowai;
+            document.querySelector('.lang-desc-petword').innerText = content[currentLang].descPetword;
+            document.querySelector('.lang-desc-flood').innerText = content[currentLang].descFlood;
+            
+            document.querySelector('.lang-exp-title').innerText = content[currentLang].expTitle;
+            document.querySelector('.lang-exp-current').innerHTML = content[currentLang].expCurrent;
+            document.querySelector('.lang-exp-intern').innerHTML = content[currentLang].expIntern;
+        }
+
+        // Typewriter Effect
         const text = "Full Stack Developer (Flutter & Node.js/PHP)";
         let index = 0;
         function typeWriter() {
