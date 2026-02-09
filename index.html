@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Chakrit Surakhumhang | Senior Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,249 +15,223 @@
                 extend: {
                     fontFamily: { sans: ['Poppins', 'Kanit', 'sans-serif'] },
                     animation: {
-                        'blob': 'blob 7s infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient-x': 'gradient-x 15s ease infinite',
                     },
                     keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Smooth Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f8fafc; }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        /* Glass Effect */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Entrance Animations */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Stagger Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
 
-        /* Staggered Delays for Children */
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-
-        /* Skill Bar Animation */
-        .skill-fill { width: 0; transition: width 2s cubic-bezier(0.22, 1, 0.36, 1); }
-
-        /* Typing Cursor */
         .typing-cursor::after { content: '|'; animation: blink 1s step-start infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-
-        /* Card Glow Hover Effect */
-        .hover-glow {
-            transition: all 0.3s ease;
-        }
-        .hover-glow:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -5px rgba(59, 130, 246, 0.15);
-            border-color: #bfdbfe;
-        }
-
-        /* Tool Icon Pop */
-        .tool-icon:hover {
-            transform: scale(1.15) rotate(5deg);
-        }
+        
+        /* Mobile Optimizations */
+        .safe-pb { padding-bottom: env(safe-area-inset-bottom); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden selection:bg-blue-500 selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden selection:bg-blue-600 selection:text-white safe-pb">
 
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="font-bold text-2xl tracking-tighter flex items-center gap-2 group cursor-pointer">
-                <span class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition duration-300">
-                    <i class="fa-solid fa-terminal"></i>
-                </span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600 group-hover:from-blue-600 group-hover:to-cyan-500 transition duration-300">Chakrit.Dev</span>
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg transform group-hover:rotate-12 transition">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight text-slate-800">Chakrit<span class="text-blue-600">.Dev</span></span>
             </div>
             
-            <button onclick="toggleLanguage()" class="relative px-5 py-2 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition duration-200 flex items-center gap-2 group overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <i class="fa-solid fa-globe text-slate-400 group-hover:text-blue-500 transition relative z-10 group-hover:rotate-180 duration-500"></i>
-                <span id="lang-text" class="font-bold text-sm text-slate-700 relative z-10">TH</span>
+            <button onclick="toggleLanguage()" class="px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm flex items-center gap-2 active:scale-95 transition">
+                <img src="https://flagcdn.com/w20/th.png" id="lang-flag" class="w-5 h-auto rounded-sm shadow-sm">
+                <span id="lang-text" class="font-bold text-xs text-slate-600">TH</span>
             </button>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+    <header class="relative pt-28 pb-16 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 w-3/4 h-3/4 bg-gradient-to-b from-blue-100/50 to-transparent rounded-bl-full -z-10 blur-3xl opacity-60"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-purple-100/50 to-transparent rounded-tr-full -z-10 blur-3xl opacity-60"></div>
 
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="text-center lg:text-left order-2 lg:order-1 reveal active">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-6 hover:bg-blue-100 transition cursor-default">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                    </span>
-                    Available for projects
+        <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            
+            <div class="lg:order-2 relative w-full max-w-[280px] lg:max-w-md mx-auto reveal">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full blur-2xl opacity-20 animate-pulse-slow"></div>
+                <div class="relative rounded-full p-2 bg-white/50 backdrop-blur-sm border border-white/60 shadow-2xl animate-float">
+                    <img src="boat.png" alt="Chakrit" class="w-full h-full object-cover rounded-full border-4 border-white shadow-inner">
+                    
+                    <div class="absolute bottom-4 right-0 bg-white/90 backdrop-blur px-4 py-2 rounded-2xl shadow-lg border border-white/50 flex items-center gap-2 animate-bounce">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="text-xs font-bold text-slate-700">Open to work</span>
+                    </div>
                 </div>
-                <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight text-slate-900">
-                    I Build <br>
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-300% animate-gradient">Smart Solutions</span>
+            </div>
+
+            <div class="lg:order-1 text-center lg:text-left reveal delay-100">
+                <div class="inline-block px-3 py-1 mb-4 text-[10px] md:text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 border border-blue-100 rounded-full shadow-sm">
+                    Senior Full Stack Developer
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-4 leading-tight">
+                    Build Faster.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-[length:200%_auto] animate-gradient-x">Scale Better.</span>
                 </h1>
-                <p class="text-xl text-slate-500 mb-8 font-light h-8">
+                <p class="text-base md:text-xl text-slate-500 mb-8 max-w-lg mx-auto lg:mx-0 font-light h-6">
                     <span id="typewriter" class="typing-cursor"></span>
                 </p>
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#projects" class="group relative px-8 py-4 bg-slate-900 text-white rounded-full font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden lang-view-work">
-                        <span class="relative z-10 flex items-center gap-2">View Work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i></span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 bg-slate-900 text-white rounded-xl font-bold shadow-lg shadow-slate-900/20 active:scale-95 transition flex items-center justify-center gap-2 lang-view-work">
+                        View Projects <i class="fa-solid fa-arrow-down"></i>
                     </a>
-                    <a href="https://github.com/chakrit3523" target="_blank" class="px-8 py-4 bg-white text-slate-800 border border-slate-200 rounded-full font-bold hover:bg-slate-50 hover:border-slate-300 transition duration-300 flex items-center gap-2 group">
-                        <i class="fa-brands fa-github text-xl group-hover:scale-110 transition"></i> GitHub
+                    <a href="https://github.com/chakrit3523" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold shadow-sm hover:bg-slate-50 active:scale-95 transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-github text-lg"></i> GitHub
                     </a>
                 </div>
             </div>
-
-            <div class="order-1 lg:order-2 flex justify-center relative reveal stagger-2">
-                <div class="relative w-72 h-72 lg:w-96 lg:h-96 animate-float">
-                    <div class="absolute -inset-4 border-2 border-dashed border-slate-300 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-2xl opacity-40 animate-pulse-slow"></div>
-                    <img src="boat.png" alt="Chakrit" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-2xl hover:scale-105 transition duration-500">
-                    
-                    <div class="absolute top-10 -left-10 bg-white p-3 rounded-xl shadow-lg animate-bounce flex items-center gap-2">
-                        <i class="devicon-flutter-plain text-2xl text-blue-500"></i>
-                        <span class="text-xs font-bold">Flutter Expert</span>
-                    </div>
-                    <div class="absolute bottom-10 -right-5 bg-white p-3 rounded-xl shadow-lg animate-bounce animation-delay-2000 flex items-center gap-2">
-                        <i class="fa-solid fa-server text-green-500"></i>
-                        <span class="text-xs font-bold">Server Master</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-300">
-            <i class="fa-solid fa-chevron-down text-2xl"></i>
         </div>
     </header>
 
-    <section class="py-24 bg-white relative">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="reveal mb-16 text-center">
-                <h2 class="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
-                    <span class="w-12 h-1 bg-blue-600 rounded-full"></span>
-                    <span class="lang-stack-title">Tech Stack & Tools</span>
-                    <span class="w-12 h-1 bg-blue-600 rounded-full"></span>
+    <section class="py-16 bg-white relative">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="reveal mb-12 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-layer-group text-blue-500"></i> <span class="lang-stack-title">Tech Stack</span>
                 </h2>
-                <p class="text-slate-500">My technical arsenal for building world-class applications</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <div class="space-y-8 reveal stagger-1">
-                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2 lang-lang-title">
-                        <i class="fa-solid fa-code text-blue-500"></i> Languages
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                <div class="reveal delay-100">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-code"></i> <span class="lang-lang-title">Languages</span>
                     </h3>
-                    
-                    <div class="group">
-                        <div class="flex justify-between mb-2">
-                            <span class="font-bold text-slate-700">Flutter & Dart</span>
-                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg">Excellent</span>
+                    <div class="space-y-5">
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-slate-700">Flutter & Dart</span>
+                                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Excellent</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 w-[95%] rounded-full shadow-sm"></div>
+                            </div>
                         </div>
-                        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-blue-500 to-cyan-400 h-3 rounded-full skill-fill shadow-[0_0_10px_rgba(59,130,246,0.5)]" style="width: 95%"></div>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-slate-700">Node.js & JS</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded">Excellent</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-green-500 w-[90%] rounded-full shadow-sm"></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="group">
-                        <div class="flex justify-between mb-2">
-                            <span class="font-bold text-slate-700">Node.js & JS</span>
-                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Excellent</span>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-slate-700">PHP (5/7)</span>
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">Excellent</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-indigo-500 w-[90%] rounded-full shadow-sm"></div>
+                            </div>
                         </div>
-                        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-green-500 to-emerald-400 h-3 rounded-full skill-fill shadow-[0_0_10px_rgba(34,197,94,0.5)]" style="width: 90%"></div>
-                        </div>
-                    </div>
-
-                    <div class="group">
-                        <div class="flex justify-between mb-2">
-                            <span class="font-bold text-slate-700">PHP (5/7)</span>
-                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-lg">Excellent</span>
-                        </div>
-                        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-indigo-500 to-purple-400 h-3 rounded-full skill-fill" style="width: 90%"></div>
-                        </div>
-                    </div>
-
-                    <div class="group">
-                        <div class="flex justify-between mb-2">
-                            <span class="font-bold text-slate-700">SQL / Database</span>
-                            <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-lg">Excellent</span>
-                        </div>
-                        <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-                            <div class="bg-gradient-to-r from-orange-500 to-amber-400 h-3 rounded-full skill-fill" style="width: 85%"></div>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-sm">
+                                <span class="font-semibold text-slate-700">SQL / DB</span>
+                                <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">Excellent</span>
+                            </div>
+                            <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-500 w-[85%] rounded-full shadow-sm"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="reveal stagger-2">
-                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2 mb-8 lang-tools-title">
-                        <i class="fa-solid fa-toolbox text-red-500"></i> Weapon of Choice
+                <div class="reveal delay-200">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-toolbox"></i> <span class="lang-tools-title">Tools</span>
                     </h3>
-                    <div class="grid grid-cols-4 gap-4">
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-blue-50 hover:border-blue-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="devicon-vscode-plain text-4xl text-blue-500 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600">VS Code</span>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="devicon-vscode-plain text-3xl text-blue-500 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">VS Code</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-green-50 hover:border-green-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="devicon-androidstudio-plain text-4xl text-green-600 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600 text-center">Android Studio</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="devicon-androidstudio-plain text-3xl text-green-600 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500 text-center leading-tight">Android Studio</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-blue-50 hover:border-blue-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="devicon-xcode-plain text-4xl text-blue-600 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600">Xcode</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="devicon-xcode-plain text-3xl text-blue-600 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">Xcode</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-purple-50 hover:border-purple-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="fa-brands fa-github text-4xl text-slate-800 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600 text-center">GitHub Desktop</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="fa-brands fa-github text-3xl text-slate-800 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">GitHub</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-pink-50 hover:border-pink-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="devicon-figma-plain text-4xl text-pink-500 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600">Figma</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="devicon-figma-plain text-3xl text-pink-500 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">Figma</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-orange-50 hover:border-orange-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="devicon-postman-plain text-4xl text-orange-500 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600">Postman</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="devicon-postman-plain text-3xl text-orange-500 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">Postman</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-blue-50 hover:border-blue-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="devicon-docker-plain text-4xl text-blue-500 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600">Docker</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="devicon-docker-plain text-3xl text-blue-500 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">Docker</span>
                         </div>
-                        <div class="aspect-square bg-slate-50 rounded-2xl flex flex-col items-center justify-center border border-slate-100 tool-icon transition duration-300 hover:bg-indigo-50 hover:border-indigo-200 cursor-pointer shadow-sm hover:shadow-lg">
-                            <i class="fa-solid fa-server text-4xl text-indigo-500 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-600">Plesk</span>
+                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-2xl flex flex-col items-center justify-center p-2 active:scale-95 transition">
+                            <i class="fa-solid fa-server text-3xl text-indigo-500 mb-1"></i>
+                            <span class="text-[10px] font-medium text-slate-500">Plesk</span>
                         </div>
                     </div>
                 </div>
@@ -265,138 +239,176 @@
         </div>
     </section>
 
-    <section id="projects" class="py-24 bg-slate-50 relative">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="reveal mb-16">
-                <h2 class="text-4xl font-bold mb-4 flex items-center gap-3 text-slate-900">
-                    <i class="fa-solid fa-layer-group text-blue-600"></i> 
+    <section id="projects" class="py-16 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-5">
+            <div class="reveal mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-mobile-screen-button text-blue-600"></i> 
                     <span class="lang-projects-title">Featured Projects</span>
                 </h2>
-                <div class="h-1 w-20 bg-blue-600 rounded-full"></div>
+                <p class="text-sm text-slate-500 mt-2">Deployed & Production Ready</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-8">
                 
-                <article class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover-glow reveal stagger-1 flex flex-col sm:flex-row gap-6 group">
-                    <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden shadow-inner relative">
-                        <img src="400x400ia-75.jpg" alt="Worksite" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-1 rounded w-fit mb-2">Enterprise</span>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition">Worksite</h3>
-                        <p class="text-sm text-slate-500 mb-4 flex-1 lang-desc-worksite">A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3.</p>
-                        <div class="flex gap-2 mt-auto">
-                            <a href="https://apps.apple.com/th/app/worksite/id1447497133" target="_blank" class="flex-1 py-2 rounded-lg bg-slate-900 text-white text-center text-xs font-bold hover:bg-slate-700 transition"><i class="fa-brands fa-apple"></i> iOS</a>
-                            <a href="https://play.google.com/store/apps/details?id=th.go.cityvariety.worksite" target="_blank" class="flex-1 py-2 rounded-lg bg-green-600 text-white text-center text-xs font-bold hover:bg-green-700 transition"><i class="fa-brands fa-google-play"></i> Android</a>
+                <article class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 reveal">
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden border border-slate-100 shadow-sm mx-auto sm:mx-0">
+                            <img src="400x400ia-75.jpg" alt="Worksite" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <div class="mb-1">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-1 rounded">Enterprise</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Worksite</h3>
+                            <p class="text-sm text-slate-500 mb-4 leading-relaxed lang-desc-worksite">Management app updated from Flutter 2 to 3.</p>
+                            <div class="flex gap-2">
+                                <a href="https://apps.apple.com/th/app/worksite/id1447497133" target="_blank" class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-apple text-sm"></i> iOS
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=th.go.cityvariety.worksite" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-600 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-google-play text-sm"></i> Android
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover-glow reveal stagger-2 flex flex-col sm:flex-row gap-6 group">
-                    <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden shadow-inner relative">
-                        <img src="400x400bb-75.jpg" alt="IsmartLogin" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2 py-1 rounded w-fit mb-2">Security</span>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition">iSmartLogin</h3>
-                        <p class="text-sm text-slate-500 mb-4 flex-1 lang-desc-ismart">Advanced login system with high security. Successfully migrated codebase and improved UI/UX.</p>
-                        <div class="flex gap-2 mt-auto">
-                            <a href="https://apps.apple.com/th/app/ismartlogin/id1561564431" target="_blank" class="flex-1 py-2 rounded-lg bg-slate-900 text-white text-center text-xs font-bold hover:bg-slate-700 transition"><i class="fa-brands fa-apple"></i> iOS</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.ismart_login" target="_blank" class="flex-1 py-2 rounded-lg bg-green-600 text-white text-center text-xs font-bold hover:bg-green-700 transition"><i class="fa-brands fa-google-play"></i> Android</a>
+                <article class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 reveal">
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden border border-slate-100 shadow-sm mx-auto sm:mx-0">
+                            <img src="400x400bb-75.jpg" alt="IsmartLogin" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <div class="mb-1">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Security</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">iSmartLogin</h3>
+                            <p class="text-sm text-slate-500 mb-4 leading-relaxed lang-desc-ismart">Secure authentication system with improved UI/UX.</p>
+                            <div class="flex gap-2">
+                                <a href="https://apps.apple.com/th/app/ismartlogin/id1561564431" target="_blank" class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-apple text-sm"></i> iOS
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.cityvariety.ismart_login" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-600 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-google-play text-sm"></i> Android
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover-glow reveal stagger-3 flex flex-col sm:flex-row gap-6 group">
-                    <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden shadow-inner relative">
-                        <img src="400x400bb-76.jpg" alt="Khao Wai" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2 py-1 rounded w-fit mb-2">News</span>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-sky-600 transition">ข่าวไว (Khao Wai)</h3>
-                        <p class="text-sm text-slate-500 mb-4 flex-1 lang-desc-khaowai">Fast news delivery application featuring real-time Push Notifications and Badge counts.</p>
-                        <div class="flex gap-2 mt-auto">
-                            <a href="https://apps.apple.com/th/app/%E0%B8%82-%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%A7-khao-wai/id6742871320" target="_blank" class="flex-1 py-2 rounded-lg bg-slate-900 text-white text-center text-xs font-bold hover:bg-slate-700 transition"><i class="fa-brands fa-apple"></i> iOS</a>
-                            <a href="https://play.google.com/store/apps/details?id=th.co.cityvariety.iconnect" target="_blank" class="flex-1 py-2 rounded-lg bg-green-600 text-white text-center text-xs font-bold hover:bg-green-700 transition"><i class="fa-brands fa-google-play"></i> Android</a>
+                <article class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 reveal">
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden border border-slate-100 shadow-sm mx-auto sm:mx-0">
+                            <img src="400x400bb-76.jpg" alt="Khao Wai" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <div class="mb-1">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2 py-1 rounded">News</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">ข่าวไว (Khao Wai)</h3>
+                            <p class="text-sm text-slate-500 mb-4 leading-relaxed lang-desc-khaowai">Real-time news app with Push Notifications & Badges.</p>
+                            <div class="flex gap-2">
+                                <a href="https://apps.apple.com/th/app/%E0%B8%82-%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%A7-khao-wai/id6742871320" target="_blank" class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-apple text-sm"></i> iOS
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=th.co.cityvariety.iconnect" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-600 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-google-play text-sm"></i> Android
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover-glow reveal stagger-4 flex flex-col sm:flex-row gap-6 group">
-                    <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden shadow-inner relative">
-                        <img src="petword.jpg" alt="Petword" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-yellow-600 bg-yellow-50 px-2 py-1 rounded w-fit mb-2">EdTech</span>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-yellow-600 transition">Petword</h3>
-                        <p class="text-sm text-slate-500 mb-4 flex-1 lang-desc-petword">English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.</p>
-                        <div class="flex gap-2 mt-auto">
-                            <a href="https://apps.apple.com/th/app/%E0%B8%97-%E0%B8%AD%E0%B8%87%E0%B8%A8-%E0%B8%9E%E0%B8%97-petword/id6504467794" target="_blank" class="flex-1 py-2 rounded-lg bg-slate-900 text-white text-center text-xs font-bold hover:bg-slate-700 transition"><i class="fa-brands fa-apple"></i> iOS</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.cityvariety.petword2" target="_blank" class="flex-1 py-2 rounded-lg bg-green-600 text-white text-center text-xs font-bold hover:bg-green-700 transition"><i class="fa-brands fa-google-play"></i> Android</a>
+                <article class="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 reveal">
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-2xl overflow-hidden border border-slate-100 shadow-sm mx-auto sm:mx-0">
+                            <img src="petword.jpg" alt="Petword" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <div class="mb-1">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-yellow-600 bg-yellow-50 px-2 py-1 rounded">EdTech</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Petword</h3>
+                            <p class="text-sm text-slate-500 mb-4 leading-relaxed lang-desc-petword">Vocab learning with Virtual Pets & Rankings.</p>
+                            <div class="flex gap-2">
+                                <a href="https://apps.apple.com/th/app/%E0%B8%97-%E0%B8%AD%E0%B8%87%E0%B8%A8-%E0%B8%9E%E0%B8%97-petword/id6504467794" target="_blank" class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-apple text-sm"></i> iOS
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.cityvariety.petword2" target="_blank" class="flex-1 py-2.5 rounded-xl bg-green-600 text-white text-center text-xs font-bold active:scale-95 transition flex items-center justify-center gap-1">
+                                    <i class="fa-brands fa-google-play text-sm"></i> Android
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </article>
+
             </div>
 
-            <div class="mt-12 rounded-3xl overflow-hidden relative shadow-2xl group reveal">
-                <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-600 transition duration-500 group-hover:scale-105"></div>
-                <div class="relative z-10 p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <i class="fa-solid fa-house-flood-water text-3xl animate-bounce"></i>
-                            <h3 class="text-3xl font-bold">Hatyai Flood Relief</h3>
-                        </div>
-                        <p class="text-red-100 max-w-xl lang-desc-flood">A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic.</p>
+            <div class="mt-8 rounded-3xl overflow-hidden relative shadow-lg reveal">
+                <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-600"></div>
+                <div class="relative z-10 p-6 text-white text-center sm:text-left flex flex-col sm:flex-row items-center gap-5">
+                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-house-flood-water text-2xl"></i>
                     </div>
-                    <a href="https://hatyaifight.com/frontpage" target="_blank" class="px-8 py-3 bg-white text-red-600 rounded-full font-bold shadow-lg hover:bg-red-50 hover:scale-105 transition transform">
-                        Visit Website <i class="fa-solid fa-arrow-right ml-2"></i>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold mb-1">Hatyai Flood Relief</h3>
+                        <p class="text-red-100 text-sm lang-desc-flood">Critical web platform for flood coordination.</p>
+                    </div>
+                    <a href="https://hatyaifight.com/frontpage" target="_blank" class="bg-white text-red-600 px-6 py-2.5 rounded-full font-bold text-sm shadow-md active:scale-95 transition">
+                        Visit Site <i class="fa-solid fa-arrow-right ml-1"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-white py-16 border-t border-slate-800">
+    <footer class="bg-slate-900 text-white py-12 pb-20 rounded-t-[2rem]">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">Ready to collaborate?</h2>
-            <div class="flex justify-center gap-6 mb-12">
-                <a href="mailto:chakrit.lco@gmail.com" class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 hover:scale-110 transition duration-300 backdrop-blur-sm border border-white/10">
-                    <i class="fa-solid fa-envelope text-2xl"></i>
+            <h2 class="text-2xl font-bold mb-8">Let's Connect</h2>
+            <div class="flex justify-center gap-6 mb-10">
+                <a href="mailto:chakrit.lco@gmail.com" class="flex flex-col items-center gap-2 group">
+                    <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-blue-600 transition border border-white/10">
+                        <i class="fa-solid fa-envelope text-xl"></i>
+                    </div>
+                    <span class="text-xs text-slate-400">Email</span>
                 </a>
-                <a href="tel:+66820267154" class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 hover:scale-110 transition duration-300 backdrop-blur-sm border border-white/10">
-                    <i class="fa-solid fa-phone text-2xl"></i>
+                <a href="tel:+66820267154" class="flex flex-col items-center gap-2 group">
+                    <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-green-600 transition border border-white/10">
+                        <i class="fa-solid fa-phone text-xl"></i>
+                    </div>
+                    <span class="text-xs text-slate-400">Call</span>
                 </a>
             </div>
-            <p class="text-slate-500">&copy; 2026 Chakrit Surakhumhang. All rights reserved.</p>
+            <p class="text-slate-500 text-xs">&copy; 2026 Chakrit Surakhumhang.<br>Designed with <i class="fa-solid fa-heart text-red-500"></i></p>
         </div>
     </footer>
 
     <script>
-        // Translations
         const content = {
             en: {
-                stackTitle: "Tech Stack & Tools",
+                stackTitle: "Tech Stack",
                 langTitle: "Languages",
-                toolsTitle: "Weapon of Choice",
+                toolsTitle: "Tools",
                 projectsTitle: "Featured Projects",
-                viewWork: 'View Work <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>',
-                descWorksite: "A comprehensive application for managing workforce and sites. Updated from Flutter 2 to 3 for better performance.",
-                descIsmart: "Advanced login system with high security. Successfully migrated codebase and improved UI/UX.",
-                descKhaowai: "Fast news delivery application featuring real-time Push Notifications and Badge counts for unread alerts.",
-                descPetword: "English vocabulary learning app for kids with Virtual Pets, Rankings, and Daily Quizzes.",
-                descFlood: "A critical web platform for coordinating flood relief efforts in Hatyai. Built to handle high traffic and urgent data dissemination."
+                viewWork: 'View Work <i class="fa-solid fa-arrow-down"></i>',
+                descWorksite: "Management app updated from Flutter 2 to 3.",
+                descIsmart: "Secure authentication system with improved UI/UX.",
+                descKhaowai: "Real-time news app with Push Notifications & Badges.",
+                descPetword: "Vocab learning with Virtual Pets & Rankings.",
+                descFlood: "Critical web platform for flood coordination."
             },
             th: {
-                stackTitle: "ภาษาและเครื่องมือที่ใช้",
+                stackTitle: "เครื่องมือที่ใช้",
                 langTitle: "ภาษาที่เชี่ยวชาญ",
-                toolsTitle: "เครื่องมือคู่ใจ",
+                toolsTitle: "โปรแกรมที่ใช้",
                 projectsTitle: "ผลงานเด่น",
-                viewWork: 'ดูผลงาน <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>',
-                descWorksite: "แอปพลิเคชันบริหารจัดการงานและไซต์งาน อัปเกรดจาก Flutter 2 เป็น 3 เพื่อประสิทธิภาพที่ดีขึ้น",
-                descIsmart: "ระบบ Login ที่มีความปลอดภัยสูง ทำการย้าย Codebase ใหม่และปรับปรุง UI/UX ให้ทันสมัย",
-                descKhaowai: "แอปข่าวสารที่เน้นความไว มาพร้อมระบบ Push Notifications และตัวเลขแจ้งเตือน (Badge) แบบ Real-time",
-                descPetword: "แอปเรียนศัพท์ภาษาอังกฤษสำหรับเด็ก มีระบบเลี้ยงสัตว์เสมือนจริง จัดอันดับ (Ranking) และแบบทดสอบรายวัน",
-                descFlood: "เว็บแพลตฟอร์มประสานงานช่วยน้ำท่วมหาดใหญ่ รองรับคนเข้าใช้งานจำนวนมากและข้อมูลเร่งด่วนได้ดี"
+                viewWork: 'ดูผลงาน <i class="fa-solid fa-arrow-down"></i>',
+                descWorksite: "แอปจัดการงานและไซต์งาน อัปเกรดเป็น Flutter 3",
+                descIsmart: "ระบบ Login ความปลอดภัยสูง ปรับปรุง UI/UX ใหม่",
+                descKhaowai: "แอปข่าวไว พร้อมระบบแจ้งเตือนและตัวเลข Badge",
+                descPetword: "แอปเรียนศัพท์เด็ก มีสัตว์เลี้ยงและจัดอันดับ",
+                descFlood: "เว็บประสานงานช่วยน้ำท่วมหาดใหญ่ รองรับคนจำนวนมาก"
             }
         };
 
@@ -404,11 +416,15 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'th' : 'en';
-            document.getElementById('lang-text').innerText = currentLang.toUpperCase();
             
+            // Toggle UI
+            document.getElementById('lang-text').innerText = currentLang.toUpperCase();
+            document.getElementById('lang-flag').src = currentLang === 'en' ? 'https://flagcdn.com/w20/th.png' : 'https://flagcdn.com/w20/gb.png';
+            
+            // Update Text
             document.querySelector('.lang-stack-title').innerText = content[currentLang].stackTitle;
-            document.querySelector('.lang-lang-title').innerHTML = `<i class="fa-solid fa-code text-blue-500"></i> ${content[currentLang].langTitle}`;
-            document.querySelector('.lang-tools-title').innerHTML = `<i class="fa-solid fa-toolbox text-red-500"></i> ${content[currentLang].toolsTitle}`;
+            document.querySelector('.lang-lang-title').innerText = content[currentLang].langTitle;
+            document.querySelector('.lang-tools-title').innerText = content[currentLang].toolsTitle;
             document.querySelector('.lang-projects-title').innerText = content[currentLang].projectsTitle;
             document.querySelector('.lang-view-work').innerHTML = content[currentLang].viewWork;
             
@@ -420,7 +436,7 @@
         }
 
         // Typing Effect
-        const text = "Full Stack Developer (Flutter & Node.js/PHP)";
+        const text = "Full Stack Dev (Flutter & Node/PHP)";
         let index = 0;
         function typeWriter() {
             if (index < text.length) {
@@ -430,39 +446,20 @@
             }
         }
 
-        // Scroll Reveal Animation
+        // Scroll Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+                var elementVisible = 50; // Trigger earlier on mobile
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
-                    // Trigger skill bars
-                    var bars = reveals[i].querySelectorAll('.skill-fill');
-                    bars.forEach(bar => {
-                        let w = bar.style.width;
-                        bar.style.width = '0';
-                        setTimeout(() => bar.style.width = w, 100);
-                    });
                 }
             }
         }
 
-        // Navbar Blur on Scroll
-        window.addEventListener("scroll", function() {
-            var navbar = document.getElementById("navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("glass", "shadow-sm");
-                navbar.classList.remove("bg-transparent");
-            } else {
-                navbar.classList.remove("glass", "shadow-sm");
-                navbar.classList.add("bg-transparent");
-            }
-            reveal();
-        });
-
+        window.addEventListener("scroll", reveal);
         window.onload = function() {
             typeWriter();
             reveal();
