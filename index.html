@@ -230,118 +230,330 @@
         <div class="max-w-5xl mx-auto px-5">
             <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center lang-stack-title">Tech Stack</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="space-y-6 reveal">
-                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Languages Level</h3>
-                    
-                    <div class="flex items-center justify-between">
-                        <span class="font-bold text-sm w-28">Flutter</span>
-                        <div class="flex gap-1.5">
-                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-blue-500 skill-dot active"></div>
+            <!-- Languages Level — Full Width with Detail -->
+            <div class="mb-12">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 reveal">Languages Level</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                    <!-- Flutter/Dart -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-flutter-plain text-xl text-sky-500"></i>
+                                <span class="font-bold text-sm">Flutter / Dart</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-blue-500"></div><div class="w-4 h-1.5 rounded-sm bg-blue-500"></div><div class="w-4 h-1.5 rounded-sm bg-blue-500"></div><div class="w-4 h-1.5 rounded-sm bg-blue-500"></div><div class="w-4 h-1.5 rounded-sm bg-blue-500"></div></div>
+                                <span class="text-[10px] font-bold text-blue-600">Expert</span>
+                            </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-flutter">WebRTC Voice/Video Call, iOS CallKit, Android ConnectionService, Push Notification (FCM), App Badge, State Management, Migration Flutter 2→3, App Store & Play Store Deployment</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">WebRTC</span>
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">FCM</span>
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">CallKit</span>
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">Nakama</span>
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">Longdo Map</span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <span class="font-bold text-sm w-28">Node.js/JS</span>
-                        <div class="flex gap-1.5">
-                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-green-500 skill-dot active"></div>
+                    <!-- Node.js / JavaScript -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-nodejs-plain text-xl text-green-600"></i>
+                                <span class="font-bold text-sm">Node.js / JavaScript</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-green-500"></div><div class="w-4 h-1.5 rounded-sm bg-green-500"></div><div class="w-4 h-1.5 rounded-sm bg-green-500"></div><div class="w-4 h-1.5 rounded-sm bg-green-500"></div><div class="w-4 h-1.5 rounded-sm bg-green-500"></div></div>
+                                <span class="text-[10px] font-bold text-green-600">Expert</span>
+                            </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-node">Framework: Express.js & Hono — REST API, SSE Streaming, WebSocket Real-time, AI Audit System, Playwright Automation, Lighthouse Integration, ML Pipeline, Memory System</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Express.js</span>
+                            <span class="text-[9px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Hono</span>
+                            <span class="text-[9px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">SSE</span>
+                            <span class="text-[9px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Playwright</span>
+                            <span class="text-[9px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">EJS</span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <span class="font-bold text-sm w-28">PHP</span>
-                        <div class="flex gap-1.5">
-                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-indigo-500 skill-dot active"></div>
+                    <!-- PHP -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-php-plain text-xl text-indigo-500"></i>
+                                <span class="font-bold text-sm">PHP</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-indigo-500"></div><div class="w-4 h-1.5 rounded-sm bg-indigo-500"></div><div class="w-4 h-1.5 rounded-sm bg-indigo-500"></div><div class="w-4 h-1.5 rounded-sm bg-indigo-500"></div><div class="w-4 h-1.5 rounded-sm bg-indigo-500"></div></div>
+                                <span class="text-[10px] font-bold text-indigo-600">Expert</span>
+                            </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-php">Framework: CodeIgniter (CI2→CI4) & Laravel — Legacy Migration, MVC Architecture, REST API, LINE Notify, Attendance System, Leave Management, Slip Verification OCR</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">CodeIgniter 4</span>
+                            <span class="text-[9px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">Laravel</span>
+                            <span class="text-[9px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">LINE Notify</span>
+                            <span class="text-[9px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">OCR</span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <span class="font-bold text-sm w-28">SQL</span>
-                        <div class="flex gap-1.5">
-                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-yellow-500 skill-dot active"></div>
+                    <!-- HTML/CSS -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-html5-plain text-xl text-orange-500"></i>
+                                <span class="font-bold text-sm">HTML / CSS</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-orange-500"></div><div class="w-4 h-1.5 rounded-sm bg-orange-500"></div><div class="w-4 h-1.5 rounded-sm bg-orange-500"></div><div class="w-4 h-1.5 rounded-sm bg-orange-500"></div><div class="w-4 h-1.5 rounded-sm bg-orange-500"></div></div>
+                                <span class="text-[10px] font-bold text-orange-600">Expert</span>
+                            </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-html">Responsive Design, Dark Theme, Glassmorphism, CSS Variables, Bootstrap 5, TailwindCSS, EJS Templates, SEO Semantic Structure, Animations & Transitions</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">Bootstrap 5</span>
+                            <span class="text-[9px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">TailwindCSS</span>
+                            <span class="text-[9px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">EJS</span>
+                            <span class="text-[9px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">Responsive</span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <span class="font-bold text-sm w-28">C/C++ (IoT)</span>
-                        <div class="flex gap-1.5">
-                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-600 skill-dot active"></div>
+                    <!-- SQL -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-mysql-plain text-xl text-blue-700"></i>
+                                <span class="font-bold text-sm">SQL</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-yellow-500"></div><div class="w-4 h-1.5 rounded-sm bg-yellow-500"></div><div class="w-4 h-1.5 rounded-sm bg-yellow-500"></div><div class="w-4 h-1.5 rounded-sm bg-yellow-500"></div><div class="w-4 h-1.5 rounded-sm bg-yellow-500"></div></div>
+                                <span class="text-[10px] font-bold text-yellow-600">Expert</span>
+                            </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Expert</span>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-sql">MySQL Production Database, SQLite (Audit Memory, Feedback Storage), Complex Queries, Migration, Backup/Restore, Issue Tracking Schema, Election Score System</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">MySQL</span>
+                            <span class="text-[9px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">SQLite</span>
+                            <span class="text-[9px] bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">Migration</span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <span class="font-bold text-sm w-28">SwiftUI</span>
-                        <div class="flex gap-1.5">
-                            <div class="w-5 h-2 rounded-sm bg-orange-400 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-orange-400 skill-dot active"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-200 skill-dot"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-200 skill-dot"></div>
-                            <div class="w-5 h-2 rounded-sm bg-slate-200 skill-dot"></div>
+                    <!-- Python -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-python-plain text-xl text-sky-600"></i>
+                                <span class="font-bold text-sm">Python</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-sky-500"></div><div class="w-4 h-1.5 rounded-sm bg-sky-500"></div><div class="w-4 h-1.5 rounded-sm bg-sky-500"></div><div class="w-4 h-1.5 rounded-sm bg-sky-500"></div><div class="w-4 h-1.5 rounded-sm bg-slate-200"></div></div>
+                                <span class="text-[10px] font-bold text-sky-600">Advanced</span>
+                            </div>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-400 w-12 text-right">Beginner</span>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-python">ML Training Pipeline (LLaMA Factory), LoRA Fine-tuning, Dataset Preparation, Model Evaluation, Benchmark Scripts, Vision Model Training</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">LLaMA Factory</span>
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">LoRA</span>
+                            <span class="text-[9px] bg-sky-100 text-sky-700 px-2 py-0.5 rounded-full font-medium">ML Pipeline</span>
+                        </div>
                     </div>
+
+                    <!-- Bash/Shell -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-bash-plain text-xl text-emerald-600"></i>
+                                <span class="font-bold text-sm">Bash / Shell</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-emerald-500"></div><div class="w-4 h-1.5 rounded-sm bg-emerald-500"></div><div class="w-4 h-1.5 rounded-sm bg-emerald-500"></div><div class="w-4 h-1.5 rounded-sm bg-emerald-500"></div><div class="w-4 h-1.5 rounded-sm bg-slate-200"></div></div>
+                                <span class="text-[10px] font-bold text-emerald-600">Advanced</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-bash">ML Setup Scripts, LoRA Training Automation, Model Merging, Environment Configuration, Server Deployment, CI/CD Scripts</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">Automation</span>
+                            <span class="text-[9px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">ML Scripts</span>
+                            <span class="text-[9px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">Deploy</span>
+                        </div>
+                    </div>
+
+                    <!-- C/C++ -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-c-plain text-xl text-slate-600"></i>
+                                <span class="font-bold text-sm">C / C++ (IoT)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-slate-600"></div><div class="w-4 h-1.5 rounded-sm bg-slate-600"></div><div class="w-4 h-1.5 rounded-sm bg-slate-600"></div><div class="w-4 h-1.5 rounded-sm bg-slate-600"></div><div class="w-4 h-1.5 rounded-sm bg-slate-600"></div></div>
+                                <span class="text-[10px] font-bold text-slate-600">Expert</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-c">Arduino, ESP32, Embedded Systems, Sensor Integration, Serial Communication, IoT Protocols, Hardware Control</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-medium">Arduino</span>
+                            <span class="text-[9px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-medium">ESP32</span>
+                            <span class="text-[9px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-medium">IoT</span>
+                        </div>
+                    </div>
+
+                    <!-- SwiftUI -->
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 reveal">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <i class="devicon-swift-plain text-xl text-orange-500"></i>
+                                <span class="font-bold text-sm">SwiftUI</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex gap-1"><div class="w-4 h-1.5 rounded-sm bg-orange-400"></div><div class="w-4 h-1.5 rounded-sm bg-orange-400"></div><div class="w-4 h-1.5 rounded-sm bg-slate-200"></div><div class="w-4 h-1.5 rounded-sm bg-slate-200"></div><div class="w-4 h-1.5 rounded-sm bg-slate-200"></div></div>
+                                <span class="text-[10px] font-bold text-orange-500">Beginner</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-500 leading-relaxed lang-desc-swift">Native iOS UI Components, iOS Widget Development, Platform Channel Integration</p>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="text-[9px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">iOS Widget</span>
+                            <span class="text-[9px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">Native</span>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
 
-                <div class="reveal delay-100">
-                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Tools</h3>
-                    <div class="grid grid-cols-4 gap-3">
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="devicon-vscode-plain text-2xl text-blue-500"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">VS Code</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="devicon-androidstudio-plain text-2xl text-green-600"></i>
-                            <span class="text-[9px] mt-1 text-slate-500 text-center">Android Studio</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="devicon-xcode-plain text-2xl text-blue-600"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">Xcode</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="fa-brands fa-github text-2xl text-slate-800"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">GitHub</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="devicon-figma-plain text-2xl text-pink-500"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">Figma</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="devicon-docker-plain text-2xl text-blue-500"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">Docker</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="devicon-postman-plain text-2xl text-orange-500"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">Postman</span>
-                        </div>
-                        <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2">
-                            <i class="fa-solid fa-server text-2xl text-indigo-500"></i>
-                            <span class="text-[9px] mt-1 text-slate-500">Plesk</span>
-                        </div>
+            <!-- Tools & Frameworks Grid -->
+            <div class="reveal">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Frameworks & Tools</h3>
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="devicon-express-original text-2xl text-slate-700"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Express.js</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-orange-200 hover:bg-orange-50 transition">
+                        <i class="fa-solid fa-fire text-2xl text-orange-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Hono</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-red-200 hover:bg-red-50 transition">
+                        <i class="devicon-codeigniter-plain text-2xl text-red-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">CodeIgniter</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-red-200 hover:bg-red-50 transition">
+                        <i class="devicon-laravel-original text-2xl text-red-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Laravel</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-sky-200 hover:bg-sky-50 transition">
+                        <i class="devicon-flutter-plain text-2xl text-sky-400"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Flutter</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-amber-200 hover:bg-amber-50 transition">
+                        <i class="devicon-firebase-plain text-2xl text-amber-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Firebase</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="devicon-mysql-plain text-2xl text-blue-700"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">MySQL</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-sky-200 hover:bg-sky-50 transition">
+                        <i class="devicon-sqlite-plain text-2xl text-sky-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">SQLite</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-purple-200 hover:bg-purple-50 transition">
+                        <i class="fa-solid fa-robot text-2xl text-purple-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Gemini AI</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-violet-200 hover:bg-violet-50 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl text-violet-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Ollama/LLM</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="fa-solid fa-eye text-2xl text-blue-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Groq Vision</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-green-200 hover:bg-green-50 transition">
+                        <i class="fa-solid fa-masks-theater text-2xl text-green-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Playwright</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-red-200 hover:bg-red-50 transition">
+                        <i class="fa-solid fa-gauge-high text-2xl text-red-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Lighthouse</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-cyan-200 hover:bg-cyan-50 transition">
+                        <i class="fa-solid fa-tower-broadcast text-2xl text-cyan-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">WebRTC</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-rose-200 hover:bg-rose-50 transition">
+                        <i class="fa-solid fa-gamepad text-2xl text-rose-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Nakama</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-purple-200 hover:bg-purple-50 transition">
+                        <i class="devicon-bootstrap-plain text-2xl text-purple-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Bootstrap</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-sky-200 hover:bg-sky-50 transition">
+                        <i class="devicon-tailwindcss-original text-2xl text-sky-400"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">TailwindCSS</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-pink-200 hover:bg-pink-50 transition">
+                        <i class="fa-solid fa-chart-line text-2xl text-pink-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Chart.js</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-green-200 hover:bg-green-50 transition">
+                        <i class="fa-solid fa-file-excel text-2xl text-green-700"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">ExcelJS</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-green-200 hover:bg-green-50 transition">
+                        <i class="fa-brands fa-line text-2xl text-green-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">LINE Notify</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="devicon-vscode-plain text-2xl text-blue-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">VS Code</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-green-200 hover:bg-green-50 transition">
+                        <i class="devicon-androidstudio-plain text-2xl text-green-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium text-center">Android Studio</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="devicon-xcode-plain text-2xl text-blue-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Xcode</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-slate-300 hover:bg-slate-100 transition">
+                        <i class="fa-brands fa-github text-2xl text-slate-800"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">GitHub</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-pink-200 hover:bg-pink-50 transition">
+                        <i class="devicon-figma-plain text-2xl text-pink-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Figma</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="devicon-docker-plain text-2xl text-blue-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Docker</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-orange-200 hover:bg-orange-50 transition">
+                        <i class="devicon-postman-plain text-2xl text-orange-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Postman</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-indigo-200 hover:bg-indigo-50 transition">
+                        <i class="fa-solid fa-server text-2xl text-indigo-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Plesk</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-teal-200 hover:bg-teal-50 transition">
+                        <i class="fa-solid fa-satellite-dish text-2xl text-teal-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">SSE</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-amber-200 hover:bg-amber-50 transition">
+                        <i class="fa-solid fa-brain text-2xl text-amber-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">LLaMA</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-blue-200 hover:bg-blue-50 transition">
+                        <i class="fa-solid fa-map-location-dot text-2xl text-blue-500"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">Longdo Map</span>
+                    </div>
+                    <div class="aspect-square bg-slate-50 border border-slate-100 rounded-xl flex flex-col items-center justify-center p-2 hover:border-red-200 hover:bg-red-50 transition">
+                        <i class="fa-solid fa-file-pdf text-2xl text-red-600"></i>
+                        <span class="text-[9px] mt-1 text-slate-500 font-medium">PDF Report</span>
                     </div>
                 </div>
             </div>
@@ -500,15 +712,38 @@
                 skillEngage: `<li>Implemented Real-time <strong>Push Notifications</strong>.</li><li>Managed <strong>App Badge Icons</strong> for user retention.</li><li>Utilized <strong>Firebase Cloud Messaging (FCM)</strong> for precise targeting.</li>`,
                 skillRealtime: `<li><strong>In-app Calling:</strong> Voice/Video using <strong>WebRTC</strong>.</li><li><strong>OS Integration:</strong> iOS CallKit & Android ConnectionService (Native Experience).</li><li><strong>Interactive:</strong> Real-time RSVP, Live Polls, and Surveys.</li>`,
                 
-                expTitle: "Work Experience",
-                expCurrent: `<li>Developed <strong>"Khao Wai"</strong> application.</li><li>Migrated <strong>"iSmartLogin"</strong> from Flutter 2 to 3.</li><li>Migrated <strong>"Worksite"</strong> from Flutter 2 to 3.</li><li>Developed <strong>"Petword"</strong> (Battle Realtime with Nakama Framework).</li><li>Developed <strong>Hatyai Election 2025</strong> Score System.</li><li>Mentored interns on Flutter development.</li><li>Upgraded Legacy Web (PHP CI2 to CI4).</li>`,
-                expIntern: `<li>Developed 2 <strong>Charity Web Projects</strong> (Clean Logic).</li><li>Built <strong>Hatyai Flood Relief System</strong> (Emergency Center).</li><li>Assisted in initial <strong>Petword</strong> Platform development (Virtual Pet, Daily Quiz, Ranking).</li>`,
+                expTitle: "Projects & Achievements",
+                expCurrent: `
+                    <li class="mb-2">Built <strong>AI Website Auditor</strong> with Playwright, Lighthouse, Local LLMs, and Python ML pipelines.</li>
+                    <li class="mb-2">Developed backend orchestration for automated <strong>Security Pentest Tools</strong> (Nmap, SQLMap, Nuclei).</li>
+                    <li class="mb-2">Implemented <strong>Thai OCR Slip Verification</strong> using God-Tier Groq Vision prompts & Laravel MVC.</li>
+                    <li class="mb-2">Integrated <strong>Longdo Map API</strong> reverse geocoding into PHP/Flutter Attendance Systems.</li>
+                    <li class="mb-2">Developed <strong>"Khao Wai"</strong> application with realtime Push & Badges.</li>
+                    <li class="mb-2">Migrated <strong>"iSmartLogin"</strong> and <strong>"Worksite"</strong> apps from Flutter 2 to 3.</li>
+                    <li class="mb-2">Developed <strong>"Petword"</strong> (Vocab Learning with Virtual Pets & Battle Realtime using Nakama Framework).</li>
+                    <li class="mb-2">Developed <strong>Hatyai Election 2025</strong> Real-time Web Score System handling massive concurrent traffic.</li>
+                    <li class="mb-2">Configured <strong>LINE Notify</strong> with custom leave logic algorithms.</li>
+                    <li class="mb-2">Upgraded Legacy Web Architecture (PHP CI2 -> CI4 -> Laravel).</li>
+                `,
+                expIntern: `<li class="mb-2">Developed 2 <strong>Charity Web Projects</strong> (Clean Logic).</li><li class="mb-2">Built <strong>Hatyai Flood Relief System</strong> (Emergency Center).</li><li class="mb-2">Assisted in initial <strong>Petword</strong> Platform development (Virtual Pet, Daily Quiz, Ranking).</li>`,
                 
                 stackTitle: "Tech Stack",
                 projectsTitle: "Featured Apps",
                 webTitle: "Web Systems",
                 viewWork: 'View Works <i class="fa-solid fa-arrow-down"></i>',
                 
+                // Language Level Descriptions
+                descFlutter: "WebRTC Voice/Video Call, iOS CallKit, Android ConnectionService, Push Notification (FCM), App Badge, State Management, Migration Flutter 2→3, App Store & Play Store Deployment",
+                descNode: "Framework: Express.js & Hono — REST API, SSE Streaming, WebSocket Real-time, AI Audit System, Playwright Automation, Lighthouse Integration, ML Pipeline, Memory System",
+                descPhp: "Framework: CodeIgniter (CI2→CI4) & Laravel — Legacy Migration, MVC Architecture, REST API, LINE Notify, Attendance System, Leave Management, Slip Verification OCR",
+                descHtml: "Responsive Design, Dark Theme, Glassmorphism, CSS Variables, Bootstrap 5, TailwindCSS, EJS Templates, SEO Semantic Structure, Animations & Transitions",
+                descSql: "MySQL Production Database, SQLite (Audit Memory, Feedback Storage), Complex Queries, Migration, Backup/Restore, Issue Tracking Schema, Election Score System",
+                descPython: "ML Training Pipeline (LLaMA Factory), LoRA Fine-tuning, Dataset Preparation, Model Evaluation, Benchmark Scripts, Vision Model Training",
+                descBash: "ML Setup Scripts, LoRA Training Automation, Model Merging, Environment Configuration, Server Deployment, CI/CD Scripts",
+                descC: "Arduino, ESP32, Embedded Systems, Sensor Integration, Serial Communication, IoT Protocols, Hardware Control",
+                descSwiftui: "Native iOS UI Components, iOS Widget Development, Platform Channel Integration",
+
+                // Project Descriptions
                 descWorksite: "Workforce management. Migrated from Flutter 2 to 3.",
                 descIsmart: "Secure authentication system. Updated UI/UX.",
                 descKhaowai: "Fast news app with Real-time Push & Badges.",
@@ -523,21 +758,44 @@
                 skillEngage: `<li>ทำระบบ <strong>Push Notifications</strong> แบบ Real-time</li><li>จัดการ <strong>App Badge Icon</strong> แจ้งเตือนหน้าจอโฮม</li><li>ใช้ <strong>Firebase (FCM)</strong> ส่งข้อความแม่นยำ</li>`,
                 skillRealtime: `<li><strong>In-app Calling:</strong> โทรผ่านแอปด้วย <strong>WebRTC</strong></li><li><strong>OS Integration:</strong> เชื่อมต่อ iOS CallKit & Android ConnectionService</li><li><strong>Interactive:</strong> ระบบ RSVP, Polls และแบบสอบถาม</li>`,
                 
-                expTitle: "ประสบการณ์ทำงาน",
-                expCurrent: `<li>พัฒนาแอป <strong>"ข่าวไว"</strong></li><li>อัปเกรด <strong>"iSmartLogin"</strong> (Flutter 2 -> 3)</li><li>อัปเกรด <strong>"Worksite"</strong> (Flutter 2 -> 3)</li><li>พัฒนา <strong>"Petword"</strong> (Battle Realtime ด้วย Nakama)</li><li>พัฒนาระบบนับคะแนน <strong>เลือกตั้งนายกเทศมนตรีนครหาดใหญ่ 2568</strong></li><li>สอนงาน Flutter ให้นักศึกษาฝึกงาน</li><li>อัปเกรดเว็บองค์กร (PHP CI2 -> CI4)</li>`,
-                expIntern: `<li>พัฒนาเว็บไซต์การกุศล 2 โครงการ</li><li>สร้างระบบ <strong>ช่วยเหลือน้ำท่วมหาดใหญ่</strong> (ศูนย์ข้อมูลฉุกเฉิน)</li><li>ร่วมพัฒนา Petword ช่วงเริ่มต้น (ระบบสัตว์เลี้ยง, Quiz, Ranking)</li>`,
+                expTitle: "ผลงานและความสำเร็จ",
+                expCurrent: `
+                    <li class="mb-2">สร้างโปรแกรม <strong>AI Website Auditor</strong> ทำงานอัตโนมัติด้วย Playwright, Lighthouse, Local LLMs และ Python ML Pipelines</li>
+                    <li class="mb-2">พัฒนาระบบควบคุม <strong>เครื่องมือ Security & Pentest</strong> เบื้องหลังเช่น Nmap, SQLMap, Nuclei และประมวลผลด้วย AI</li>
+                    <li class="mb-2">ทำระบบ <strong>ตรวจสอบสลิปโอนเงิน (OCR)</strong> ด้วย Groq Vision LLM ขั้นเทพ และเชื่อม API สลิปฝั่ง Laravel MVC</li>
+                    <li class="mb-2">เชื่อมต่อ <strong>Longdo Map API</strong> ดึงพิกัดที่อยู่แปลผล (Reverse Geocoding) ลงระบบเช็คชื่อเข้างาน PHP/Flutter</li>
+                    <li class="mb-2">พัฒนาแอป <strong>"ข่าวไว"</strong> เต็มรูปแบบพร้อมระบบแจ้งเตือน Realtime Push & Badges</li>
+                    <li class="mb-2">อัปเกรดแอป <strong>"iSmartLogin"</strong> และ <strong>"Worksite"</strong> จากศูนย์กลาง Flutter 2 สู่ 3 ซ่อมบั๊กหมดจด</li>
+                    <li class="mb-2">สร้างโลก <strong>"Petword"</strong> (แอปเรียนคำศัพท์เลี้ยงสัตว์จำลอง พร้อมระบบต่อสู้ Realtime ผ่าน Nakama Framework)</li>
+                    <li class="mb-2">สร้างระบบเว็บแอปนับคะแนน <strong>เลือกตั้งนายกเทศมนตรีนครหาดใหญ่ 2568</strong> แสดงผลแบบ Real-time รองรับผู้ใช้งานมหาศาล</li>
+                    <li class="mb-2">กำหนดอัลกอริทึมส่งแจ้งเตือนบุคลากรผ่าน <strong>LINE Notify</strong> แบบมีเงื่อนไขละเอียด (เช่น กรองการลาป่วยแบบมีใบรับรองแพทย์)</li>
+                    <li class="mb-2">อัปเกรดโครงสร้างแอปและเว็บองค์กรเก่าทั้งหมด (PHP CI2 -> CI4 -> โครงสร้าง Laravel) จนจบงานได้อย่างเรียบร้อย</li>
+                `,
+                expIntern: `<li class="mb-2">พัฒนาเว็บไซต์การกุศล 2 โครงการใหญ่</li><li class="mb-2">สร้างระบบ <strong>ช่วยเหลือน้ำท่วมหาดใหญ่</strong> (ศูนย์บริหารจัดการฉุกเฉิน)</li><li class="mb-2">ร่วมพัฒนา Petword ช่วงเริ่มต้น (ระบบสัตว์เลี้ยง, Quiz ทายศัพท์, Ranking)</li>`,
                 
                 stackTitle: "เครื่องมือที่ใช้",
                 projectsTitle: "ผลงานแอปพลิเคชัน",
                 webTitle: "ระบบเว็บไซต์",
                 viewWork: 'ดูผลงาน <i class="fa-solid fa-arrow-down"></i>',
                 
-                descWorksite: "ระบบจัดการงานและคน อัปเกรดเป็น Flutter 3",
-                descIsmart: "ระบบ Login ความปลอดภัยสูง ปรับโฉม UI/UX",
-                descKhaowai: "แอปข่าวไว แจ้งเตือน Real-time พร้อมเลข Badge",
-                descPetword: "แอพเรียนศัพท์ มีสัตว์เลี้ยงและระบบต่อสู้ Realtime",
-                descFlood: "เว็บไซต์ศูนย์ประสานงานช่วยเหลือน้ำท่วม",
-                descElection: "ระบบนับคะแนนเลือกตั้งนายกหาดใหญ่ 2568 แสดงผล Real-time"
+                // Language Level Descriptions
+                descFlutter: "พัฒนาระบบโทรด้วยเสียง/วิดีโอ (WebRTC), แทรกระบบ iOS CallKit, Android ConnectionService พื้นเมือง, ระบบแจ้งเตือน (FCM), คุม App Badge, แจสกัจ State Management, พาแอปข้ามจาก Flutter 2 ขึ้น 3 ได้อย่างไร้รอยต่อ, และนำแอปขึ้น Store",
+                descNode: "เฟรมเวิร์กสายเก๋า: Express.js & สายฟ้าแลบ: Hono — ทำ REST API, สตรีมผลสดๆ ด้วย SSE, ระบบ Real-time แบบ WebSocket, วางแกนหลังแอปตัวแม่ AI Audit System, สั่ง Playwright ลิ่ว้อัตโนมัติ, มัด Lighthouse เข้ามา, คุม ML Pipeline, ผูกระบบความจำ AI",
+                descPhp: "เฟรมเวิร์ก: CodeIgniter (พาแอปโบราณ CI2 เขยิบมา CI4) & โลกยุคใหม่ Laravel — สถาปัตยกรรมแบบ MVC เต็มหน้าตัก, ขึ้น REST API แน่นๆ, คุมให้มันทักไปแจ้ง LINE Notify ตรงเป้า, ทำระบบเข้างานลางาน, แล้วก็ลากเข้าตัวตรวจสอบสลิปและ OCR หฤโหด",
+                descHtml: "ตบหน้าตา Responsive, สาดเข้าโหมด Dark Theme หรูๆ, ดันเอฟเฟกต์ Glassmorphism ลงไป, ใช้งานมิติ CSS Variables, เรียงหน้าตาจาก Bootstrap 5 ผสม TailwindCSS, สอดไส้ข้อมูล EJS Templates, โครงร่างแบบคนแคร์ SEO และ Animations ฟรุ้งฟริ้งต่างๆ",
+                descSql: "คุมฐานข้อมูลโหดๆ บน MySQL, แทรก SQLite แบบเงียบๆ ไว้กุมความจำของ AI และ Feedbacks, ดึง Query แปลกๆ ลึกๆ, ปัจจุบัน Migration ข้อมูลหนี, แพลน Backup/Restore, โครงสร้างข้อมูล Issues ยิบย่อย ไปจนจบที่กระดานนับคะแนนเลือกตั้ง",
+                descPython: "เขียนรัน ML Training Pipeline ยาวเหยียด (ใช้ LLaMA Factory สุดโหด), จูนน้ำหนักแบบ LoRA Fine-tuning, ลิสต์ Dataset เตรียมสับ, ปล่อยสคริปต์ Benchmark, ฝึกฝนปั้นให้เกิด Vision Model ในฝัน",
+                descBash: "ทุบสคริปต์ทุ่นแรง Bash กะออโต้ตั้งแต่ ML Setup, ส่งประโยคยาวเหยียดเทรน LoRA, เมิร์จมัดรวม (Merge Model), ลุย Environment Configuration เซิฟเวอร์ดุๆ ไปยันเขียนแก๊ง CI/CD ให้รันไหลลื่น",
+                descC: "การโปรแกรมบน Arduino, บอร์ด ESP32, ลุยโลกสมองกลฝังตัว, เสียบเชื่อมกับสารพัด Sensor ไฮเทค, การสื่อสารแบบ Serial สายตรง, ลุยโปรโตคอลต่างๆ ในวงจร IoT, และคุมฮาร์ดแวร์ให้เชื่อฟัง",
+                descSwiftui: "เขียนคลำหน้าตาโค้ดเนทีฟแท้ๆ บน iOS UI, ปั้นตัววิดเจ็ตแสดงผลบนหน้าจอ iOS Widget, และจับผูกสายตรงแทรก Platform Channel ลงแอปหลัก",
+
+                // Project Descriptions
+                descWorksite: "ระบบจัดการงานและบุคลากร อัปเกรดโค้ดพาข้ามไปโลกของ Flutter 3",
+                descIsmart: "ระบบ Login ความปลอดภัยสูง ปรับโฉมหน้าตา UX ให้เฉียบขาดกว่าเก่า",
+                descKhaowai: "แอปข่าวไว แจ้งเตือนเจาะจง Real-time พร้อมเลข Badge โฮมสกรีน",
+                descPetword: "แอพท่องศัพท์ มีระบบเลี้ยงสัตว์เสมือนจริงพร้อมประลองตอบศัพท์กัน Realtime (ใช้ Nakama)",
+                descFlood: "เว็บไซต์ศูนย์ประสานงานฉุกเฉินช่วยเหลือน้ำท่วมหาดใหญ่แบบเฉียบพลัน",
+                descElection: "ระบบนับคะแนนเลือกตั้งนายกฯ หาดใหญ่ 2568 หน้าแดชบอร์ดวิ่งออโต้ รับทราฟฟิกมหาศาล"
             }
         };
 
@@ -549,21 +807,36 @@
             document.getElementById('lang-text').innerText = currentLang.toUpperCase();
             document.getElementById('lang-flag').src = currentLang === 'en' ? 'https://flagcdn.com/w20/th.png' : 'https://flagcdn.com/w20/gb.png';
             
+            // Hero
             document.querySelector('.lang-expert-title').innerText = content[currentLang].expertTitle;
             document.querySelector('.lang-skill-server').innerHTML = content[currentLang].skillServer;
             document.querySelector('.lang-skill-deploy').innerHTML = content[currentLang].skillDeploy;
             document.querySelector('.lang-skill-engage').innerHTML = content[currentLang].skillEngage;
             document.querySelector('.lang-skill-realtime').innerHTML = content[currentLang].skillRealtime;
             
+            // Experience
             document.querySelector('.lang-exp-title').innerText = content[currentLang].expTitle;
             document.querySelector('.lang-exp-current').innerHTML = content[currentLang].expCurrent;
             document.querySelector('.lang-exp-intern').innerHTML = content[currentLang].expIntern;
             
+            // Titles
             document.querySelector('.lang-stack-title').innerText = content[currentLang].stackTitle;
             document.querySelector('.lang-projects-title').innerText = content[currentLang].projectsTitle;
             document.querySelector('.lang-web-title').innerText = content[currentLang].webTitle;
             document.querySelector('.lang-view-work').innerHTML = content[currentLang].viewWork;
             
+            // Tech Stack Language Levels
+            document.querySelector('.lang-desc-flutter').innerText = content[currentLang].descFlutter;
+            document.querySelector('.lang-desc-node').innerText = content[currentLang].descNode;
+            document.querySelector('.lang-desc-php').innerText = content[currentLang].descPhp;
+            document.querySelector('.lang-desc-html').innerText = content[currentLang].descHtml;
+            document.querySelector('.lang-desc-sql').innerText = content[currentLang].descSql;
+            document.querySelector('.lang-desc-python').innerText = content[currentLang].descPython;
+            document.querySelector('.lang-desc-bash').innerText = content[currentLang].descBash;
+            document.querySelector('.lang-desc-c').innerText = content[currentLang].descC;
+            document.querySelector('.lang-desc-swiftui').innerText = content[currentLang].descSwiftui;
+            
+            // Apps
             document.querySelector('.lang-desc-worksite').innerText = content[currentLang].descWorksite;
             document.querySelector('.lang-desc-ismart').innerText = content[currentLang].descIsmart;
             document.querySelector('.lang-desc-khaowai').innerText = content[currentLang].descKhaowai;
