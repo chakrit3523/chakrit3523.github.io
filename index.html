@@ -135,16 +135,16 @@
             }
 
             :root {
-                --bg: #f8f1e7;
-                --ink: #101828;
-                --muted: #667085;
-                --surface: rgba(255, 255, 255, 0.62);
-                --surface-strong: rgba(255, 255, 255, 0.82);
-                --primary: #3857ff;
-                --accent: #ff5a36;
-                --mint: #12b89a;
-                --shadow-soft: 0 22px 55px rgba(15, 23, 42, 0.08);
-                --shadow-deep: 0 35px 90px rgba(15, 23, 42, 0.14);
+                --bg: #f3f6fb;
+                --ink: #0f172a;
+                --muted: #64748b;
+                --surface: rgba(255, 255, 255, 0.74);
+                --surface-strong: rgba(255, 255, 255, 0.9);
+                --primary: #2563eb;
+                --accent: #0f766e;
+                --mint: #0f172a;
+                --shadow-soft: 0 20px 50px rgba(15, 23, 42, 0.08);
+                --shadow-deep: 0 32px 80px rgba(15, 23, 42, 0.14);
             }
 
             html {
@@ -158,24 +158,24 @@
                 background:
                     radial-gradient(
                         circle at top left,
-                        rgba(56, 87, 255, 0.18),
-                        transparent 32%
+                        rgba(37, 99, 235, 0.12),
+                        transparent 30%
                     ),
                     radial-gradient(
                         circle at 85% 18%,
-                        rgba(255, 90, 54, 0.14),
-                        transparent 28%
+                        rgba(15, 118, 110, 0.1),
+                        transparent 24%
                     ),
                     radial-gradient(
                         circle at 50% 100%,
-                        rgba(18, 184, 154, 0.12),
-                        transparent 30%
+                        rgba(15, 23, 42, 0.06),
+                        transparent 28%
                     ),
                     linear-gradient(
                         180deg,
-                        #fff8ef 0%,
-                        #f8f1e7 42%,
-                        #f5eee7 100%
+                        #f8fbff 0%,
+                        #f3f6fb 45%,
+                        #edf2f7 100%
                     );
                 color: var(--ink);
             }
@@ -187,20 +187,20 @@
                 background:
                     radial-gradient(
                         circle at 16% 20%,
-                        rgba(56, 87, 255, 0.18),
+                        rgba(37, 99, 235, 0.16),
                         transparent 30%
                     ),
                     radial-gradient(
                         circle at 84% 22%,
-                        rgba(255, 90, 54, 0.14),
+                        rgba(15, 118, 110, 0.1),
                         transparent 28%
                     ),
                     radial-gradient(
                         circle at 55% 82%,
-                        rgba(18, 184, 154, 0.14),
+                        rgba(15, 23, 42, 0.08),
                         transparent 30%
                     );
-                filter: blur(10px);
+                filter: blur(18px);
                 animation: aurora 18s ease-in-out infinite;
                 pointer-events: none;
                 z-index: -2;
@@ -212,12 +212,12 @@
                 inset: 0;
                 background-image:
                     linear-gradient(
-                        rgba(255, 255, 255, 0.35) 1px,
+                        rgba(15, 23, 42, 0.04) 1px,
                         transparent 1px
                     ),
                     linear-gradient(
                         90deg,
-                        rgba(255, 255, 255, 0.28) 1px,
+                        rgba(15, 23, 42, 0.03) 1px,
                         transparent 1px
                     );
                 background-size: 92px 92px;
@@ -264,10 +264,10 @@
                 border-radius: 2rem;
                 background: linear-gradient(
                     180deg,
-                    rgba(255, 255, 255, 0.72),
-                    rgba(255, 255, 255, 0.44)
+                    rgba(255, 255, 255, 0.86),
+                    rgba(255, 255, 255, 0.68)
                 );
-                border: 1px solid rgba(255, 255, 255, 0.76);
+                border: 1px solid rgba(148, 163, 184, 0.14);
                 box-shadow: var(--shadow-soft);
                 z-index: -1;
             }
@@ -283,10 +283,10 @@
                 background: linear-gradient(
                     90deg,
                     var(--primary),
-                    var(--accent),
-                    var(--mint)
+                    #1d4ed8,
+                    var(--accent)
                 );
-                box-shadow: 0 0 24px rgba(56, 87, 255, 0.32);
+                box-shadow: 0 0 18px rgba(37, 99, 235, 0.22);
                 z-index: 80;
             }
 
@@ -299,8 +299,8 @@
                 border-radius: 999px;
                 background: radial-gradient(
                     circle,
-                    rgba(56, 87, 255, 0.18),
-                    rgba(255, 90, 54, 0.08) 44%,
+                    rgba(37, 99, 235, 0.14),
+                    rgba(15, 118, 110, 0.06) 44%,
                     transparent 70%
                 );
                 filter: blur(16px);
@@ -328,20 +328,20 @@
             .aura-one {
                 top: 5rem;
                 left: -7rem;
-                background: rgba(56, 87, 255, 0.28);
+                background: rgba(37, 99, 235, 0.16);
             }
 
             .aura-two {
                 top: 38%;
                 right: -8rem;
-                background: rgba(255, 90, 54, 0.24);
+                background: rgba(15, 118, 110, 0.12);
                 animation-delay: -5s;
             }
 
             .aura-three {
                 bottom: 0;
                 left: 16%;
-                background: rgba(18, 184, 154, 0.22);
+                background: rgba(15, 23, 42, 0.1);
                 animation-delay: -9s;
             }
 
@@ -356,8 +356,8 @@
             ::-webkit-scrollbar-thumb {
                 background: linear-gradient(
                     180deg,
-                    rgba(56, 87, 255, 0.72),
-                    rgba(255, 90, 54, 0.72)
+                    rgba(37, 99, 235, 0.72),
+                    rgba(15, 118, 110, 0.6)
                 );
                 border-radius: 999px;
             }
@@ -365,12 +365,12 @@
             .glass {
                 background: linear-gradient(
                     180deg,
-                    rgba(255, 255, 255, 0.82),
-                    rgba(255, 255, 255, 0.58)
+                    rgba(255, 255, 255, 0.92),
+                    rgba(255, 255, 255, 0.78)
                 );
                 backdrop-filter: blur(24px);
                 -webkit-backdrop-filter: blur(24px);
-                border: 1px solid rgba(255, 255, 255, 0.82);
+                border: 1px solid rgba(148, 163, 184, 0.16);
                 box-shadow: var(--shadow-soft);
             }
 
@@ -403,7 +403,7 @@
             }
 
             .typing-cursor::after {
-                color: var(--accent);
+                color: var(--primary);
             }
 
             .bg-white {
@@ -476,12 +476,12 @@
                 background:
                     radial-gradient(
                         circle at 30% 30%,
-                        rgba(56, 87, 255, 0.24),
+                        rgba(37, 99, 235, 0.16),
                         transparent 45%
                     ),
                     radial-gradient(
                         circle at 70% 70%,
-                        rgba(255, 90, 54, 0.18),
+                        rgba(15, 118, 110, 0.08),
                         transparent 44%
                     );
                 filter: blur(18px);
@@ -498,12 +498,12 @@
                 position: relative;
                 overflow: hidden;
                 padding: 1rem 1.1rem;
-                border-radius: 1.4rem;
-                border: 1px solid rgba(255, 255, 255, 0.82);
+                border-radius: 1.15rem;
+                border: 1px solid rgba(148, 163, 184, 0.14);
                 background: linear-gradient(
                     180deg,
-                    rgba(255, 255, 255, 0.74),
-                    rgba(255, 255, 255, 0.56)
+                    rgba(255, 255, 255, 0.94),
+                    rgba(255, 255, 255, 0.8)
                 );
                 box-shadow: var(--shadow-soft);
                 transition:
@@ -514,14 +514,13 @@
             .hero-stat::before {
                 content: "";
                 position: absolute;
-                inset: auto -10% -60% auto;
-                width: 7rem;
-                height: 7rem;
-                border-radius: 999px;
-                background: radial-gradient(
-                    circle,
-                    rgba(56, 87, 255, 0.18),
-                    transparent 65%
+                inset: 0 auto auto 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(
+                    90deg,
+                    rgba(37, 99, 235, 0.85),
+                    rgba(15, 118, 110, 0.65)
                 );
                 pointer-events: none;
             }
@@ -560,8 +559,8 @@
             .hero-panel {
                 position: relative;
                 overflow: hidden;
-                border-radius: 2rem;
-                padding: 1.35rem;
+                border-radius: 1.5rem;
+                padding: 1.5rem;
             }
 
             .hero-panel::before {
@@ -576,11 +575,36 @@
                     ),
                     linear-gradient(
                         145deg,
-                        rgba(56, 87, 255, 0.08),
-                        rgba(255, 90, 54, 0.08),
-                        rgba(18, 184, 154, 0.05)
+                        rgba(37, 99, 235, 0.05),
+                        rgba(15, 118, 110, 0.04),
+                        rgba(15, 23, 42, 0.04)
                     );
                 pointer-events: none;
+            }
+
+            .system-kicker {
+                display: inline-block;
+                font-family: "Chakra Petch", "Kanit", sans-serif;
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.28em;
+                text-transform: uppercase;
+                color: #64748b;
+            }
+
+            .status-chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.55rem;
+                padding: 0.45rem 0.75rem;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.16);
+                background: rgba(15, 23, 42, 0.96);
+                color: white;
+                font-size: 0.62rem;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
             }
 
             .hero-portrait {
@@ -687,6 +711,137 @@
                 animation-delay: -4s;
             }
 
+            .portrait-card,
+            .profile-card,
+            .signal-block {
+                border-radius: 1.2rem;
+                border: 1px solid rgba(148, 163, 184, 0.14);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.96),
+                    rgba(255, 255, 255, 0.84)
+                );
+                box-shadow: var(--shadow-soft);
+            }
+
+            .portrait-card {
+                display: grid;
+                gap: 1rem;
+                padding: 1rem;
+                align-content: start;
+            }
+
+            .portrait-frame {
+                position: relative;
+                border-radius: 1rem;
+                overflow: hidden;
+                aspect-ratio: 1;
+                background: linear-gradient(145deg, #dbeafe, #eff6ff);
+                border: 1px solid rgba(148, 163, 184, 0.12);
+            }
+
+            .portrait-frame::after {
+                content: "";
+                position: absolute;
+                inset: auto 0 0 0;
+                height: 28%;
+                background: linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(15, 23, 42, 0.06)
+                );
+            }
+
+            .portrait-frame img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .profile-card {
+                padding: 1rem 1.05rem;
+            }
+
+            .profile-line {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0.85rem;
+                align-items: start;
+                padding-bottom: 0.95rem;
+                margin-bottom: 0.95rem;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+            }
+
+            .profile-line:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+
+            .profile-dot {
+                width: 0.72rem;
+                height: 0.72rem;
+                border-radius: 999px;
+                margin-top: 0.42rem;
+                box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.08);
+            }
+
+            .profile-line strong {
+                display: block;
+                font-family:
+                    "Space Grotesk", "Chakra Petch", "Kanit", sans-serif;
+                font-size: 0.96rem;
+                line-height: 1.25;
+                color: #0f172a;
+            }
+
+            .profile-line p {
+                margin-top: 0.28rem;
+                font-size: 0.83rem;
+                line-height: 1.6;
+                color: #64748b;
+            }
+
+            .status-grid {
+                display: grid;
+                gap: 1rem;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .signal-block {
+                padding: 0.95rem 1rem 1rem;
+            }
+
+            .signal-block strong {
+                display: block;
+                margin-top: 0.6rem;
+                font-family:
+                    "Space Grotesk", "Chakra Petch", "Kanit", sans-serif;
+                font-size: 0.94rem;
+                line-height: 1.25;
+                color: #0f172a;
+            }
+
+            .signal-block p {
+                margin-top: 0.4rem;
+                font-size: 0.78rem;
+                line-height: 1.55;
+                color: #64748b;
+            }
+
+            .signal-pill {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.45rem 0.72rem;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.16);
+                background: rgba(37, 99, 235, 0.06);
+                color: #0f172a;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+            }
+
             .mini-panel {
                 border-radius: 1.5rem;
                 padding: 1rem;
@@ -749,11 +904,11 @@
             .timeline-line::before {
                 background: linear-gradient(
                     180deg,
-                    rgba(56, 87, 255, 0.12),
-                    rgba(255, 90, 54, 0.5),
-                    rgba(18, 184, 154, 0.18)
+                    rgba(37, 99, 235, 0.1),
+                    rgba(37, 99, 235, 0.42),
+                    rgba(15, 118, 110, 0.12)
                 );
-                box-shadow: 0 0 20px rgba(255, 90, 54, 0.15);
+                box-shadow: 0 0 20px rgba(37, 99, 235, 0.12);
             }
 
             .timeline-line > div > div.bg-white {
@@ -1034,9 +1189,9 @@
                                 class="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_0_8px_rgba(16,185,129,0.12)]"
                             ></span>
                             <span
-                                data-en="Product-ready real-time engineering"
-                                data-th="งานระบบเรียลไทม์พร้อมใช้งานจริง"
-                                >Product-ready real-time engineering</span
+                                data-en="Production-focused software engineering"
+                                data-th="วิศวกรรมซอฟต์แวร์ที่โฟกัส production จริง"
+                                >Production-focused software engineering</span
                             >
                         </div>
 
@@ -1053,18 +1208,19 @@
                             >
                                 Chakrit
                                 <span
-                                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-orange-500"
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-blue-700"
                                     >Surakhumhang</span
                                 >
                             </h1>
                             <p
                                 class="reveal delay-200 max-w-2xl text-base md:text-xl text-slate-600 leading-relaxed"
-                                data-en="Full Stack Developer building polished mobile experiences, production backends, and high-pressure real-time systems."
-                                data-th="Full Stack Developer ที่ทำทั้ง mobile experience, backend production และระบบเรียลไทม์ที่ใช้งานจริงภายใต้โหลดสูง"
+                                data-en="Full Stack Developer focused on reliable delivery, maintainable architecture, and production-grade execution across mobile, backend, and real-time systems."
+                                data-th="Full Stack Developer ที่โฟกัสการส่งมอบงานให้เสถียร ดูแลง่าย และพร้อมใช้จริงทั้ง mobile, backend และระบบเรียลไทม์"
                             >
-                                Full Stack Developer building polished mobile
-                                experiences, production backends, and
-                                high-pressure real-time systems.
+                                Full Stack Developer focused on reliable
+                                delivery, maintainable architecture, and
+                                production-grade execution across mobile,
+                                backend, and real-time systems.
                             </p>
                             <p
                                 class="reveal delay-300 text-slate-500 text-sm md:text-base max-w-xl h-6"
@@ -1118,49 +1274,49 @@
                             <div class="hero-stat">
                                 <span
                                     class="hero-stat-label"
-                                    data-en="Shipping"
-                                    data-th="ส่งมอบ"
-                                    >Shipping</span
+                                    data-en="Execution"
+                                    data-th="การส่งมอบ"
+                                    >Execution</span
                                 >
-                                <strong>iOS / Android / Web</strong>
+                                <strong>Release / Migrate / Maintain</strong>
                                 <p
-                                    data-en="Cross-platform delivery with release-grade polish."
-                                    data-th="ดูแลการส่งมอบข้ามแพลตฟอร์มตั้งแต่ build จนถึงขึ้น store"
+                                    data-en="Comfortable with shipping changes cleanly across apps, APIs, and web systems."
+                                    data-th="ดูแลงานเปลี่ยนแปลงตั้งแต่แอป API ไปจนถึงเว็บให้ขึ้น production ได้เรียบร้อย"
                                 >
-                                    Cross-platform delivery with release-grade
-                                    polish.
+                                    Comfortable with shipping changes cleanly
+                                    across apps, APIs, and web systems.
                                 </p>
                             </div>
                             <div class="hero-stat">
                                 <span
                                     class="hero-stat-label"
-                                    data-en="Realtime"
-                                    data-th="เรียลไทม์"
-                                    >Realtime</span
+                                    data-en="Reliability"
+                                    data-th="ความเสถียร"
+                                    >Reliability</span
                                 >
-                                <strong>Push / WebRTC / WebSocket</strong>
+                                <strong>Push / WebRTC / Event Pipelines</strong>
                                 <p
-                                    data-en="Products that move instantly and stay reliable under load."
-                                    data-th="ระบบที่ตอบสนองทันทีและยังคงเสถียรภายใต้โหลดจริง"
+                                    data-en="Builds responsive systems without dropping production discipline."
+                                    data-th="ทำระบบที่ตอบสนองไวแต่ยังคุมวินัยของ production ได้อยู่"
                                 >
-                                    Products that move instantly and stay
-                                    reliable under load.
+                                    Builds responsive systems without dropping
+                                    production discipline.
                                 </p>
                             </div>
                             <div class="hero-stat">
                                 <span
                                     class="hero-stat-label"
-                                    data-en="Infrastructure"
+                                    data-en="Systems"
                                     data-th="โครงสร้างระบบ"
-                                    >Infrastructure</span
+                                    >Systems</span
                                 >
-                                <strong>Server / SSL / Deploy</strong>
+                                <strong>Server / SSL / Store Operations</strong>
                                 <p
-                                    data-en="Production setup, hardening, and rollout without drama."
-                                    data-th="ตั้งค่าระบบ production, hardening และ rollout ได้ครบจบ"
+                                    data-en="Handles the operational layer needed to keep delivery professional."
+                                    data-th="ดูแลงานฝั่ง operation ที่ทำให้การส่งมอบดูเป็นมืออาชีพจริง"
                                 >
-                                    Production setup, hardening, and rollout
-                                    without drama.
+                                    Handles the operational layer needed to keep
+                                    delivery professional.
                                 </p>
                             </div>
                         </div>
@@ -1174,125 +1330,201 @@
                                 >
                                     <div>
                                         <p
-                                            class="text-[11px] uppercase tracking-[0.35em] text-slate-400 mb-2"
-                                            data-en="Live Focus"
-                                            data-th="โฟกัสตอนนี้"
+                                            class="system-kicker mb-2"
+                                            data-en="Operating Profile"
+                                            data-th="โปรไฟล์การทำงาน"
                                         >
-                                            Live Focus
+                                            Operating Profile
                                         </p>
                                         <h2
                                             class="text-2xl md:text-3xl font-black text-slate-900 leading-tight"
-                                            data-en="Crafting clean systems that still feel premium."
-                                            data-th="สร้างระบบที่คม สะอาด และประสบการณ์ใช้งานต้องดูแพง"
+                                            data-en="Serious delivery, clean engineering, and systems that stay reliable in production."
+                                            data-th="ส่งมอบงานจริงจัง โครงสร้างสะอาด และระบบที่ยังเสถียรเมื่อขึ้น production"
                                         >
-                                            Crafting clean systems that still
-                                            feel premium.
+                                            Serious delivery, clean engineering,
+                                            and systems that stay reliable in
+                                            production.
                                         </h2>
                                     </div>
-                                    <div
-                                        class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white shrink-0"
-                                    >
+                                    <div class="status-chip shrink-0">
                                         <span
                                             class="h-2 w-2 rounded-full bg-emerald-400"
                                         ></span>
                                         <span
-                                            data-en="Online"
-                                            data-th="พร้อมลุย"
-                                            >Online</span
+                                            data-en="Production Ready"
+                                            data-th="พร้อมขึ้นงานจริง"
+                                            >Production Ready</span
                                         >
                                     </div>
                                 </div>
 
-                                <div class="hero-portrait">
-                                    <div class="orbit-ring"></div>
-                                    <div
-                                        class="orbit-ring orbit-ring-alt"
-                                    ></div>
-                                    <div class="hero-core"></div>
-                                    <img
-                                        src="boat.png"
-                                        alt="Chakrit"
-                                        class="animate-float"
-                                    />
-                                    <div class="tech-pill tag-one">
-                                        <span class="dot"></span>Flutter
-                                    </div>
-                                    <div class="tech-pill tag-two">
-                                        <span class="dot"></span>Realtime
-                                    </div>
-                                    <div class="tech-pill tag-three">
-                                        <span class="dot"></span>AI Audit
-                                    </div>
-                                    <div class="tech-pill tag-four">
-                                        <span class="dot"></span>Deploy
-                                    </div>
-                                </div>
-
-                                <div class="grid gap-4 md:grid-cols-2">
-                                    <div class="mini-panel glass">
-                                        <span
-                                            class="mini-kicker"
-                                            data-en="Toolbelt"
-                                            data-th="ชุดเครื่องมือ"
-                                            >Toolbelt</span
-                                        >
-                                        <div class="flex flex-wrap gap-2 mt-3">
-                                            <span class="mini-pill"
-                                                >Flutter</span
+                                <div
+                                    class="grid gap-4 md:grid-cols-[0.82fr_1.18fr]"
+                                >
+                                    <div class="portrait-card">
+                                        <div class="portrait-frame">
+                                            <img src="boat.png" alt="Chakrit" />
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="system-kicker"
+                                                data-en="Primary Stack"
+                                                data-th="สแตกหลัก"
+                                                >Primary Stack</span
                                             >
-                                            <span class="mini-pill"
-                                                >Node.js</span
+                                            <div
+                                                class="flex flex-wrap gap-2 mt-3"
                                             >
-                                            <span class="mini-pill"
-                                                >Laravel</span
-                                            >
-                                            <span class="mini-pill"
-                                                >WebRTC</span
-                                            >
+                                                <span class="signal-pill"
+                                                    >Flutter</span
+                                                >
+                                                <span class="signal-pill"
+                                                    >Node.js</span
+                                                >
+                                                <span class="signal-pill"
+                                                    >Laravel</span
+                                                >
+                                                <span class="signal-pill"
+                                                    >WebRTC</span
+                                                >
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="mini-panel glass">
+
+                                    <div class="profile-card">
+                                        <div class="profile-line">
+                                            <span
+                                                class="profile-dot bg-blue-500"
+                                            ></span>
+                                            <div>
+                                                <strong
+                                                    data-en="Production delivery"
+                                                    data-th="การส่งมอบขึ้นระบบจริง"
+                                                    >Production delivery</strong
+                                                >
+                                                <p
+                                                    data-en="Owns release flow, migrations, fixes, and post-deploy stability across platforms."
+                                                    data-th="ดูแลตั้งแต่ release, migration, fixes ไปจนถึงเสถียรภาพหลัง deploy ข้ามหลายแพลตฟอร์ม"
+                                                >
+                                                    Owns release flow,
+                                                    migrations, fixes, and
+                                                    post-deploy stability across
+                                                    platforms.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="profile-line">
+                                            <span
+                                                class="profile-dot bg-teal-600"
+                                            ></span>
+                                            <div>
+                                                <strong
+                                                    data-en="Realtime systems"
+                                                    data-th="ระบบเรียลไทม์"
+                                                    >Realtime systems</strong
+                                                >
+                                                <p
+                                                    data-en="Push notifications, WebRTC, socket/event pipelines, and user-facing flows that need immediate response."
+                                                    data-th="มีประสบการณ์กับ Push, WebRTC, socket/event pipelines และ flow ที่ต้องตอบสนองทันที"
+                                                >
+                                                    Push notifications, WebRTC,
+                                                    socket/event pipelines, and
+                                                    user-facing flows that need
+                                                    immediate response.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="profile-line">
+                                            <span
+                                                class="profile-dot bg-slate-900"
+                                            ></span>
+                                            <div>
+                                                <strong
+                                                    data-en="Legacy modernization"
+                                                    data-th="การยกระดับระบบเดิม"
+                                                    >Legacy
+                                                    modernization</strong
+                                                >
+                                                <p
+                                                    data-en="Comfortable improving old codebases without breaking existing operational expectations."
+                                                    data-th="คุ้นกับการค่อยๆ ปรับระบบเก่าให้ดีขึ้นโดยไม่ทำให้การใช้งานจริงสะดุด"
+                                                >
+                                                    Comfortable improving old
+                                                    codebases without breaking
+                                                    existing operational
+                                                    expectations.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="status-grid">
+                                    <div class="signal-block">
                                         <span
-                                            class="mini-kicker"
-                                            data-en="Delivery"
-                                            data-th="การส่งมอบ"
-                                            >Delivery</span
+                                            class="system-kicker"
+                                            data-en="Mobile"
+                                            data-th="โมบายล์"
+                                            >Mobile</span
                                         >
-                                        <ul
-                                            class="space-y-2 text-sm text-slate-600 mt-3"
+                                        <strong
+                                            data-en="App release and store operations"
+                                            data-th="Release แอปและดูแลงานฝั่ง store"
+                                            >App release and store
+                                            operations</strong
                                         >
-                                            <li class="flex items-center gap-2">
-                                                <span
-                                                    class="h-2 w-2 rounded-full bg-blue-500"
-                                                ></span>
-                                                <span
-                                                    data-en="Mobile release pipelines"
-                                                    data-th="Release pipeline ฝั่ง mobile"
-                                                    >Mobile release
-                                                    pipelines</span
-                                                >
-                                            </li>
-                                            <li class="flex items-center gap-2">
-                                                <span
-                                                    class="h-2 w-2 rounded-full bg-orange-500"
-                                                ></span>
-                                                <span
-                                                    data-en="Web systems at scale"
-                                                    data-th="ระบบเว็บที่รองรับโหลดจริง"
-                                                    >Web systems at scale</span
-                                                >
-                                            </li>
-                                            <li class="flex items-center gap-2">
-                                                <span
-                                                    class="h-2 w-2 rounded-full bg-emerald-500"
-                                                ></span>
-                                                <span
-                                                    data-en="Automation & ops"
-                                                    data-th="งาน automation และ ops"
-                                                    >Automation & ops</span
-                                                >
-                                            </li>
-                                        </ul>
+                                        <p
+                                            data-en="From build configuration to submission flow and maintenance after launch."
+                                            data-th="ตั้งแต่ build configuration ไปจนถึง submission flow และการดูแลหลังปล่อยงาน"
+                                        >
+                                            From build configuration to
+                                            submission flow and maintenance
+                                            after launch.
+                                        </p>
+                                    </div>
+                                    <div class="signal-block">
+                                        <span
+                                            class="system-kicker"
+                                            data-en="Backend"
+                                            data-th="แบ็กเอนด์"
+                                            >Backend</span
+                                        >
+                                        <strong
+                                            data-en="APIs, event flows, and operational logic"
+                                            data-th="APIs, event flows และ logic ฝั่งระบบ"
+                                            >APIs, event flows, and operational
+                                            logic</strong
+                                        >
+                                        <p
+                                            data-en="Node.js and PHP services designed to support real product behavior, not just demos."
+                                            data-th="บริการด้วย Node.js และ PHP ที่ออกแบบมารองรับงานจริง ไม่ใช่แค่เดโม"
+                                        >
+                                            Node.js and PHP services designed to
+                                            support real product behavior, not
+                                            just demos.
+                                        </p>
+                                    </div>
+                                    <div class="signal-block">
+                                        <span
+                                            class="system-kicker"
+                                            data-en="Operations"
+                                            data-th="โอเปอเรชัน"
+                                            >Operations</span
+                                        >
+                                        <strong
+                                            data-en="Deployment, SSL, and infrastructure hygiene"
+                                            data-th="Deployment, SSL และสุขอนามัยของระบบ"
+                                            >Deployment, SSL, and infrastructure
+                                            hygiene</strong
+                                        >
+                                        <p
+                                            data-en="Cares about clean environments, predictable rollouts, and production discipline."
+                                            data-th="ให้ความสำคัญกับ environment ที่สะอาด rollout ที่คาดเดาได้ และวินัยในการขึ้นระบบจริง"
+                                        >
+                                            Cares about clean environments,
+                                            predictable rollouts, and production
+                                            discipline.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
