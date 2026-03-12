@@ -1563,8 +1563,20 @@
                     opacity: 0.22;
                 }
 
+                body > section {
+                    padding-top: 0.8rem;
+                    padding-bottom: 0.8rem;
+                }
+
                 body > section > div::before {
                     inset: -0.8rem 0;
+                    border-radius: 1.65rem;
+                    background: linear-gradient(
+                        180deg,
+                        rgba(255, 255, 255, 0.9),
+                        rgba(255, 255, 255, 0.74)
+                    );
+                    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.09);
                 }
 
                 .floating-aura {
@@ -1595,6 +1607,17 @@
                 .hero-intro-block > p:first-child {
                     font-size: 0.68rem;
                     letter-spacing: 0.34em;
+                }
+
+                html[lang="th"] .hero-intro-badge {
+                    font-size: 0.68rem;
+                    line-height: 1.4;
+                    letter-spacing: 0.08em;
+                    text-transform: none;
+                }
+
+                html[lang="th"] .hero-intro-block > p:first-child {
+                    letter-spacing: 0.12em;
                 }
 
                 .hero-stat {
@@ -1782,6 +1805,12 @@
                     color: #8b97a8;
                 }
 
+                html[lang="th"] .mobile-swipe-hint {
+                    font-size: 0.68rem;
+                    letter-spacing: 0.08em;
+                    text-transform: none;
+                }
+
                 .mobile-swipe-hint::before {
                     content: "";
                     flex: 1;
@@ -1828,6 +1857,7 @@
                         rgba(255, 255, 255, 0.82)
                     );
                     box-shadow: 0 28px 56px rgba(15, 23, 42, 0.14);
+                    animation: panelFloat 8.8s ease-in-out infinite;
                 }
 
                 .hero-profile::before {
