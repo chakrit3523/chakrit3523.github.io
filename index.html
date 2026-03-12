@@ -842,6 +842,54 @@
                 letter-spacing: 0.02em;
             }
 
+            .hero-stat:nth-child(1)::before {
+                background: linear-gradient(
+                    90deg,
+                    rgba(37, 99, 235, 0.9),
+                    rgba(96, 165, 250, 0.7)
+                );
+            }
+
+            .hero-stat:nth-child(2)::before {
+                background: linear-gradient(
+                    90deg,
+                    rgba(124, 58, 237, 0.82),
+                    rgba(236, 72, 153, 0.72)
+                );
+            }
+
+            .hero-stat:nth-child(3)::before {
+                background: linear-gradient(
+                    90deg,
+                    rgba(15, 118, 110, 0.82),
+                    rgba(245, 158, 11, 0.72)
+                );
+            }
+
+            .signal-block:nth-child(1) {
+                background: linear-gradient(
+                    180deg,
+                    rgba(219, 234, 254, 0.96),
+                    rgba(255, 255, 255, 0.9)
+                );
+            }
+
+            .signal-block:nth-child(2) {
+                background: linear-gradient(
+                    180deg,
+                    rgba(243, 232, 255, 0.96),
+                    rgba(255, 255, 255, 0.9)
+                );
+            }
+
+            .signal-block:nth-child(3) {
+                background: linear-gradient(
+                    180deg,
+                    rgba(209, 250, 229, 0.96),
+                    rgba(255, 255, 255, 0.9)
+                );
+            }
+
             .mini-panel {
                 border-radius: 1.5rem;
                 padding: 1rem;
@@ -1088,6 +1136,10 @@
 
                 .hero-stat {
                     padding: 0.9rem 1rem;
+                }
+
+                .status-grid {
+                    grid-template-columns: 1fr;
                 }
             }
 
@@ -1677,10 +1729,45 @@
                 <h2
                     class="text-2xl font-bold text-slate-900 mb-8 text-center lang-exp-title"
                 >
-                    Work Experience
+                    Experience & Next Move
                 </h2>
 
                 <div class="relative timeline-line pl-4 space-y-8">
+                    <div class="relative pl-8 reveal">
+                        <div
+                            class="absolute left-[9px] top-1.5 w-3 h-3 bg-gradient-to-br from-violet-500 to-orange-400 rounded-full border-2 border-white shadow"
+                        ></div>
+                        <div
+                            class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
+                        >
+                            <span
+                                class="text-[10px] font-bold text-violet-700 bg-violet-50 px-2 py-1 rounded"
+                                data-en="Starts Apr 1, 2026"
+                                data-th="เริ่ม 1 เม.ย. 2026"
+                                >Starts Apr 1, 2026</span
+                            >
+                            <h3 class="text-base font-bold text-slate-900 mt-2">
+                                Mobile Developer Effective
+                            </h3>
+                            <p class="text-xs text-slate-500 font-medium mb-3">
+                                Seamless Co., Ltd.
+                            </p>
+                            <ul
+                                class="text-xs text-slate-600 space-y-1.5 list-disc pl-4 lang-exp-upcoming"
+                            >
+                                <li>
+                                    Developing
+                                    <strong>Hommifix</strong> mobile
+                                    application.
+                                </li>
+                                <li>
+                                    Training AI from repair photos for
+                                    <strong>repair price estimation</strong>.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="relative pl-8 reveal">
                         <div
                             class="absolute left-[9px] top-1.5 w-3 h-3 bg-blue-600 rounded-full border-2 border-white shadow"
@@ -1690,7 +1777,7 @@
                         >
                             <span
                                 class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded"
-                                >2024 - Present</span
+                                >2024 - 2026</span
                             >
                             <h3 class="text-base font-bold text-slate-900 mt-2">
                                 Full Stack Developer
@@ -3139,12 +3226,6 @@
                 </p>
                 <div class="space-y-4 text-sm text-slate-300 mb-8">
                     <p>
-                        <i
-                            class="fa-solid fa-location-dot mr-2 text-blue-500"
-                        ></i>
-                        82 Soi Charoensap, Kho Hong, Hatyai, Songkhla 90110
-                    </p>
-                    <p>
                         <i class="fa-solid fa-envelope mr-2 text-blue-500"></i>
                         chakrit.lco@gmail.com
                     </p>
@@ -3183,7 +3264,8 @@
                     skillEngage: `<li>Implemented Real-time <strong>Push Notifications</strong>.</li><li>Managed <strong>App Badge Icons</strong> for user retention.</li><li>Utilized <strong>Firebase Cloud Messaging (FCM)</strong> for precise targeting.</li>`,
                     skillRealtime: `<li><strong>In-app Calling:</strong> Voice/Video using <strong>WebRTC</strong>.</li><li><strong>OS Integration:</strong> iOS CallKit & Android ConnectionService (Native Experience).</li><li><strong>Interactive:</strong> Real-time RSVP, Live Polls, and Surveys.</li>`,
 
-                    expTitle: "Projects & Achievements",
+                    expTitle: "Experience & Next Move",
+                    expUpcoming: `<li class="mb-2">Starting <strong>April 1, 2026</strong> as <strong>Mobile Developer Effective</strong> at <strong>Seamless Co., Ltd.</strong>.</li><li class="mb-2">Developing <strong>Hommifix</strong> mobile application.</li><li class="mb-2">Training AI from repair photos for <strong>repair price estimation</strong>.</li>`,
                     expCurrent: `
                     <li class="mb-2">Managed <strong>Unified Data Migration</strong> (Partitioned Leave Information) super-setting legacy data.</li>
                     <li class="mb-2">Developed <strong>Daily Push Summary System</strong> across multiple repositories with localized LINE/Telegram reporting.</li>
@@ -3359,7 +3441,8 @@
                     skillEngage: `<li>พัฒนาระบบแจ้งเตือน <strong>Push Notifications</strong> แบบ Real-time</li><li>ตั้งค่าการแจ้งเตือนและการนับจำนวน <strong>App Badge Icon</strong></li><li>ประยุกต์ใช้ <strong>Firebase Cloud Messaging (FCM)</strong></li>`,
                     skillRealtime: `<li><strong>In-app Calling:</strong> พัฒนาระบบโทรศัพท์และวิดีโอคอลด้วย <strong>WebRTC</strong></li><li><strong>OS Integration:</strong> เชื่อมต่อกับ Native API เช่น iOS CallKit และ Android ConnectionService</li><li><strong>Interactive Features:</strong> พัฒนาระบบโพลล์, การจอง (RSVP) และแบบสอบถาม</li>`,
 
-                    expTitle: "ผลงานและความสำเร็จ",
+                    expTitle: "ประสบการณ์และงานถัดไป",
+                    expUpcoming: `<li class="mb-2">เริ่มงานวันที่ <strong>1 เมษายน 2026</strong> ในตำแหน่ง <strong>Mobile Developer Effective</strong> ที่ <strong>Seamless Co., Ltd.</strong></li><li class="mb-2">พัฒนาแอปพลิเคชัน <strong>Hommifix</strong></li><li class="mb-2">เทรน AI จากภาพถ่ายหน้างานเพื่อ <strong>ประเมินราคางานซ่อม</strong></li>`,
                     expCurrent: `
                     <li class="mb-2">ดำเนินการ <strong>Unified Data Migration</strong> เพื่อรวมศูนย์ข้อมูลการลาและทำ Partitioning ข้อมูลระดับปี</li>
                     <li class="mb-2">พัฒนา <strong>Daily Push Summary System</strong> สรุปผลงานจากหลาย Repo แจ้งเตือนผ่าน LINE/Telegram</li>
@@ -3538,8 +3621,8 @@
             let revealObserver;
 
             const typewriterText = {
-                en: "Shipping Flutter, Node.js, PHP, WebRTC, and production automation.",
-                th: "ทำงานทั้ง Flutter, Node.js, PHP, WebRTC และ automation สำหรับ production.",
+                en: "Flutter, Hommifix, AI repair pricing, and product-ready mobile systems.",
+                th: "Flutter, Hommifix, AI ประเมินราคางานซ่อม และ mobile systems ที่พร้อมใช้งานจริง.",
             };
 
             function updateStaticLanguage() {
@@ -3574,6 +3657,8 @@
 
                 document.querySelector(".lang-exp-title").innerText =
                     content[currentLang].expTitle;
+                document.querySelector(".lang-exp-upcoming").innerHTML =
+                    content[currentLang].expUpcoming;
                 document.querySelector(".lang-exp-current").innerHTML =
                     content[currentLang].expCurrent;
                 document.querySelector(".lang-exp-intern").innerHTML =
