@@ -275,6 +275,19 @@
         </div>
     </section>
 
+    <!-- Technical Skills Breakdown Section -->
+    <section class="py-12 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-5">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2 reveal">
+                <i class="fa-solid fa-screwdriver-wrench text-blue-600"></i>
+                <span class="lang-tech-skills-title">Technical Skills Breakdown</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-container">
+                <!-- Injected via Script -->
+            </div>
+        </div>
+    </section>
+
     <section class="py-12 bg-white">
         <div class="max-w-5xl mx-auto px-5">
             <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center lang-stack-title">Tech Stack</h2>
@@ -1011,7 +1024,21 @@
                 descKhaowai: "Fast news app with Real-time Push & Badges.",
                 descPetword: "Vocab learning with Virtual Pets & Battle Realtime.",
                 descFlood: "Emergency coordination center web system.",
-                descElection: "Real-time Mayor Election Score Counting System. Handling massive concurrent traffic."
+                descElection: "Real-time Mayor Election Score Counting System. Handling massive concurrent traffic.",
+                
+                // Technical Skills Breakdown
+                techSkillsTitle: "Technical Skills Breakdown",
+                skillsData: [
+                    { category: "Mobile Development", items: ["Flutter", "Dart", "iOS CallKit", "Android ConnectionService", "FCM Push", "App Badge", "Deployment (App/Play Store)", "Platform Channels", "SwiftUI"] },
+                    { category: "Backend & APIs", items: ["Node.js (Express, Hono)", "PHP (Laravel, CodeIgniter 2/4)", "RESTful API", "SSE Streaming", "WebSocket", "Nakama Framework"] },
+                    { category: "AI & Machine Learning", items: ["LLaMA Factory", "LoRA Fine-tuning", "Groq Vision Prompting", "ML Pipeline", "AI Auditing", "Fine-tuning"] },
+                    { category: "IoT & Hardware", items: ["Arduino", "ESP32", "C / C++", "Sensor Integration", "Serial Communication", "Hardware Control"] },
+                    { category: "Infrastructure & DevOps", items: ["Server Management (Plesk)", "SSL (HTTPS)", "Bash/Shell Automation", "Docker", "GitHub Actions", "Deployment Scripts"] },
+                    { category: "Database", items: ["MySQL Production", "SQLite", "Complex Queries", "Data Migration", "Backup/Restore"] },
+                    { category: "Frontend & UI", items: ["TailwindCSS", "Bootstrap 5", "HTML5/CSS3", "Glassmorphism", "Responsive Design", "EJS Templates", "Vue.js"] },
+                    { category: "Security & QA", items: ["Pentest Tools (Nmap, SQLMap, Nuclei)", "Playwright Automation", "Lighthouse", "Security Auditing"] },
+                    { category: "Professional Tools", items: ["Git / GitHub", "VS Code", "Android Studio / Xcode", "Figma", "Postman"] }
+                ]
             },
             th: {
                 expertTitle: "ความเชี่ยวชาญหลัก",
@@ -1061,8 +1088,22 @@
                 descIsmart: "ระบบยืนยันตัวตนและการเข้าถึงที่มีความปลอดภัยสูง พร้อมทำการปรับปรุง User Experience (UX)",
                 descKhaowai: "แอปพลิเคชันและเครือข่ายสังคมในการอ่านข่าว มีฟังก์ชันแจ้งเตือนด้วย Push Notification และ App Badge Real-time",
                 descPetword: "แอปพลิเคชันเกมเรียนรู้คำศัพท์ด้วยสัตว์เลี้ยงจำลอง เชื่อมต่อผู้เล่นแบบ Real-time และ Ranking (พัฒนาด้วย Nakama)",
-                descFlood: "ระบบสนับสนุนส่วนกลาง เพื่อประสานงานการช่วยเหลือไปยังผู้ประสบภัยพิบัติน้ำท่วมในเครือข่ายพื้นที่หาดใหญ่",
-                descElection: "ระบบตรวจจับและรายงานสรุปผลคะแนนเลือกตั้งนายกเทศมนตรี ปี 2568 ออกแบบโครงสร้างเพื่อรองรับผู้ใช้งานพร้อมกันจำนวนมาก"
+                descFlood: "ระบบสนับสนุนส่วนกลาง เพื่อประสานงานการช่วยเหลือไปยังผู้ประสบภัยพิบัติทางน้ำในเครือข่ายพื้นที่หาดใหญ่",
+                descElection: "ระบบตรวจจับและรายงานสรุปผลคะแนนเลือกตั้งนายกเทศมนตรี ปี 2568 ออกแบบโครงสร้างเพื่อรองรับผู้ใช้งานพร้อมกันจำนวนมาก",
+
+                // Technical Skills Breakdown
+                techSkillsTitle: "ทักษะทางเทคนิคแบบย่อย",
+                skillsData: [
+                    { category: "Mobile Development", items: ["Flutter", "Dart", "iOS CallKit", "Android ConnectionService", "FCM Push", "App Badge", "Deployment (App/Play Store)", "Platform Channels", "SwiftUI"] },
+                    { category: "Backend & APIs", items: ["Node.js (Express, Hono)", "PHP (Laravel, CodeIgniter 2/4)", "RESTful API", "SSE Streaming", "WebSocket", "Nakama Framework"] },
+                    { category: "AI & Machine Learning", items: ["LLaMA Factory", "LoRA Fine-tuning", "Groq Vision Prompting", "ML Pipeline", "AI Auditing", "Fine-tuning"] },
+                    { category: "IoT & Hardware", items: ["Arduino", "ESP32", "C / C++", "การเชื่อมต่อเซ็นเซอร์", "Serial Communication", "Hardware Control"] },
+                    { category: "Infrastructure & DevOps", items: ["บริหารจัดการเซิร์ฟเวอร์ (Plesk)", "SSL (HTTPS)", "Bash/Shell Automation", "Docker", "GitHub Actions", "สคริปต์ Deployment"] },
+                    { category: "Database", items: ["MySQL Production", "SQLite", "Complex Queries", "Data Migration", "Backup/Restore"] },
+                    { category: "Frontend & UI", items: ["TailwindCSS", "Bootstrap 5", "HTML5/CSS3", "Glassmorphism", "Responsive Design", "EJS Templates", "Vue.js"] },
+                    { category: "Security & QA", items: ["Pentest Tools (Nmap, SQLMap, Nuclei)", "Playwright Automation", "Lighthouse", "Security Auditing"] },
+                    { category: "Professional Tools", items: ["Git / GitHub", "VS Code", "Android Studio / Xcode", "Figma", "Postman"] }
+                ]
             }
         };
 
@@ -1116,6 +1157,36 @@
             document.querySelector('.lang-desc-petword').innerText = content[currentLang].descPetword;
             document.querySelector('.lang-desc-flood').innerText = content[currentLang].descFlood;
             document.querySelector('.lang-desc-election').innerText = content[currentLang].descElection;
+
+            // Update Technical Skills Section
+            renderSkills();
+        }
+
+        function renderSkills() {
+            const container = document.getElementById('skills-container');
+            const data = content[currentLang].skillsData;
+            const title = content[currentLang].techSkillsTitle;
+
+            document.querySelector('.lang-tech-skills-title').innerText = title;
+
+            container.innerHTML = data.map(cat => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 reveal transition-all hover:shadow-md">
+                    <h3 class="font-bold text-slate-800 mb-3 text-sm flex items-center justify-between">
+                        ${cat.category}
+                        <span class="text-[10px] text-slate-400 font-normal">${cat.items.length} items</span>
+                    </h3>
+                    <div class="flex flex-wrap gap-1.5">
+                        ${cat.items.map(item => `
+                            <span class="text-[10px] bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded-full font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                ${item}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger reveal for newly added elements
+            reveal();
         }
 
         const text = "Full Stack Dev (Flutter & Node/PHP)";
@@ -1143,6 +1214,7 @@
         window.addEventListener("scroll", reveal);
         window.onload = function () {
             typeWriter();
+            renderSkills();
             reveal();
         };
     </script>
