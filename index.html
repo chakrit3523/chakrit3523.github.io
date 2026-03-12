@@ -1356,6 +1356,24 @@
                 }
             }
 
+            @media (min-width: 1024px) {
+                .hero-grid {
+                    gap: 4rem;
+                }
+
+                .hero-copy {
+                    padding-top: 3.5rem;
+                }
+
+                .hero-profile {
+                    padding-top: 0.5rem;
+                }
+
+                .hero-panel {
+                    border-radius: 1.75rem;
+                }
+            }
+
             @media (max-width: 767px) {
                 header {
                     padding-top: 6.8rem;
@@ -1574,12 +1592,12 @@
             </div>
         </nav>
 
-        <header class="relative pt-28 pb-14 lg:pt-40 lg:pb-24 overflow-hidden">
+        <header class="relative pt-28 pb-14 lg:pt-28 lg:pb-20 overflow-hidden">
             <div class="max-w-6xl mx-auto px-5">
                 <div
-                    class="hero-grid grid items-center gap-10 lg:grid-cols-[1.06fr_0.94fr]"
+                    class="hero-grid grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-start"
                 >
-                    <div class="space-y-7 lg:space-y-8">
+                    <div class="hero-copy space-y-7 lg:space-y-8">
                         <div
                             class="reveal inline-flex items-center gap-3 rounded-full border border-white/80 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.34em] text-slate-600 shadow-lg shadow-white/40"
                         >
@@ -1602,7 +1620,7 @@
                                 Portfolio / Resume / 2026
                             </p>
                             <h1
-                                class="reveal delay-100 text-4xl md:text-6xl xl:text-[5rem] font-black text-slate-900 leading-[0.95]"
+                                class="reveal delay-100 text-4xl md:text-6xl xl:text-[4.6rem] font-black text-slate-900 leading-[0.95]"
                             >
                                 Chakrit
                                 <span
@@ -1724,7 +1742,7 @@
                         </div>
                     </div>
 
-                    <div class="reveal delay-200 relative">
+                    <div class="hero-profile reveal delay-200 relative">
                         <div class="hero-panel glass" data-tilt>
                             <div class="relative z-10 space-y-6">
                                 <div
