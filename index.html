@@ -4857,6 +4857,781 @@
                 }
             }
 
+            /* Scroll scene and app icon stage */
+            :root {
+                --scene-progress: 0;
+                --scene-drift: 0px;
+                --sun-y: 16vh;
+                --sun-x: -2vw;
+                --sun-scale: 1;
+                --sun-opacity: 1;
+                --moon-y: 112vh;
+                --moon-x: 18vw;
+                --moon-scale: 0.82;
+                --moon-opacity: 0;
+                --day-cloud-opacity: 0.92;
+                --night-cloud-opacity: 0;
+                --star-opacity: 0;
+                --sky-night-opacity: 0;
+                --horizon-glow-opacity: 0.54;
+            }
+
+            #solar-arc {
+                z-index: -7;
+                isolation: isolate;
+            }
+
+            #solar-arc::before,
+            #solar-arc::after {
+                inset: 0;
+                left: 0;
+                width: auto;
+                height: auto;
+                transform: none;
+                border-radius: 0;
+                filter: none;
+            }
+
+            #solar-arc::before {
+                background: linear-gradient(
+                    180deg,
+                    #dff3ff 0%,
+                    #fff5ea 30%,
+                    #ffd3a6 70%,
+                    #ef865f 100%
+                );
+                opacity: 1;
+            }
+
+            #solar-arc::after {
+                background: linear-gradient(
+                    180deg,
+                    rgba(10, 35, 70, 0.96) 0%,
+                    rgba(35, 59, 99, 0.88) 34%,
+                    rgba(138, 83, 113, 0.72) 70%,
+                    rgba(242, 138, 102, 0.32) 100%
+                );
+                opacity: var(--sky-night-opacity);
+            }
+
+            .sky-canvas,
+            .clouds-group,
+            .clouds-group-night,
+            .star-group {
+                position: absolute;
+                inset: 0;
+            }
+
+            .sky-canvas::before,
+            .sky-canvas::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .sky-canvas::before {
+                inset: auto 0 0;
+                height: 36vh;
+                background: linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(255, 251, 246, 0.32) 28%,
+                    rgba(255, 228, 192, 0.54)
+                );
+                opacity: calc(0.38 + ((1 - var(--scene-progress)) * 0.2));
+            }
+
+            .sky-canvas::after {
+                inset: auto 10vw 6vh;
+                height: 18vh;
+                border-radius: 999px;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(255, 190, 112, 0.28),
+                    rgba(143, 200, 255, 0.12) 46%,
+                    transparent 72%
+                );
+                filter: blur(60px);
+                opacity: var(--horizon-glow-opacity);
+                transform: translateY(calc(var(--scene-drift) * 0.15));
+            }
+
+            .sun-group,
+            .moon-group {
+                position: absolute;
+                left: 50%;
+                top: 0;
+                width: 0;
+                height: 0;
+                pointer-events: none;
+            }
+
+            .sun-group {
+                left: calc(50% + var(--sun-x));
+                top: var(--sun-y);
+                transform: translate(-50%, -50%) scale(var(--sun-scale));
+                opacity: var(--sun-opacity);
+                z-index: 2;
+            }
+
+            .moon-group {
+                left: calc(50% + var(--moon-x));
+                top: var(--moon-y);
+                transform: translate(-50%, -50%) scale(var(--moon-scale));
+                opacity: var(--moon-opacity);
+                z-index: 1;
+            }
+
+            .sun {
+                position: absolute;
+                inset: 50%;
+                width: 7.2rem;
+                height: 7.2rem;
+                border-radius: 999px;
+                transform: translate(-50%, -50%);
+                background: radial-gradient(
+                    circle at 50% 44%,
+                    rgba(255, 251, 240, 1) 0 18%,
+                    rgba(255, 223, 150, 0.98) 32%,
+                    rgba(255, 175, 98, 0.96) 54%,
+                    rgba(255, 132, 83, 0.16) 72%,
+                    transparent 82%
+                );
+                box-shadow:
+                    0 0 42px rgba(255, 187, 110, 0.4),
+                    0 0 110px rgba(243, 124, 80, 0.24);
+            }
+
+            .sun::before,
+            .sun::after {
+                content: "";
+                position: absolute;
+                inset: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 999px;
+            }
+
+            .sun::before {
+                width: 132%;
+                height: 132%;
+                border: 1px solid rgba(255, 235, 195, 0.48);
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.16),
+                    0 0 54px rgba(255, 175, 98, 0.16);
+            }
+
+            .sun::after {
+                width: 176%;
+                height: 176%;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 205, 132, 0.18),
+                    rgba(255, 145, 95, 0.08) 42%,
+                    transparent 70%
+                );
+                filter: blur(26px);
+            }
+
+            .sun-rays {
+                position: absolute;
+                inset: 50%;
+                width: 12rem;
+                height: 12rem;
+                transform: translate(-50%, -50%);
+                animation: spin 22s linear infinite;
+            }
+
+            .ray {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 4.6rem;
+                height: 0.48rem;
+                border-radius: 999px;
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 219, 156, 0),
+                    rgba(255, 197, 108, 0.98),
+                    rgba(255, 219, 156, 0)
+                );
+                box-shadow: 0 0 18px rgba(255, 180, 97, 0.18);
+                transform-origin: center;
+                animation: rayPulse 1.5s ease-in-out infinite;
+            }
+
+            .ray:nth-child(1) {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(4rem);
+            }
+
+            .ray:nth-child(2) {
+                transform: translate(-50%, -50%) rotate(45deg) translateX(4rem);
+                animation-delay: -0.18s;
+            }
+
+            .ray:nth-child(3) {
+                transform: translate(-50%, -50%) rotate(90deg) translateX(4rem);
+                animation-delay: -0.32s;
+            }
+
+            .ray:nth-child(4) {
+                transform: translate(-50%, -50%) rotate(135deg) translateX(4rem);
+                animation-delay: -0.46s;
+            }
+
+            .ray:nth-child(5) {
+                transform: translate(-50%, -50%) rotate(180deg) translateX(4rem);
+                animation-delay: -0.6s;
+            }
+
+            .ray:nth-child(6) {
+                transform: translate(-50%, -50%) rotate(225deg) translateX(4rem);
+                animation-delay: -0.74s;
+            }
+
+            .ray:nth-child(7) {
+                transform: translate(-50%, -50%) rotate(270deg) translateX(4rem);
+                animation-delay: -0.88s;
+            }
+
+            .ray:nth-child(8) {
+                transform: translate(-50%, -50%) rotate(315deg) translateX(4rem);
+                animation-delay: -1.02s;
+            }
+
+            .moon {
+                position: absolute;
+                inset: 50%;
+                width: 6.6rem;
+                height: 6.6rem;
+                border-radius: 999px;
+                transform: translate(-50%, -50%) rotate(-12deg);
+                background: linear-gradient(
+                    145deg,
+                    rgba(250, 252, 255, 0.98),
+                    rgba(215, 226, 242, 0.94)
+                );
+                box-shadow:
+                    0 0 30px rgba(219, 230, 255, 0.22),
+                    0 0 82px rgba(169, 188, 227, 0.12);
+            }
+
+            .moon::before {
+                content: "";
+                position: absolute;
+                inset: 14% 18% 18% 14%;
+                border-radius: 999px;
+                box-shadow: inset -0.8rem -0.6rem 0 rgba(193, 207, 229, 0.68);
+            }
+
+            .crater {
+                position: absolute;
+                border-radius: 999px;
+                background: rgba(182, 196, 220, 0.84);
+            }
+
+            .crater-one {
+                width: 0.8rem;
+                height: 0.8rem;
+                top: 1.5rem;
+                left: 1.7rem;
+            }
+
+            .crater-two {
+                width: 1rem;
+                height: 1rem;
+                top: 2.8rem;
+                left: 3.1rem;
+            }
+
+            .crater-three {
+                width: 0.64rem;
+                height: 0.64rem;
+                top: 1.9rem;
+                right: 1.6rem;
+            }
+
+            .clouds-group,
+            .clouds-group-night {
+                pointer-events: none;
+            }
+
+            .clouds-group {
+                opacity: var(--day-cloud-opacity);
+            }
+
+            .clouds-group-night {
+                opacity: var(--night-cloud-opacity);
+            }
+
+            .cloud,
+            .cloud-night {
+                position: absolute;
+                border-radius: 999px;
+            }
+
+            .cloud,
+            .cloud::before,
+            .cloud::after {
+                background: rgba(255, 255, 255, 0.82);
+                box-shadow: 0 12px 30px rgba(255, 192, 121, 0.08);
+            }
+
+            .cloud-night,
+            .cloud-night::before,
+            .cloud-night::after {
+                background: rgba(232, 238, 252, 0.3);
+                box-shadow: 0 12px 28px rgba(72, 91, 126, 0.08);
+            }
+
+            .cloud::before,
+            .cloud::after,
+            .cloud-night::before,
+            .cloud-night::after {
+                content: "";
+                position: absolute;
+                border-radius: inherit;
+            }
+
+            .cloud:nth-child(1) {
+                top: 16vh;
+                left: 10vw;
+                width: 9.2rem;
+                height: 2.8rem;
+                transform: translateX(calc(var(--scene-progress) * -8vw));
+            }
+
+            .cloud:nth-child(1)::before {
+                width: 3.8rem;
+                height: 3rem;
+                left: 1rem;
+                top: -1rem;
+            }
+
+            .cloud:nth-child(1)::after {
+                width: 4.6rem;
+                height: 3.3rem;
+                right: 1rem;
+                top: -1.3rem;
+            }
+
+            .cloud:nth-child(2) {
+                top: 28vh;
+                right: 12vw;
+                width: 12rem;
+                height: 3rem;
+                transform: translateX(calc(var(--scene-progress) * 7vw));
+            }
+
+            .cloud:nth-child(2)::before {
+                width: 4.4rem;
+                height: 3.1rem;
+                left: 1.8rem;
+                top: -1.2rem;
+            }
+
+            .cloud:nth-child(2)::after {
+                width: 5.3rem;
+                height: 3.4rem;
+                right: 1.2rem;
+                top: -1.5rem;
+            }
+
+            .cloud:nth-child(3) {
+                top: 48vh;
+                left: 56vw;
+                width: 7.2rem;
+                height: 2.3rem;
+                transform: translateX(calc(var(--scene-progress) * -10vw));
+            }
+
+            .cloud:nth-child(3)::before {
+                width: 3rem;
+                height: 2.4rem;
+                left: 1rem;
+                top: -0.8rem;
+            }
+
+            .cloud:nth-child(3)::after {
+                width: 3.2rem;
+                height: 2.7rem;
+                right: 0.8rem;
+                top: -1rem;
+            }
+
+            .cloud-night:nth-child(1) {
+                top: 22vh;
+                left: -6vw;
+                width: 8rem;
+                height: 2rem;
+                transform: translateX(calc(var(--scene-progress) * 12vw));
+            }
+
+            .cloud-night:nth-child(1)::before {
+                width: 3.2rem;
+                height: 2.2rem;
+                left: 1rem;
+                top: -0.8rem;
+            }
+
+            .cloud-night:nth-child(1)::after {
+                width: 3.8rem;
+                height: 2.4rem;
+                right: 0.8rem;
+                top: -1rem;
+            }
+
+            .cloud-night:nth-child(2) {
+                top: 38vh;
+                right: -4vw;
+                width: 9rem;
+                height: 2.2rem;
+                transform: translateX(calc(var(--scene-progress) * -10vw));
+            }
+
+            .cloud-night:nth-child(2)::before {
+                width: 3.4rem;
+                height: 2.4rem;
+                left: 1.4rem;
+                top: -0.9rem;
+            }
+
+            .cloud-night:nth-child(2)::after {
+                width: 4.2rem;
+                height: 2.6rem;
+                right: 1rem;
+                top: -1rem;
+            }
+
+            .star-group {
+                opacity: var(--star-opacity);
+                pointer-events: none;
+            }
+
+            .star {
+                position: absolute;
+                width: 0.32rem;
+                height: 0.32rem;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.96);
+                box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+                animation: twinkle 2.6s ease-in-out infinite;
+            }
+
+            .star::before,
+            .star::after {
+                content: "";
+                position: absolute;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.86),
+                    transparent
+                );
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .star::before {
+                width: 1rem;
+                height: 1px;
+            }
+
+            .star::after {
+                width: 1px;
+                height: 1rem;
+            }
+
+            .star:nth-child(1) {
+                top: 10vh;
+                left: 14vw;
+            }
+
+            .star:nth-child(2) {
+                top: 16vh;
+                left: 30vw;
+                animation-delay: -0.2s;
+            }
+
+            .star:nth-child(3) {
+                top: 8vh;
+                left: 52vw;
+                animation-delay: -0.4s;
+            }
+
+            .star:nth-child(4) {
+                top: 18vh;
+                right: 18vw;
+                animation-delay: -0.6s;
+            }
+
+            .star:nth-child(5) {
+                top: 28vh;
+                left: 22vw;
+                animation-delay: -0.8s;
+            }
+
+            .star:nth-child(6) {
+                top: 24vh;
+                left: 68vw;
+                animation-delay: -1s;
+            }
+
+            .star:nth-child(7) {
+                top: 34vh;
+                right: 24vw;
+                animation-delay: -1.2s;
+            }
+
+            .star:nth-child(8) {
+                top: 42vh;
+                left: 12vw;
+                animation-delay: -1.4s;
+            }
+
+            .star:nth-child(9) {
+                top: 50vh;
+                left: 46vw;
+                animation-delay: -1.6s;
+            }
+
+            .star:nth-child(10) {
+                top: 54vh;
+                right: 12vw;
+                animation-delay: -1.8s;
+            }
+
+            #orbital-stage {
+                opacity: calc(0.42 - (var(--scene-progress) * 0.18));
+            }
+
+            .floating-aura {
+                opacity: calc(0.18 + ((1 - var(--scene-progress)) * 0.06));
+            }
+
+            .project-art {
+                min-height: 14rem;
+                display: grid;
+                place-items: center;
+                padding: 1rem 1.15rem;
+            }
+
+            .project-art::before {
+                top: 50%;
+                left: 50%;
+                width: min(13rem, 62%);
+                height: min(13rem, 74%);
+                transform: translate(-50%, -50%);
+                border-radius: 2rem;
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.72),
+                    rgba(255, 248, 241, 0.58)
+                );
+                border: 1px solid rgba(255, 255, 255, 0.82);
+                box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                    0 18px 36px rgba(153, 115, 82, 0.12);
+            }
+
+            .project-art::after {
+                left: 50%;
+                right: auto;
+                bottom: 1rem;
+                width: 68%;
+                height: 3.6rem;
+                transform: translateX(-50%);
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(240, 125, 87, 0.14),
+                    rgba(76, 168, 202, 0.08) 46%,
+                    transparent 74%
+                );
+                filter: blur(14px);
+            }
+
+            .project-art.media-loaded .media-asset {
+                width: min(10.8rem, 60%);
+                height: auto;
+                aspect-ratio: 1;
+                object-fit: contain;
+                padding: 0.82rem;
+                border-radius: 1.8rem;
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.98),
+                    rgba(247, 251, 255, 0.92)
+                );
+                box-shadow:
+                    0 18px 34px rgba(136, 105, 78, 0.16),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+                transform: none;
+            }
+
+            .project-art.media-loaded img {
+                filter: none;
+            }
+
+            .project-art.media-loaded .media-fallback {
+                opacity: 0;
+            }
+
+            .project-art.media-missing {
+                padding: 0;
+            }
+
+            .project-fallback {
+                display: grid;
+                align-content: end;
+                padding: 1.2rem;
+            }
+
+            .project-fallback strong {
+                font-size: clamp(2.7rem, 6vw, 3.9rem);
+            }
+
+            .project-fallback p {
+                max-width: 12rem;
+            }
+
+            @media (max-width: 767px) {
+                .sun {
+                    width: 5.8rem;
+                    height: 5.8rem;
+                }
+
+                .sun-rays {
+                    width: 9.8rem;
+                    height: 9.8rem;
+                }
+
+                .ray {
+                    width: 3.6rem;
+                    height: 0.42rem;
+                }
+
+                .ray:nth-child(1),
+                .ray:nth-child(2),
+                .ray:nth-child(3),
+                .ray:nth-child(4),
+                .ray:nth-child(5),
+                .ray:nth-child(6),
+                .ray:nth-child(7),
+                .ray:nth-child(8) {
+                    transform-origin: center;
+                }
+
+                .ray:nth-child(1) {
+                    transform: translate(-50%, -50%) rotate(0deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(2) {
+                    transform: translate(-50%, -50%) rotate(45deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(3) {
+                    transform: translate(-50%, -50%) rotate(90deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(4) {
+                    transform: translate(-50%, -50%) rotate(135deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(5) {
+                    transform: translate(-50%, -50%) rotate(180deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(6) {
+                    transform: translate(-50%, -50%) rotate(225deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(7) {
+                    transform: translate(-50%, -50%) rotate(270deg) translateX(3.1rem);
+                }
+
+                .ray:nth-child(8) {
+                    transform: translate(-50%, -50%) rotate(315deg) translateX(3.1rem);
+                }
+
+                .moon {
+                    width: 5.3rem;
+                    height: 5.3rem;
+                }
+
+                .cloud:nth-child(1) {
+                    left: -2vw;
+                }
+
+                .cloud:nth-child(2) {
+                    right: -2vw;
+                    width: 9.6rem;
+                }
+
+                .cloud:nth-child(3) {
+                    left: 46vw;
+                    width: 5.8rem;
+                }
+
+                .cloud-night:nth-child(2) {
+                    right: -8vw;
+                }
+
+                .project-art {
+                    min-height: 12.4rem;
+                    padding: 0.85rem 1rem;
+                }
+
+                .project-art::before {
+                    width: min(10.8rem, 70%);
+                    height: min(10.8rem, 76%);
+                    border-radius: 1.5rem;
+                }
+
+                .project-art.media-loaded .media-asset {
+                    width: min(8.6rem, 68%);
+                    padding: 0.7rem;
+                    border-radius: 1.35rem;
+                }
+
+                .project-fallback {
+                    padding: 0.95rem;
+                }
+
+                .project-fallback strong {
+                    font-size: 2.85rem;
+                }
+
+                .project-fallback p {
+                    max-width: 9.8rem;
+                }
+            }
+
+            @keyframes rayPulse {
+                0%,
+                100% {
+                    opacity: 0.52;
+                    filter: blur(0);
+                }
+
+                50% {
+                    opacity: 1;
+                    filter: blur(0.4px);
+                }
+            }
+
+            @keyframes twinkle {
+                0%,
+                100% {
+                    opacity: 0.38;
+                    transform: scale(0.82);
+                }
+
+                50% {
+                    opacity: 1;
+                    transform: scale(1.2);
+                }
+            }
+
             @media (prefers-reduced-motion: reduce) {
                 *,
                 *::before,
@@ -4888,8 +5663,49 @@
         <div id="scroll-progress"></div>
         <div id="cursor-glow" aria-hidden="true"></div>
         <div id="solar-arc" aria-hidden="true">
-            <div id="solar-core"></div>
-            <div id="solar-reflection"></div>
+            <div class="sky-canvas">
+                <div class="sun-group">
+                    <div class="sun"></div>
+                    <div class="sun-rays">
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                        <span class="ray"></span>
+                    </div>
+                </div>
+                <div class="moon-group">
+                    <div class="moon">
+                        <div class="crater crater-one"></div>
+                        <div class="crater crater-two"></div>
+                        <div class="crater crater-three"></div>
+                    </div>
+                </div>
+                <div class="clouds-group">
+                    <span class="cloud"></span>
+                    <span class="cloud"></span>
+                    <span class="cloud"></span>
+                </div>
+                <div class="clouds-group-night">
+                    <span class="cloud-night"></span>
+                    <span class="cloud-night"></span>
+                </div>
+                <div class="star-group">
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                </div>
+            </div>
         </div>
         <div id="orbital-stage" aria-hidden="true">
             <div class="orbital-plane orbital-plane-alpha"></div>
@@ -8024,10 +8840,44 @@
                 const shiftRange = isMobile ? 36 : 84;
                 const pullRange = isMobile ? 16 : 28;
                 const scrollPull = Math.sin(progress * Math.PI) * pullRange;
-                const solarY = 14 + progress * 66;
-                const solarScale = 0.92 + Math.sin(progress * Math.PI) * 0.16;
-                const solarIntensity =
-                    0.78 + Math.sin(progress * Math.PI) * 0.14;
+                const sceneProgress = Math.max(0, Math.min(1, progress));
+                const sunY = 16 + sceneProgress * 70;
+                const sunX =
+                    Math.sin(sceneProgress * Math.PI) * (isMobile ? 4 : 8) -
+                    (isMobile ? 1 : 3);
+                const moonY = 116 - sceneProgress * 92;
+                const moonX =
+                    18 -
+                    Math.sin(sceneProgress * Math.PI) * (isMobile ? 4 : 10);
+                const sunScale =
+                    0.94 + Math.sin(sceneProgress * Math.PI) * 0.12;
+                const moonScale =
+                    0.72 + Math.max(0, (sceneProgress - 0.12) / 0.88) * 0.24;
+                const sunOpacity = Math.max(0.04, 1 - sceneProgress * 1.2);
+                const moonOpacity = Math.max(
+                    0,
+                    Math.min(1, (sceneProgress - 0.18) / 0.5),
+                );
+                const dayCloudOpacity = Math.max(
+                    0.04,
+                    0.98 - sceneProgress * 1.18,
+                );
+                const nightCloudOpacity = Math.max(
+                    0,
+                    Math.min(0.96, (sceneProgress - 0.2) / 0.6),
+                );
+                const starOpacity = Math.max(
+                    0,
+                    Math.min(1, (sceneProgress - 0.26) / 0.46),
+                );
+                const skyNightOpacity = Math.max(
+                    0,
+                    Math.min(0.84, (sceneProgress - 0.12) / 0.68),
+                );
+                const horizonGlowOpacity = Math.max(
+                    0.18,
+                    0.64 - sceneProgress * 0.18,
+                );
                 const root = document.documentElement;
 
                 document.getElementById("scroll-progress").style.transform =
@@ -8064,19 +8914,44 @@
                     "--scroll-angle-d",
                     `${(-progress * 64).toFixed(2)}deg`,
                 );
-                root.style.setProperty("--solar-y", `${solarY.toFixed(2)}vh`);
-                root.style.setProperty("--solar-scale", solarScale.toFixed(3));
                 root.style.setProperty(
-                    "--solar-tilt",
-                    `${(-4 + progress * 8).toFixed(2)}deg`,
+                    "--scene-progress",
+                    sceneProgress.toFixed(4),
                 );
                 root.style.setProperty(
-                    "--solar-intensity",
-                    solarIntensity.toFixed(3),
+                    "--scene-drift",
+                    `${((sceneProgress - 0.5) * shiftRange).toFixed(2)}px`,
+                );
+                root.style.setProperty("--sun-y", `${sunY.toFixed(2)}vh`);
+                root.style.setProperty("--sun-x", `${sunX.toFixed(2)}vw`);
+                root.style.setProperty("--sun-scale", sunScale.toFixed(3));
+                root.style.setProperty("--sun-opacity", sunOpacity.toFixed(3));
+                root.style.setProperty("--moon-y", `${moonY.toFixed(2)}vh`);
+                root.style.setProperty("--moon-x", `${moonX.toFixed(2)}vw`);
+                root.style.setProperty("--moon-scale", moonScale.toFixed(3));
+                root.style.setProperty(
+                    "--moon-opacity",
+                    moonOpacity.toFixed(3),
                 );
                 root.style.setProperty(
-                    "--solar-reflection-shift",
-                    `${(progress * 34).toFixed(2)}px`,
+                    "--day-cloud-opacity",
+                    dayCloudOpacity.toFixed(3),
+                );
+                root.style.setProperty(
+                    "--night-cloud-opacity",
+                    nightCloudOpacity.toFixed(3),
+                );
+                root.style.setProperty(
+                    "--star-opacity",
+                    starOpacity.toFixed(3),
+                );
+                root.style.setProperty(
+                    "--sky-night-opacity",
+                    skyNightOpacity.toFixed(3),
+                );
+                root.style.setProperty(
+                    "--horizon-glow-opacity",
+                    horizonGlowOpacity.toFixed(3),
                 );
                 document
                     .getElementById("navbar")
