@@ -160,6 +160,9 @@
                 --scroll-shift: 0px;
                 --stage-spin: 0deg;
                 --stage-tilt: 0deg;
+                --rail-angle: 116deg;
+                --rail-shift: 0px;
+                --rail-scale: 1;
                 --planet-rotate: 0deg;
                 --planet-rotate-alt: 0deg;
                 --planet-rotate-fast: 0deg;
@@ -3291,8 +3294,190 @@
                 filter: none;
             }
 
+            #orbital-rail {
+                position: fixed;
+                top: 5rem;
+                right: clamp(-11rem, -8vw, -4rem);
+                width: min(44rem, 42vw);
+                height: calc(100vh - 6.5rem);
+                pointer-events: none;
+                z-index: 1;
+                opacity: 0.96;
+            }
+
+            #orbital-rail::before {
+                content: "";
+                position: absolute;
+                inset: 8% 6% 8% 18%;
+                background: radial-gradient(
+                    circle at 38% 50%,
+                    rgba(106, 166, 255, 0.18),
+                    transparent 34%
+                );
+                filter: blur(36px);
+                opacity: 0.78;
+            }
+
+            .rail-orbit {
+                position: absolute;
+                inset: 0;
+                transform: translate3d(0, var(--rail-shift), 0)
+                    scale(var(--rail-scale));
+            }
+
+            .rail-halo,
+            .rail-arc {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                aspect-ratio: 1;
+                border-radius: 999px;
+                transform: translateY(-50%);
+            }
+
+            .rail-halo {
+                width: min(38rem, 40vw);
+                background:
+                    radial-gradient(
+                        circle at 38% 50%,
+                        rgba(255, 255, 255, 0.18),
+                        transparent 20%
+                    ),
+                    radial-gradient(
+                        circle at 18% 50%,
+                        rgba(103, 240, 207, 0.12),
+                        transparent 22%
+                    );
+                filter: blur(24px);
+                opacity: 0.82;
+            }
+
+            .rail-arc {
+                width: min(38rem, 40vw);
+                clip-path: inset(0 50% 0 0);
+                box-sizing: border-box;
+            }
+
+            .rail-arc-outer {
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                box-shadow: 0 0 28px rgba(106, 166, 255, 0.12);
+            }
+
+            .rail-arc-inner {
+                width: min(32rem, 34vw);
+                border: 1px dashed rgba(103, 240, 207, 0.2);
+                opacity: 0.78;
+            }
+
+            .rail-arc-core {
+                width: min(26rem, 28vw);
+                border: 1px solid rgba(255, 111, 182, 0.18);
+                opacity: 0.6;
+            }
+
+            .rail-comet-arm,
+            .rail-nodes,
+            .rail-node {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: min(38rem, 40vw);
+                aspect-ratio: 1;
+                transform: translateY(-50%);
+            }
+
+            .rail-comet-arm {
+                transform: translateY(-50%) rotate(var(--rail-angle));
+            }
+
+            .rail-comet {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 1rem;
+                height: 1rem;
+                border-radius: 999px;
+                background: radial-gradient(
+                    circle at 35% 35%,
+                    rgba(255, 255, 255, 0.98),
+                    rgba(103, 240, 207, 0.82) 45%,
+                    rgba(106, 166, 255, 0.28) 68%,
+                    transparent 78%
+                );
+                transform: translate(-50%, -50%);
+                box-shadow:
+                    0 0 18px rgba(103, 240, 207, 0.56),
+                    0 0 36px rgba(106, 166, 255, 0.3);
+            }
+
+            .rail-comet::before {
+                content: "";
+                position: absolute;
+                right: 46%;
+                top: 50%;
+                width: 5.5rem;
+                height: 0.18rem;
+                transform: translateY(-50%);
+                border-radius: 999px;
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0.72)
+                );
+                filter: blur(2px);
+            }
+
+            .rail-node {
+                transform: translateY(-50%) rotate(var(--node-angle));
+            }
+
+            .rail-node::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 0.8rem;
+                height: 0.8rem;
+                border-radius: 999px;
+                transform: translate(-50%, -50%)
+                    scale(calc(0.72 + var(--node-active, 0.2) * 0.56));
+                background: radial-gradient(
+                    circle at 35% 35%,
+                    rgba(255, 255, 255, 1),
+                    rgba(106, 166, 255, 0.78) 46%,
+                    rgba(106, 166, 255, 0) 76%
+                );
+                opacity: calc(0.2 + var(--node-active, 0.2) * 0.92);
+                box-shadow: 0 0 18px rgba(106, 166, 255, 0.3);
+            }
+
+            .rail-node:nth-child(1) {
+                --node-angle: 116deg;
+            }
+
+            .rail-node:nth-child(2) {
+                --node-angle: 138deg;
+            }
+
+            .rail-node:nth-child(3) {
+                --node-angle: 162deg;
+            }
+
+            .rail-node:nth-child(4) {
+                --node-angle: 188deg;
+            }
+
+            .rail-node:nth-child(5) {
+                --node-angle: 214deg;
+            }
+
+            .rail-node:nth-child(6) {
+                --node-angle: 240deg;
+            }
+
             #orbital-stage,
             .planet-system,
+            #orbital-rail,
             body > section::before,
             body > section::after,
             body > section > div::before,
@@ -3310,10 +3495,106 @@
                 --section-shell-scale: 0.96;
                 --section-shell-lift: 0px;
                 --section-chapter-offset: 0px;
+                --section-band-x: 0px;
+                --section-band-y: 0px;
                 position: relative;
                 isolation: isolate;
                 padding-block: clamp(1.35rem, 3.2vw, 2.8rem);
                 overflow: visible;
+            }
+
+            body > section .chapter-parallax {
+                position: absolute;
+                inset: -8% -5%;
+                pointer-events: none;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            body > section .chapter-band {
+                position: absolute;
+                border-radius: 999px;
+                mix-blend-mode: screen;
+                opacity: calc(0.08 + var(--section-entry) * 0.42);
+                filter: blur(12px);
+            }
+
+            body > section .chapter-band.band-a {
+                top: 8%;
+                right: 8%;
+                width: clamp(14rem, 26vw, 24rem);
+                height: clamp(3rem, 5vw, 5rem);
+                background: linear-gradient(
+                    90deg,
+                    rgba(106, 166, 255, 0),
+                    rgba(106, 166, 255, 0.42),
+                    rgba(255, 255, 255, 0.78)
+                );
+                transform: translate3d(
+                        calc(var(--section-band-x) * 1.05),
+                        calc(var(--section-band-y) * -0.72),
+                        0
+                    )
+                    rotate(calc(-22deg + var(--section-entry-tilt)));
+            }
+
+            body > section .chapter-band.band-b {
+                left: -4%;
+                bottom: 16%;
+                width: clamp(10rem, 22vw, 20rem);
+                height: clamp(2.5rem, 4vw, 4rem);
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 111, 182, 0.24),
+                    rgba(255, 180, 92, 0.54)
+                );
+                transform: translate3d(
+                        calc(var(--section-band-x) * -0.62),
+                        calc(var(--section-band-y) * 0.84),
+                        0
+                    )
+                    rotate(calc(18deg - var(--section-entry-tilt) * 0.7));
+            }
+
+            body > section .chapter-band.band-c {
+                top: 34%;
+                right: 18%;
+                width: clamp(8rem, 14vw, 14rem);
+                height: clamp(8rem, 14vw, 14rem);
+                border-radius: 999px;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.48),
+                    rgba(103, 240, 207, 0.22) 36%,
+                    transparent 68%
+                );
+                transform: translate3d(
+                        calc(var(--section-band-x) * 0.45),
+                        calc(var(--section-band-y) * -0.4),
+                        0
+                    )
+                    scale(calc(0.84 + var(--section-entry) * 0.2));
+            }
+
+            body > section[data-scene="experience"] .chapter-band.band-a,
+            body > section[data-scene="projects"] .chapter-band.band-a {
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 111, 182, 0.32),
+                    rgba(255, 255, 255, 0.8)
+                );
+            }
+
+            body > section[data-scene="stack"] .chapter-band.band-b,
+            body > section[data-scene="web"] .chapter-band.band-b {
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0),
+                    rgba(106, 166, 255, 0.22),
+                    rgba(103, 240, 207, 0.62)
+                );
             }
 
             body > section::before,
@@ -3631,6 +3912,86 @@
                 min-height: 2.35rem;
             }
 
+            html.perf-lite #cursor-glow,
+            html.perf-lite .floating-aura {
+                display: none !important;
+            }
+
+            html.perf-lite .glass,
+            html.perf-lite .hero-copy,
+            html.perf-lite .hero-panel,
+            html.perf-lite body > section > div::before,
+            html.perf-lite #navbar .nav-inner {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-shadow:
+                    0 18px 46px rgba(2, 8, 23, 0.16),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.64);
+            }
+
+            html.perf-lite body > section::before,
+            html.perf-lite body > section::after {
+                filter: blur(16px);
+                opacity: calc(0.06 + var(--section-entry) * 0.36);
+            }
+
+            html.perf-lite body > section .chapter-band.band-c,
+            html.perf-lite .orbital-plane-gamma,
+            html.perf-lite .orbital-ring-three,
+            html.perf-lite .planet-ring-tertiary {
+                display: none;
+            }
+
+            html.perf-lite #orbital-rail {
+                opacity: 0.72;
+            }
+
+            @media (min-width: 1100px) {
+                header .max-w-6xl {
+                    max-width: min(84rem, calc(100% - 2rem));
+                    padding-right: clamp(10rem, 18vw, 16rem);
+                }
+
+                .hero-grid {
+                    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+                }
+
+                body > section::before {
+                    inset: 2% 10% 8% 2%;
+                }
+
+                body > section::after,
+                body > section:nth-of-type(even)::after {
+                    left: auto;
+                    right: clamp(4.5rem, 8vw, 8rem);
+                    width: clamp(16rem, 22vw, 22rem);
+                    transform: perspective(1800px) rotateX(82deg)
+                        rotateZ(
+                            calc(var(--rail-angle) * 0.28 + var(--section-entry-tilt))
+                        )
+                        scale(calc(0.76 + var(--section-entry-ring) * 0.46));
+                }
+
+                body > section > div,
+                body > section:nth-of-type(odd) > div,
+                body > section:nth-of-type(even) > div,
+                body > section:nth-of-type(1) > div,
+                body > section:nth-of-type(5) > div,
+                body > section:nth-of-type(3n) > div {
+                    width: min(66rem, calc(100% - clamp(16rem, 24vw, 23rem)));
+                    max-width: min(
+                        66rem,
+                        calc(100% - clamp(16rem, 24vw, 23rem))
+                    ) !important;
+                    margin-left: clamp(1.25rem, 5vw, 5rem);
+                    margin-right: auto;
+                }
+
+                body > section > div {
+                    padding-right: clamp(1.35rem, 2.8vw, 2.2rem);
+                }
+            }
+
             @media (min-width: 900px) {
                 .hero-grid {
                     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
@@ -3689,6 +4050,35 @@
             @media (max-width: 767px) {
                 .floating-aura {
                     display: none;
+                }
+
+                #orbital-rail {
+                    top: 6.4rem;
+                    right: -8.5rem;
+                    width: 18rem;
+                    height: 18rem;
+                    opacity: 0.52;
+                }
+
+                .rail-halo,
+                .rail-arc,
+                .rail-comet-arm,
+                .rail-nodes,
+                .rail-node {
+                    width: 18rem;
+                }
+
+                .rail-arc-inner {
+                    width: 15rem;
+                }
+
+                .rail-arc-core {
+                    width: 12rem;
+                }
+
+                .rail-node::before {
+                    width: 0.62rem;
+                    height: 0.62rem;
                 }
 
                 .hero-copy,
@@ -3854,6 +4244,25 @@
             <div class="orbital-ring orbital-ring-one"></div>
             <div class="orbital-ring orbital-ring-two"></div>
             <div class="orbital-ring orbital-ring-three"></div>
+        </div>
+        <div id="orbital-rail" aria-hidden="true">
+            <div class="rail-orbit">
+                <div class="rail-halo"></div>
+                <div class="rail-arc rail-arc-outer"></div>
+                <div class="rail-arc rail-arc-inner"></div>
+                <div class="rail-arc rail-arc-core"></div>
+                <div class="rail-comet-arm">
+                    <div class="rail-comet"></div>
+                </div>
+                <div class="rail-nodes">
+                    <span class="rail-node"></span>
+                    <span class="rail-node"></span>
+                    <span class="rail-node"></span>
+                    <span class="rail-node"></span>
+                    <span class="rail-node"></span>
+                    <span class="rail-node"></span>
+                </div>
+            </div>
         </div>
         <div class="floating-aura aura-one" aria-hidden="true"></div>
         <div class="floating-aura aura-two" aria-hidden="true"></div>
@@ -4299,7 +4708,10 @@
             </div>
         </header>
 
-        <section class="py-12 bg-white border-y border-slate-100">
+        <section
+            class="py-12 bg-white border-y border-slate-100"
+            data-scene="expertise"
+        >
             <div class="max-w-5xl mx-auto px-5">
                 <div class="reveal mb-8 text-center">
                     <h2
@@ -4437,7 +4849,7 @@
             </div>
         </section>
 
-        <section class="py-12 bg-slate-50">
+        <section class="py-12 bg-slate-50" data-scene="experience">
             <div class="max-w-5xl mx-auto px-5">
                 <h2
                     class="text-2xl font-bold text-slate-900 mb-8 text-center lang-exp-title"
@@ -4574,7 +4986,10 @@
         </section>
 
         <!-- Technical Skills Breakdown Section -->
-        <section class="py-12 bg-white border-t border-slate-100">
+        <section
+            class="py-12 bg-white border-t border-slate-100"
+            data-scene="skills"
+        >
             <div class="max-w-5xl mx-auto px-5">
                 <h2
                     class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2 reveal"
@@ -4593,7 +5008,7 @@
             </div>
         </section>
 
-        <section class="py-12 bg-white">
+        <section class="py-12 bg-white" data-scene="stack">
             <div class="max-w-5xl mx-auto px-5">
                 <h2
                     class="text-2xl font-bold text-slate-900 mb-8 text-center lang-stack-title"
@@ -5628,6 +6043,7 @@
         <section
             id="projects"
             class="py-12 bg-slate-50 border-t border-slate-200"
+            data-scene="projects"
         >
             <div class="max-w-5xl mx-auto px-5">
                 <h2
@@ -5817,7 +6233,10 @@
             </div>
         </section>
 
-        <section class="py-12 bg-white border-t border-slate-100">
+        <section
+            class="py-12 bg-white border-t border-slate-100"
+            data-scene="web"
+        >
             <div class="max-w-5xl mx-auto px-5">
                 <h2
                     class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2"
@@ -6333,9 +6752,11 @@
             let typewriterIndex = 0;
             let revealObserver;
             let orbitalSections = [];
+            let railNodes = [];
             let scrollRafId = 0;
             let lastScrollY = 0;
             let scrollVelocity = 0;
+            let performanceLite = false;
 
             const typewriterText = {
                 en: "Flutter, Node.js, CodeIgniter, Hommifix, and AI repair pricing workflows.",
@@ -6541,8 +6962,62 @@
                 });
             }
 
+            function applyPerformanceProfile() {
+                const connection =
+                    navigator.connection ||
+                    navigator.mozConnection ||
+                    navigator.webkitConnection;
+                const handheld =
+                    window.matchMedia("(max-width: 767px)").matches;
+                const lowMemory =
+                    typeof navigator.deviceMemory === "number" &&
+                    navigator.deviceMemory <= 4;
+                const lowCores =
+                    typeof navigator.hardwareConcurrency === "number" &&
+                    navigator.hardwareConcurrency <= 4;
+                const saveData = Boolean(connection && connection.saveData);
+                const reducedMotion = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                ).matches;
+
+                performanceLite =
+                    reducedMotion ||
+                    saveData ||
+                    lowMemory ||
+                    (handheld && lowCores);
+
+                document.documentElement.classList.toggle(
+                    "perf-lite",
+                    performanceLite,
+                );
+            }
+
+            function buildSectionScenes() {
+                orbitalSections.forEach((section) => {
+                    if (!section.querySelector(".chapter-parallax")) {
+                        const layer = document.createElement("div");
+                        layer.className = "chapter-parallax";
+                        layer.setAttribute("aria-hidden", "true");
+                        layer.innerHTML = `
+                            <span class="chapter-band band-a"></span>
+                            <span class="chapter-band band-b"></span>
+                            <span class="chapter-band band-c"></span>
+                        `;
+                        section.insertBefore(layer, section.firstChild);
+                    }
+                });
+
+                railNodes = Array.from(
+                    document.querySelectorAll("#orbital-rail .rail-node"),
+                );
+            }
+
             function initTilt(scope = document) {
-                if (window.matchMedia("(pointer: coarse)").matches) return;
+                if (
+                    performanceLite ||
+                    window.matchMedia("(pointer: coarse)").matches
+                )
+                    return;
 
                 scope.querySelectorAll("[data-tilt]").forEach((card) => {
                     if (card.dataset.tiltReady === "true") return;
@@ -6570,7 +7045,11 @@
             }
 
             function initMagneticButtons(scope = document) {
-                if (window.matchMedia("(pointer: coarse)").matches) return;
+                if (
+                    performanceLite ||
+                    window.matchMedia("(pointer: coarse)").matches
+                )
+                    return;
 
                 scope
                     .querySelectorAll(
@@ -6614,11 +7093,13 @@
                 orbitalSections = Array.from(
                     document.querySelectorAll("body > section"),
                 );
+                buildSectionScenes();
             }
 
             function updateOrbitalScene(progress = 0) {
                 const root = document.documentElement;
                 const viewportHeight = window.innerHeight || 1;
+                const sceneFactor = performanceLite ? 0.72 : 1;
                 const currentScrollY = window.scrollY;
                 const scrollDelta = currentScrollY - lastScrollY;
                 lastScrollY = currentScrollY;
@@ -6637,78 +7118,91 @@
                 );
                 root.style.setProperty(
                     "--scroll-angle-a",
-                    `${progress * 460}deg`,
+                    `${progress * 460 * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--scroll-angle-b",
-                    `${progress * -640}deg`,
+                    `${progress * -640 * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--scroll-angle-c",
-                    `${progress * 980}deg`,
+                    `${progress * 980 * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--scroll-angle-d",
-                    `${progress * -34}deg`,
+                    `${progress * -34 * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--scroll-shift",
-                    `${(progress - 0.5) * 180}px`,
+                    `${(progress - 0.5) * 180 * sceneFactor}px`,
                 );
                 root.style.setProperty(
                     "--stage-spin",
-                    `${progress * -18 + velocityFactor * -4}deg`,
+                    `${(progress * -18 + velocityFactor * -4) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--stage-tilt",
-                    `${-8 + orbitalWaveSlow * 5 + velocityFactor * 3}deg`,
+                    `${-8 + orbitalWaveSlow * 5 * sceneFactor + velocityFactor * 3 * sceneFactor}deg`,
+                );
+                root.style.setProperty(
+                    "--rail-angle",
+                    `${116 + progress * 124}deg`,
+                );
+                root.style.setProperty(
+                    "--rail-shift",
+                    `${(orbitalPulse * 10 + velocityFactor * 12) * sceneFactor}px`,
+                );
+                root.style.setProperty(
+                    "--rail-scale",
+                    `${1 + (1 - Math.abs(orbitalWaveSlow)) * 0.04 * sceneFactor}`,
                 );
                 root.style.setProperty(
                     "--planet-rotate",
-                    `${progress * 1960 + velocityFactor * 72}deg`,
+                    `${(progress * 1960 + velocityFactor * 72) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-rotate-alt",
-                    `${progress * 1760 + velocityFactor * 54}deg`,
+                    `${(progress * 1760 + velocityFactor * 54) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-rotate-fast",
-                    `${progress * 2240 + velocityFactor * 86}deg`,
+                    `${(progress * 2240 + velocityFactor * 86) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-rotate-rev",
-                    `${progress * -760 + velocityFactor * -42}deg`,
+                    `${(progress * -760 + velocityFactor * -42) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-roll",
-                    `${progress * 240 + velocityFactor * 24}deg`,
+                    `${(progress * 240 + velocityFactor * 24) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-ring-a",
-                    `${progress * -54 + velocityFactor * -8}deg`,
+                    `${(progress * -54 + velocityFactor * -8) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-ring-b",
-                    `${progress * 84 + velocityFactor * 10}deg`,
+                    `${(progress * 84 + velocityFactor * 10) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-ring-c",
-                    `${progress * 48 + velocityFactor * 7}deg`,
+                    `${(progress * 48 + velocityFactor * 7) * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-tilt",
-                    `${56 + orbitalWave * 8 + velocityFactor * 3}deg`,
+                    `${56 + orbitalWave * 8 * sceneFactor + velocityFactor * 3 * sceneFactor}deg`,
                 );
                 root.style.setProperty(
                     "--planet-shift-x",
-                    `${orbitalWaveSlow * 26 + velocityFactor * 12}px`,
+                    `${(orbitalWaveSlow * 26 + velocityFactor * 12) * sceneFactor}px`,
                 );
                 root.style.setProperty(
                     "--planet-shift-y",
                     `${
-                        (progress - 0.5) * 146 +
-                        orbitalPulse * 10 +
-                        velocityFactor * 16
+                        ((progress - 0.5) * 146 +
+                            orbitalPulse * 10 +
+                            velocityFactor * 16) *
+                        sceneFactor
                     }px`,
                 );
                 root.style.setProperty(
@@ -6758,13 +7252,15 @@
                         1 - Math.abs(entryProgress - 0.32) / 0.32,
                     );
                     const rotate =
-                        normalized * direction * 6.8 +
-                        orbitalWave * direction * 0.7 +
-                        velocityFactor * direction * 1.1;
+                        (normalized * direction * 6.8 +
+                            orbitalWave * direction * 0.7 +
+                            velocityFactor * direction * 1.1) *
+                        sceneFactor;
                     const shift =
-                        normalized * direction * -24 +
-                        orbitalWaveSlow * 4 +
-                        velocityFactor * 6;
+                        (normalized * direction * -24 +
+                            orbitalWaveSlow * 4 +
+                            velocityFactor * 6) *
+                        sceneFactor;
                     const glow =
                         0.28 + (1 - Math.abs(normalized)) * 0.4 + entry * 0.16;
                     const shellScale =
@@ -6772,16 +7268,29 @@
                         entry * 0.06 +
                         (1 - Math.abs(normalized)) * 0.015;
                     const shellLift =
-                        entry * 18 +
-                        (1 - Math.abs(normalized)) * 8 +
-                        Math.abs(velocityFactor) * 6;
+                        (entry * 18 +
+                            (1 - Math.abs(normalized)) * 8 +
+                            Math.abs(velocityFactor) * 6) *
+                        sceneFactor;
                     const chapterOffset =
                         direction *
                         (36 + (index % 3) * 10) *
-                        (0.72 + (1 - entry) * 0.28);
+                        (0.72 + (1 - entry) * 0.28) *
+                        sceneFactor;
                     const entryTilt =
                         direction *
-                        ((1 - entryProgress) * 12 - 4 + velocityFactor * 3);
+                        ((1 - entryProgress) * 12 - 4 + velocityFactor * 3) *
+                        sceneFactor;
+                    const bandX =
+                        (normalized * direction * -42 +
+                            entry * 28 +
+                            velocityFactor * 12) *
+                        sceneFactor;
+                    const bandY =
+                        ((0.5 - entryProgress) * 58 +
+                            orbitalPulse * 10 +
+                            velocityFactor * 9) *
+                        sceneFactor;
 
                     section.style.setProperty(
                         "--section-rotate",
@@ -6826,6 +7335,21 @@
                         "--section-chapter-offset",
                         `${chapterOffset.toFixed(1)}px`,
                     );
+                    section.style.setProperty(
+                        "--section-band-x",
+                        `${bandX.toFixed(1)}px`,
+                    );
+                    section.style.setProperty(
+                        "--section-band-y",
+                        `${bandY.toFixed(1)}px`,
+                    );
+
+                    if (railNodes[index]) {
+                        railNodes[index].style.setProperty(
+                            "--node-active",
+                            (0.2 + (1 - Math.abs(normalized)) * 0.8).toFixed(3),
+                        );
+                    }
                 });
             }
 
@@ -6846,7 +7370,11 @@
             function initCursorGlow() {
                 const glow = document.getElementById("cursor-glow");
 
-                if (!glow || window.matchMedia("(pointer: coarse)").matches) {
+                if (
+                    !glow ||
+                    performanceLite ||
+                    window.matchMedia("(pointer: coarse)").matches
+                ) {
                     return;
                 }
 
@@ -6881,18 +7409,23 @@
             );
 
             window.addEventListener("resize", () => {
+                applyPerformanceProfile();
                 scheduleScrollScene();
             });
 
             window.addEventListener("load", () => {
+                applyPerformanceProfile();
                 updateStaticLanguage();
                 renderSkills();
                 typeWriter(true);
                 reveal();
+                document
+                    .querySelectorAll("header .reveal")
+                    .forEach((element) => element.classList.add("active"));
+                initOrbitalScene();
                 initTilt();
                 initMagneticButtons();
                 initCursorGlow();
-                initOrbitalScene();
                 lastScrollY = window.scrollY;
                 syncScrollScene();
             });
