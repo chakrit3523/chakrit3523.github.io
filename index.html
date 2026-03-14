@@ -1948,6 +1948,39 @@
                     overflow-x: hidden;
                 }
 
+                #orbital-stage {
+                    inset: -18vh -34vw;
+                }
+
+                .orbital-plane-alpha {
+                    top: -4rem;
+                    right: -9rem;
+                    width: 28rem;
+                }
+
+                .orbital-plane-beta {
+                    left: -11rem;
+                    bottom: 14%;
+                    width: 20rem;
+                }
+
+                .orbital-plane-gamma,
+                .orbital-ring-three {
+                    display: none;
+                }
+
+                .orbital-ring-one {
+                    top: 16%;
+                    left: -3rem;
+                    width: 12rem;
+                }
+
+                .orbital-ring-two {
+                    right: -4rem;
+                    bottom: 8%;
+                    width: 15rem;
+                }
+
                 #navbar {
                     padding-top: 0.85rem;
                 }
@@ -2013,7 +2046,7 @@
                     width: 24rem;
                     height: 24rem;
                     inset: 0.9rem auto auto 44%;
-                    transform: translateX(-16%);
+                    transform: translateX(-16%) rotate(var(--scroll-angle-a));
                     opacity: 0.95;
                 }
 
@@ -2119,21 +2152,27 @@
                     inset: -0.8rem 0;
                     border-radius: 1.65rem;
                     background: linear-gradient(
-                        145deg,
-                        rgba(255, 255, 255, 0.94),
-                        rgba(255, 246, 252, 0.82) 48%,
-                        rgba(239, 246, 255, 0.8)
+                        150deg,
+                        rgba(255, 255, 255, 0.92),
+                        rgba(248, 244, 255, 0.8) 46%,
+                        rgba(237, 246, 255, 0.76)
                     );
                     box-shadow:
-                        0 24px 48px rgba(79, 70, 229, 0.08),
-                        0 14px 28px rgba(15, 23, 42, 0.05);
+                        0 24px 48px rgba(2, 8, 23, 0.14),
+                        0 14px 28px rgba(2, 8, 23, 0.08);
                 }
 
                 body > section > div::after {
-                    top: 0.62rem;
-                    left: 1rem;
-                    width: 7.4rem;
-                    height: 0.24rem;
+                    top: -1.25rem;
+                    right: -0.8rem;
+                    left: auto;
+                    width: 7.2rem;
+                    height: auto;
+                }
+
+                body > section:nth-of-type(even) > div::after {
+                    right: auto;
+                    left: -0.8rem;
                 }
 
                 .floating-aura {
@@ -5329,6 +5368,8 @@
             let typewriterTimer;
             let typewriterIndex = 0;
             let revealObserver;
+            let orbitalSections = [];
+            let scrollRafId = 0;
 
             const typewriterText = {
                 en: "Flutter, Node.js, CodeIgniter, Hommifix, and AI repair pricing workflows.",
@@ -5437,6 +5478,7 @@
                 renderSkills();
                 typeWriter(true);
                 reveal();
+                scheduleScrollScene();
             }
 
             function renderSkills() {
@@ -5477,6 +5519,7 @@
 
                 initTilt(container);
                 reveal();
+                scheduleScrollScene();
             }
 
             function typeWriter(reset = false) {
@@ -5598,6 +5641,83 @@
                 document
                     .getElementById("navbar")
                     .classList.toggle("nav-scrolled", window.scrollY > 18);
+                return progress;
+            }
+
+            function initOrbitalScene() {
+                orbitalSections = Array.from(
+                    document.querySelectorAll("header, body > section"),
+                );
+            }
+
+            function updateOrbitalScene(progress = 0) {
+                const root = document.documentElement;
+
+                root.style.setProperty(
+                    "--scroll-progress",
+                    progress.toFixed(4),
+                );
+                root.style.setProperty(
+                    "--scroll-angle-a",
+                    `${progress * 420}deg`,
+                );
+                root.style.setProperty(
+                    "--scroll-angle-b",
+                    `${progress * -560}deg`,
+                );
+                root.style.setProperty(
+                    "--scroll-angle-c",
+                    `${progress * 760}deg`,
+                );
+                root.style.setProperty(
+                    "--scroll-angle-d",
+                    `${progress * -24}deg`,
+                );
+                root.style.setProperty(
+                    "--scroll-shift",
+                    `${(progress - 0.5) * 180}px`,
+                );
+
+                orbitalSections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    const center = rect.top + rect.height / 2;
+                    const normalized = Math.max(
+                        -1,
+                        Math.min(
+                            1,
+                            (center - window.innerHeight / 2) /
+                                window.innerHeight,
+                        ),
+                    );
+                    const direction = index % 2 === 0 ? 1 : -1;
+                    const rotate = normalized * direction * 5.5;
+                    const shift = normalized * direction * -18;
+                    const glow = 0.36 + (1 - Math.abs(normalized)) * 0.34;
+
+                    section.style.setProperty(
+                        "--section-rotate",
+                        `${rotate}deg`,
+                    );
+                    section.style.setProperty("--section-shift", `${shift}px`);
+                    section.style.setProperty(
+                        "--section-glow",
+                        glow.toFixed(3),
+                    );
+                });
+            }
+
+            function syncScrollScene() {
+                const progress = updateScrollState();
+                updateOrbitalScene(progress);
+            }
+
+            function scheduleScrollScene() {
+                if (scrollRafId) return;
+
+                scrollRafId = requestAnimationFrame(() => {
+                    syncScrollScene();
+                    scrollRafId = 0;
+                });
             }
 
             function initCursorGlow() {
@@ -5632,10 +5752,14 @@
             window.addEventListener(
                 "scroll",
                 () => {
-                    updateScrollState();
+                    scheduleScrollScene();
                 },
                 { passive: true },
             );
+
+            window.addEventListener("resize", () => {
+                scheduleScrollScene();
+            });
 
             window.addEventListener("load", () => {
                 updateStaticLanguage();
@@ -5645,7 +5769,8 @@
                 initTilt();
                 initMagneticButtons();
                 initCursorGlow();
-                updateScrollState();
+                initOrbitalScene();
+                syncScrollScene();
             });
         </script>
     </body>
