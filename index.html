@@ -3442,9 +3442,7 @@
                     Experience & Next Move
                 </h2>
 
-
-                            
-                                        <div class="relative timeline-line pl-4 space-y-8">
+                <div class="relative timeline-line pl-4 space-y-8">
                     <div class="relative pl-8 reveal">
                         <div
                             class="absolute left-[9px] top-1.5 w-3 h-3 bg-gradient-to-br from-violet-500 to-orange-400 rounded-full border-2 border-white shadow"
@@ -3480,9 +3478,7 @@
                         </div>
                     </div>
 
-
-                            
-                                            <div class="relative pl-8 reveal">
+                    <div class="relative pl-8 reveal">
                         <div
                             class="absolute left-[9px] top-1.5 w-3 h-3 bg-blue-600 rounded-full border-2 border-white shadow"
                         ></div>
@@ -3531,11 +3527,7 @@
                         </div>
                     </div>
 
-
-                            
-                        
-                            
-                                            <div class="relative pl-8 reveal">
+                    <div class="relative pl-8 reveal">
                         <div
                             class="absolute left-[9px] top-1.5 w-3 h-3 bg-slate-400 rounded-full border-2 border-white shadow"
                         ></div>
@@ -4635,9 +4627,7 @@
             class="py-12 bg-slate-50 border-t border-slate-200"
         >
             <div class="max-w-5xl mx-auto px-5">
-cover
-                        are
-                                        <h2
+                <h2
                     class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2"
                 >
                     <i
@@ -4646,9 +4636,7 @@ cover
                     <span class="lang-projects-title">Featured Apps</span>
                 </h2>
 
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-6"
-                >
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <article
                         class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
                         data-tilt
@@ -5510,7 +5498,7 @@ cover
                 }
             }
 
-             function reveal() {
+            function reveal() {
                 const elements = document.querySelectorAll(".reveal");
 
                 if (!("IntersectionObserver" in window)) {
@@ -5539,29 +5527,12 @@ cover
 
                 elements.forEach((element) => {
                     if (element.dataset.revealReady === "true") return;
-                    
-                    
-                        
-                                            
-                        
-                        
-                        
-                                        element.dataset.revealReady = "true";
+                    element.dataset.revealReady = "true";
                     revealObserver.observe(element);
-
-                    
-                            
-                            ,
-                        
-                            
-                            ,
-                        
-                        
-                                        });
+                });
             }
 
-
-                                function initTilt(scope = document) {
+            function initTilt(scope = document) {
                 if (window.matchMedia("(pointer: coarse)").matches) return;
 
                 scope.querySelectorAll("[data-tilt]").forEach((card) => {
@@ -5622,20 +5593,12 @@ cover
                     document.documentElement.scrollHeight - window.innerHeight;
                 const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
-                    )
-                    
                 document.getElementById("scroll-progress").style.transform =
                     `scaleX(${progress})`;
-
-                    
-                    ),
-                ) ))
-                    
-                    ),
-                )                document
+                document
                     .getElementById("navbar")
                     .classList.toggle("nav-scrolled", window.scrollY > 18);
-                 }
+            }
 
             function initCursorGlow() {
                 const glow = document.getElementById("cursor-glow");
@@ -5666,11 +5629,13 @@ cover
                 });
             }
 
-            window.addEventListener("scroll", () => {
+            window.addEventListener(
+                "scroll",
+                () => {
                     updateScrollState();
-                }, {
-                passive: true,
-            });
+                },
+                { passive: true },
+            );
 
             window.addEventListener("load", () => {
                 updateStaticLanguage();
