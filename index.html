@@ -168,6 +168,11 @@
                 --scroll-shift: 0px;
                 --scroll-pull: 0px;
                 --scroll-depth: 1;
+                --solar-y: 14vh;
+                --solar-scale: 0.94;
+                --solar-tilt: -3deg;
+                --solar-intensity: 0.88;
+                --solar-reflection-shift: 0px;
             }
 
             html {
@@ -290,6 +295,127 @@
                 pointer-events: none;
                 z-index: -4;
                 animation: gridDrift 24s linear infinite;
+            }
+
+            #solar-arc {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: -2;
+                overflow: hidden;
+            }
+
+            #solar-arc::before,
+            #solar-arc::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                width: min(72rem, 140vw);
+                transform: translateX(-50%);
+                border-radius: 999px;
+                filter: blur(90px);
+            }
+
+            #solar-arc::before {
+                top: -18vh;
+                height: 44vh;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(255, 214, 138, 0.34),
+                    rgba(255, 157, 87, 0.14) 42%,
+                    transparent 72%
+                );
+                opacity: calc(0.2 + ((1 - var(--scroll-progress)) * 0.58));
+            }
+
+            #solar-arc::after {
+                bottom: -18vh;
+                height: 38vh;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(255, 138, 66, 0.26),
+                    rgba(120, 245, 233, 0.12) 44%,
+                    transparent 72%
+                );
+                opacity: calc(0.1 + (var(--scroll-progress) * 0.46));
+            }
+
+            #solar-core,
+            #solar-reflection {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #solar-core {
+                top: var(--solar-y);
+                width: min(24rem, 44vw);
+                aspect-ratio: 1;
+                border-radius: 999px;
+                background:
+                    radial-gradient(
+                        circle at 50% 46%,
+                        rgba(255, 249, 231, 0.98) 0 22%,
+                        rgba(255, 214, 138, 0.95) 32%,
+                        rgba(255, 157, 87, 0.88) 46%,
+                        rgba(255, 157, 87, 0.1) 62%,
+                        transparent 74%
+                    );
+                mix-blend-mode: screen;
+                filter: blur(0.5px) saturate(120%);
+                opacity: var(--solar-intensity);
+                box-shadow:
+                    0 0 40px rgba(255, 214, 138, 0.24),
+                    0 0 130px rgba(255, 157, 87, 0.16);
+                transform: translate(-50%, -50%) scale(var(--solar-scale))
+                    rotate(var(--solar-tilt));
+            }
+
+            #solar-core::before,
+            #solar-core::after {
+                content: "";
+                position: absolute;
+                inset: 50%;
+                border-radius: 999px;
+                transform: translate(-50%, -50%);
+            }
+
+            #solar-core::before {
+                width: 124%;
+                height: 124%;
+                border: 1px solid rgba(255, 214, 138, 0.16);
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.03),
+                    0 0 64px rgba(255, 157, 87, 0.12);
+            }
+
+            #solar-core::after {
+                width: 150%;
+                height: 150%;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 214, 138, 0.18),
+                    rgba(255, 157, 87, 0.06) 36%,
+                    transparent 70%
+                );
+                filter: blur(24px);
+            }
+
+            #solar-reflection {
+                top: calc(var(--solar-y) + 18vh + var(--solar-reflection-shift));
+                width: min(68rem, 92vw);
+                height: 20rem;
+                border-radius: 999px;
+                background:
+                    radial-gradient(
+                        ellipse at center,
+                        rgba(255, 157, 87, 0.18),
+                        rgba(120, 245, 233, 0.08) 40%,
+                        transparent 72%
+                    );
+                filter: blur(58px);
+                opacity: calc(0.08 + (var(--solar-intensity) * 0.24));
+                transform: translate(-50%, -50%) scaleY(0.55);
             }
 
             #orbital-stage {
@@ -1964,6 +2090,563 @@
                 box-shadow: var(--shadow-deep) !important;
             }
 
+            .section-heading {
+                margin: 0 auto 2.4rem;
+                max-width: 42rem;
+                text-align: center;
+            }
+
+            .section-heading .mini-kicker {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.45rem 0.9rem;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                background: rgba(255, 255, 255, 0.04);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            }
+
+            .experience-stage {
+                --section-accent: rgba(255, 214, 138, 0.18);
+                --section-accent-secondary: rgba(255, 138, 66, 0.14);
+            }
+
+            .projects-stage {
+                --section-accent: rgba(120, 245, 233, 0.2);
+                --section-accent-secondary: rgba(159, 217, 255, 0.14);
+            }
+
+            .experience-line {
+                max-width: 48rem;
+                margin: 0 auto;
+                padding-top: 0.6rem;
+            }
+
+            .experience-line::before {
+                left: 50%;
+                width: 1px;
+                transform: translateX(-50%);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 214, 138, 0.06),
+                    rgba(255, 157, 87, 0.56),
+                    rgba(120, 245, 233, 0.12)
+                );
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.03),
+                    0 0 36px rgba(255, 157, 87, 0.12);
+            }
+
+            .experience-line::after {
+                content: "";
+                position: absolute;
+                inset: 8rem 16% auto;
+                height: 22rem;
+                border-radius: 999px;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(255, 157, 87, 0.12),
+                    rgba(120, 245, 233, 0.08) 42%,
+                    transparent 74%
+                );
+                filter: blur(56px);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .experience-item {
+                position: relative;
+                padding-top: 0.8rem;
+            }
+
+            .timeline-node {
+                position: absolute;
+                left: 50%;
+                top: 0;
+                width: 1rem;
+                height: 1rem;
+                border-radius: 999px;
+                transform: translate(-50%, -50%);
+                border: 2px solid rgba(255, 255, 255, 0.28);
+                box-shadow:
+                    0 0 0 8px rgba(255, 255, 255, 0.03),
+                    0 0 24px rgba(255, 157, 87, 0.22);
+                z-index: 3;
+            }
+
+            .timeline-node-upcoming {
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 214, 138, 0.98),
+                    rgba(255, 157, 87, 0.84)
+                );
+            }
+
+            .timeline-node-current {
+                background: linear-gradient(
+                    135deg,
+                    rgba(120, 245, 233, 0.98),
+                    rgba(159, 217, 255, 0.84)
+                );
+            }
+
+            .timeline-node-foundation {
+                background: linear-gradient(
+                    135deg,
+                    rgba(215, 255, 117, 0.92),
+                    rgba(120, 245, 233, 0.72)
+                );
+            }
+
+            .timeline-card {
+                position: relative;
+                max-width: 36rem;
+                margin: 0 auto;
+                overflow: hidden;
+                padding: 1.35rem 1.35rem 1.2rem;
+                border-radius: 1.8rem;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                background:
+                    radial-gradient(
+                        circle at top right,
+                        rgba(255, 214, 138, 0.08),
+                        transparent 26%
+                    ),
+                    linear-gradient(
+                        150deg,
+                        rgba(10, 15, 22, 0.98),
+                        rgba(18, 24, 34, 0.86),
+                        rgba(5, 8, 12, 0.98)
+                    ) !important;
+                box-shadow:
+                    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                    var(--shadow-soft);
+            }
+
+            .timeline-card::before,
+            .timeline-card::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .timeline-card::before {
+                inset: 0;
+                background: linear-gradient(
+                    120deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.12) 48%,
+                    transparent 70%
+                );
+                transform: translateX(-130%);
+                animation: sheen 7.5s ease-in-out infinite;
+            }
+
+            .timeline-card::after {
+                inset: auto -10% -26% auto;
+                width: 14rem;
+                height: 14rem;
+                border-radius: 999px;
+                background: radial-gradient(
+                    circle,
+                    rgba(120, 245, 233, 0.12),
+                    transparent 72%
+                );
+            }
+
+            .timeline-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                padding-right: 3.6rem;
+            }
+
+            .timeline-date,
+            .timeline-phase {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 2rem;
+                padding: 0.45rem 0.72rem;
+                border-radius: 999px;
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            .timeline-date {
+                background: rgba(255, 255, 255, 0.08);
+                color: #e9f2fb;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .timeline-phase {
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 157, 87, 0.24),
+                    rgba(120, 245, 233, 0.18)
+                );
+                color: #fdfefe;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .timeline-index {
+                position: absolute;
+                top: 1.1rem;
+                right: 1.2rem;
+                font-family: "Chakra Petch", "Anuphan", sans-serif;
+                font-size: 3rem;
+                line-height: 1;
+                color: rgba(255, 255, 255, 0.08);
+                letter-spacing: -0.06em;
+            }
+
+            .timeline-stack {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.48rem;
+                margin: 0 0 0.9rem;
+            }
+
+            .timeline-stack span {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.42rem 0.72rem;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.09);
+                color: #d9e6f5;
+                font-size: 0.68rem;
+                font-weight: 600;
+            }
+
+            .projects-grid {
+                align-items: stretch;
+            }
+
+            .project-card {
+                position: relative;
+                min-height: 100%;
+            }
+
+            .project-card::after {
+                content: "";
+                position: absolute;
+                inset: auto 10% -18% 10%;
+                height: 8rem;
+                border-radius: 999px;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(255, 157, 87, 0.12),
+                    rgba(120, 245, 233, 0.1) 42%,
+                    transparent 76%
+                );
+                filter: blur(34px);
+                opacity: 0.55;
+                pointer-events: none;
+            }
+
+            .project-shell {
+                height: 100%;
+            }
+
+            .project-topline {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.9rem;
+            }
+
+            .project-index {
+                font-family: "Chakra Petch", "Anuphan", sans-serif;
+                font-size: 0.76rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #7e94aa;
+            }
+
+            .project-ribbon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.45rem 0.78rem;
+                border-radius: 999px;
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 157, 87, 0.18),
+                    rgba(120, 245, 233, 0.16)
+                );
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                color: #edf6ff;
+                font-size: 0.66rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            .project-copy {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .project-copy h3,
+            .project-copy p,
+            .project-links,
+            .project-tags {
+                position: relative;
+                z-index: 1;
+            }
+
+            .project-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .project-tags span {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.4rem 0.7rem;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: #dbe7f6;
+                font-size: 0.66rem;
+                font-weight: 600;
+            }
+
+            .project-links {
+                margin-top: auto;
+            }
+
+            .media-shell {
+                position: relative;
+                isolation: isolate;
+                overflow: hidden;
+                background:
+                    radial-gradient(
+                        circle at top left,
+                        rgba(255, 255, 255, 0.06),
+                        transparent 24%
+                    ),
+                    linear-gradient(
+                        145deg,
+                        rgba(8, 12, 18, 0.98),
+                        rgba(18, 24, 34, 0.84),
+                        rgba(4, 6, 9, 0.98)
+                    );
+            }
+
+            .media-asset {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition:
+                    opacity 220ms ease,
+                    transform 320ms ease;
+            }
+
+            .media-fallback {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 1rem;
+                opacity: 1;
+                transition:
+                    opacity 220ms ease,
+                    transform 320ms ease;
+            }
+
+            .media-shell.media-loaded .media-fallback {
+                opacity: 0;
+                transform: scale(1.04);
+            }
+
+            .media-shell.media-loaded .media-asset {
+                transform: scale(1.02);
+            }
+
+            .media-shell.media-missing .media-asset {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .profile-media .media-fallback {
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                gap: 0.4rem;
+                padding: 1.2rem;
+            }
+
+            .media-fallback-portrait span {
+                display: inline-grid;
+                place-items: center;
+                width: 4rem;
+                height: 4rem;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 157, 87, 0.2),
+                    rgba(120, 245, 233, 0.14)
+                );
+                font-family: "Chakra Petch", "Anuphan", sans-serif;
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: #f7fbff;
+            }
+
+            .media-fallback-portrait strong {
+                font-size: 0.82rem;
+                color: #f2f7ff;
+            }
+
+            .media-fallback-portrait p {
+                font-size: 0.7rem;
+                line-height: 1.55;
+                color: #90a4b8;
+            }
+
+            .project-art {
+                position: relative;
+                border-radius: 1.6rem;
+            }
+
+            .project-art::before,
+            .project-art::after {
+                content: "";
+                position: absolute;
+                inset: auto;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .project-art::before {
+                top: 1rem;
+                left: 1rem;
+                width: 4.25rem;
+                height: 4.25rem;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            }
+
+            .project-art::after {
+                right: -0.8rem;
+                bottom: -0.8rem;
+                width: 7rem;
+                height: 7rem;
+                border-radius: 999px;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.08),
+                    transparent 70%
+                );
+                filter: blur(8px);
+            }
+
+            .project-fallback {
+                text-align: left;
+            }
+
+            .project-fallback span,
+            .project-fallback p {
+                color: #d8e5f4;
+            }
+
+            .project-fallback span {
+                font-size: 0.68rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                opacity: 0.88;
+            }
+
+            .project-fallback strong {
+                font-family: "Chakra Petch", "Anuphan", sans-serif;
+                font-size: clamp(2.4rem, 6vw, 3.6rem);
+                line-height: 1;
+                color: #f7fbff;
+                text-shadow: 0 0 34px rgba(255, 255, 255, 0.08);
+            }
+
+            .project-fallback p {
+                font-size: 0.78rem;
+                line-height: 1.55;
+                max-width: 11rem;
+            }
+
+            .art-worksite {
+                background:
+                    radial-gradient(
+                        circle at 18% 20%,
+                        rgba(255, 157, 87, 0.24),
+                        transparent 24%
+                    ),
+                    linear-gradient(
+                        145deg,
+                        rgba(22, 18, 14, 0.92),
+                        rgba(16, 29, 33, 0.86),
+                        rgba(8, 12, 18, 0.98)
+                    );
+            }
+
+            .art-ismart {
+                background:
+                    radial-gradient(
+                        circle at 78% 22%,
+                        rgba(159, 217, 255, 0.2),
+                        transparent 24%
+                    ),
+                    linear-gradient(
+                        145deg,
+                        rgba(10, 16, 28, 0.94),
+                        rgba(18, 28, 40, 0.86),
+                        rgba(8, 12, 18, 0.98)
+                    );
+            }
+
+            .art-khaowai {
+                background:
+                    radial-gradient(
+                        circle at 82% 18%,
+                        rgba(255, 214, 138, 0.22),
+                        transparent 22%
+                    ),
+                    linear-gradient(
+                        145deg,
+                        rgba(18, 13, 10, 0.92),
+                        rgba(28, 23, 18, 0.86),
+                        rgba(8, 12, 18, 0.98)
+                    );
+            }
+
+            .art-petword {
+                background:
+                    radial-gradient(
+                        circle at 22% 22%,
+                        rgba(215, 255, 117, 0.2),
+                        transparent 24%
+                    ),
+                    linear-gradient(
+                        145deg,
+                        rgba(12, 16, 10, 0.92),
+                        rgba(19, 28, 20, 0.86),
+                        rgba(8, 12, 18, 0.98)
+                    );
+            }
+
             footer {
                 margin-top: 2.5rem;
                 overflow: hidden;
@@ -3127,12 +3810,105 @@
                         inset 0 1px 0 rgba(255, 255, 255, 0.08),
                         0 14px 30px rgba(0, 0, 0, 0.2);
                 }
+
+                #solar-core {
+                    width: min(18rem, 76vw);
+                }
+
+                #solar-reflection {
+                    width: min(28rem, 100vw);
+                    height: 12rem;
+                }
+
+                .section-heading {
+                    margin-bottom: 1.7rem;
+                }
+
+                .experience-line::before {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                .experience-line::after {
+                    inset: 9rem 8% auto;
+                    height: 16rem;
+                }
+
+                .experience-item {
+                    padding-top: 0.9rem;
+                }
+
+                .timeline-card {
+                    padding: 1.1rem 1rem 1rem;
+                    border-radius: 1.45rem;
+                }
+
+                .timeline-head {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    padding-right: 0;
+                }
+
+                .timeline-date,
+                .timeline-phase {
+                    width: 100%;
+                    justify-content: flex-start;
+                    font-size: 0.62rem;
+                }
+
+                .timeline-index {
+                    top: 1rem;
+                    right: 1rem;
+                    font-size: 2.25rem;
+                }
+
+                .timeline-stack {
+                    gap: 0.38rem;
+                }
+
+                .timeline-stack span {
+                    font-size: 0.62rem;
+                    padding: 0.36rem 0.62rem;
+                }
+
+                .project-topline {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.55rem;
+                }
+
+                #projects article .w-20.h-20 {
+                    width: 100%;
+                    height: 12rem;
+                }
+
+                .project-ribbon {
+                    font-size: 0.6rem;
+                    letter-spacing: 0.1em;
+                }
+
+                .project-fallback {
+                    padding: 0.9rem;
+                }
+
+                .project-fallback strong {
+                    font-size: 2.55rem;
+                }
+
+                .project-fallback p {
+                    max-width: 9.5rem;
+                    font-size: 0.72rem;
+                }
+
+                .project-tags span {
+                    font-size: 0.62rem;
+                }
             }
 
             @media (min-width: 640px) {
                 #projects article .w-20.h-20 {
-                    width: 6rem;
-                    height: 6rem;
+                    width: 100%;
+                    height: 13.5rem;
                 }
             }
 
@@ -3166,6 +3942,10 @@
     >
         <div id="scroll-progress"></div>
         <div id="cursor-glow" aria-hidden="true"></div>
+        <div id="solar-arc" aria-hidden="true">
+            <div id="solar-core"></div>
+            <div id="solar-reflection"></div>
+        </div>
         <div id="orbital-stage" aria-hidden="true">
             <div class="orbital-plane orbital-plane-alpha"></div>
             <div class="orbital-plane orbital-plane-beta"></div>
@@ -3450,8 +4230,31 @@
                                     class="profile-overview-grid grid gap-4 md:grid-cols-[0.82fr_1.18fr]"
                                 >
                                     <div class="portrait-card">
-                                        <div class="portrait-frame">
-                                            <img src="boat.png" alt="Chakrit" />
+                                        <div
+                                            class="portrait-frame media-shell profile-media"
+                                        >
+                                            <div
+                                                class="media-fallback media-fallback-portrait"
+                                                aria-hidden="true"
+                                            >
+                                                <span>CS</span>
+                                                <strong
+                                                    data-en="UX / UI Gravity"
+                                                    data-th="UX / UI Gravity"
+                                                    >UX / UI Gravity</strong
+                                                >
+                                                <p
+                                                    data-en="Symmetry + production taste"
+                                                    data-th="สมมาตร + กลิ่นอายงาน production"
+                                                >
+                                                    Symmetry + production taste
+                                                </p>
+                                            </div>
+                                            <img
+                                                src="boat.png"
+                                                alt="Chakrit"
+                                                class="media-asset"
+                                            />
                                         </div>
                                         <div>
                                             <span
@@ -3757,34 +4560,66 @@
             </div>
         </section>
 
-        <section class="py-12 bg-slate-50">
+        <section id="experience" class="experience-stage py-12 bg-slate-50">
             <div class="max-w-5xl mx-auto px-5">
-                <h2
-                    class="text-2xl font-bold text-slate-900 mb-8 text-center lang-exp-title"
-                >
-                    Experience & Next Move
-                </h2>
+                <div class="section-heading reveal" data-reveal-style="lift-up">
+                    <p
+                        class="mini-kicker"
+                        data-en="Career Trajectory"
+                        data-th="เส้นทางการทำงาน"
+                    >
+                        Career Trajectory
+                    </p>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mt-3 lang-exp-title"
+                    >
+                        Experience & Next Move
+                    </h2>
+                    <p
+                        class="text-sm text-slate-500 mt-3 max-w-2xl mx-auto"
+                        data-en="A centered timeline from internship foundations to production ownership and the next orbit."
+                        data-th="ไทม์ไลน์แบบสมมาตรตั้งแต่รากฐานช่วงฝึกงาน ไปจนถึงการรับผิดชอบงาน production และวงโคจรถัดไป"
+                    >
+                        A centered timeline from internship foundations to
+                        production ownership and the next orbit.
+                    </p>
+                </div>
 
-                <div class="relative timeline-line pl-4 space-y-8">
-                    <div class="relative pl-8 reveal">
+                <div class="relative timeline-line experience-line space-y-10">
+                    <div
+                        class="experience-item relative reveal"
+                        data-reveal-style="sink-in"
+                    >
+                        <div class="timeline-node timeline-node-upcoming"></div>
                         <div
-                            class="absolute left-[9px] top-1.5 w-3 h-3 bg-gradient-to-br from-violet-500 to-orange-400 rounded-full border-2 border-white shadow"
-                        ></div>
-                        <div
-                            class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
+                            class="timeline-card bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
                         >
-                            <span
-                                class="text-[10px] font-bold text-violet-700 bg-violet-50 px-2 py-1 rounded"
-                                data-en="Starts Apr 1, 2026"
-                                data-th="เริ่ม 1 เม.ย. 2026"
-                                >Starts Apr 1, 2026</span
-                            >
+                            <span class="timeline-index">01</span>
+                            <div class="timeline-head">
+                                <span
+                                    class="timeline-date"
+                                    data-en="Starts Apr 1, 2026"
+                                    data-th="เริ่ม 1 เม.ย. 2026"
+                                    >Starts Apr 1, 2026</span
+                                >
+                                <span
+                                    class="timeline-phase"
+                                    data-en="Next Orbit"
+                                    data-th="วงโคจรถัดไป"
+                                    >Next Orbit</span
+                                >
+                            </div>
                             <h3 class="text-base font-bold text-slate-900 mt-2">
                                 Mobile Developer Effective
                             </h3>
                             <p class="text-xs text-slate-500 font-medium mb-3">
                                 Seamless Co., Ltd.
                             </p>
+                            <div class="timeline-stack">
+                                <span>Hommifix</span>
+                                <span>AI Repair Pricing</span>
+                                <span>Mobile UX</span>
+                            </div>
                             <ul
                                 class="text-xs text-slate-600 space-y-1.5 list-disc pl-4 lang-exp-upcoming"
                             >
@@ -3801,23 +4636,35 @@
                         </div>
                     </div>
 
-                    <div class="relative pl-8 reveal">
+                    <div
+                        class="experience-item relative reveal"
+                        data-reveal-style="pull-left"
+                    >
+                        <div class="timeline-node timeline-node-current"></div>
                         <div
-                            class="absolute left-[9px] top-1.5 w-3 h-3 bg-blue-600 rounded-full border-2 border-white shadow"
-                        ></div>
-                        <div
-                            class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
+                            class="timeline-card bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
                         >
-                            <span
-                                class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded"
-                                >2024 - 2026</span
-                            >
+                            <span class="timeline-index">02</span>
+                            <div class="timeline-head">
+                                <span class="timeline-date">2024 - 2026</span>
+                                <span
+                                    class="timeline-phase"
+                                    data-en="Production Arc"
+                                    data-th="ช่วง production"
+                                    >Production Arc</span
+                                >
+                            </div>
                             <h3 class="text-base font-bold text-slate-900 mt-2">
                                 Full Stack Developer
                             </h3>
                             <p class="text-xs text-slate-500 font-medium mb-3">
                                 City Variety Corporation Co., Ltd.
                             </p>
+                            <div class="timeline-stack">
+                                <span>Flutter</span>
+                                <span>Realtime Systems</span>
+                                <span>Legacy Modernization</span>
+                            </div>
                             <ul
                                 class="text-xs text-slate-600 space-y-1.5 list-disc pl-4 lang-exp-current"
                             >
@@ -3850,23 +4697,37 @@
                         </div>
                     </div>
 
-                    <div class="relative pl-8 reveal">
+                    <div
+                        class="experience-item relative reveal"
+                        data-reveal-style="pull-right"
+                    >
                         <div
-                            class="absolute left-[9px] top-1.5 w-3 h-3 bg-slate-400 rounded-full border-2 border-white shadow"
+                            class="timeline-node timeline-node-foundation"
                         ></div>
                         <div
-                            class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
+                            class="timeline-card bg-white p-5 rounded-2xl shadow-sm border border-slate-100"
                         >
-                            <span
-                                class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded"
-                                >2023 - 2024</span
-                            >
+                            <span class="timeline-index">03</span>
+                            <div class="timeline-head">
+                                <span class="timeline-date">2023 - 2024</span>
+                                <span
+                                    class="timeline-phase"
+                                    data-en="Foundation"
+                                    data-th="รากฐาน"
+                                    >Foundation</span
+                                >
+                            </div>
                             <h3 class="text-base font-bold text-slate-900 mt-2">
                                 Developer Intern
                             </h3>
                             <p class="text-xs text-slate-500 font-medium mb-3">
                                 City Variety Corporation Co., Ltd.
                             </p>
+                            <div class="timeline-stack">
+                                <span>Clean Logic</span>
+                                <span>Emergency Web</span>
+                                <span>Petword Early Build</span>
+                            </div>
                             <ul
                                 class="text-xs text-slate-600 space-y-1.5 list-disc pl-4 lang-exp-intern"
                             >
@@ -4947,34 +5808,81 @@
 
         <section
             id="projects"
-            class="py-12 bg-slate-50 border-t border-slate-200"
+            class="projects-stage py-12 bg-slate-50 border-t border-slate-200"
         >
             <div class="max-w-5xl mx-auto px-5">
-                <h2
-                    class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2"
-                >
-                    <i
-                        class="fa-solid fa-mobile-screen-button text-blue-600"
-                    ></i>
-                    <span class="lang-projects-title">Featured Apps</span>
-                </h2>
+                <div class="section-heading reveal" data-reveal-style="lift-up">
+                    <p
+                        class="mini-kicker"
+                        data-en="Launch Gallery"
+                        data-th="แกลเลอรีแอปที่ปล่อยจริง"
+                    >
+                        Launch Gallery
+                    </p>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mt-3 flex items-center justify-center gap-2"
+                    >
+                        <i
+                            class="fa-solid fa-mobile-screen-button text-blue-600"
+                        ></i>
+                        <span class="lang-projects-title">Featured Apps</span>
+                    </h2>
+                    <p
+                        class="text-sm text-slate-500 mt-3 max-w-2xl mx-auto"
+                        data-en="App cases shaped as a balanced showcase wall, with cover art that gracefully falls back when source assets are missing."
+                        data-th="งานแอปที่จัดวางแบบสมมาตรเหมือน showcase wall และมี fallback artwork ให้ยังสวยแม้ไฟล์ภาพต้นทางหาย"
+                    >
+                        App cases shaped as a balanced showcase wall, with cover
+                        art that gracefully falls back when source assets are
+                        missing.
+                    </p>
+                </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div
+                    class="projects-grid grid grid-cols-1 lg:grid-cols-2 gap-6"
+                >
                     <article
-                        class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        class="project-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        data-reveal-style="pull-left"
                         data-tilt
                     >
-                        <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="project-shell flex flex-col gap-4 h-full">
+                            <div class="project-topline">
+                                <span class="project-index">01</span>
+                                <span
+                                    class="project-ribbon"
+                                    data-en="Enterprise Flow"
+                                    data-th="ระบบองค์กร"
+                                    >Enterprise Flow</span
+                                >
+                            </div>
                             <div
-                                class="w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
+                                class="project-art media-shell art-worksite w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
                             >
+                                <div
+                                    class="media-fallback project-fallback"
+                                    aria-hidden="true"
+                                >
+                                    <span
+                                        data-en="Enterprise Ops"
+                                        data-th="งานภาคสนามองค์กร"
+                                        >Enterprise Ops</span
+                                    >
+                                    <strong>WS</strong>
+                                    <p
+                                        data-en="Migration / Workforce"
+                                        data-th="Migration / Workforce"
+                                    >
+                                        Migration / Workforce
+                                    </p>
+                                </div>
                                 <img
                                     src="400x400ia-75.jpg"
                                     alt="Worksite"
-                                    class="w-full h-full object-cover"
+                                    class="w-full h-full object-cover media-asset"
                                 />
                             </div>
-                            <div class="flex-1 min-w-0">
+                            <div class="project-copy flex-1 min-w-0">
                                 <h3
                                     class="text-lg font-bold text-slate-900 truncate"
                                 >
@@ -4986,7 +5894,12 @@
                                     Workforce management. Migrated from Flutter
                                     2 to 3.
                                 </p>
-                                <div class="flex gap-2">
+                                <div class="project-tags">
+                                    <span>Migration</span>
+                                    <span>Ops Platform</span>
+                                    <span>Release</span>
+                                </div>
+                                <div class="project-links flex gap-2">
                                     <a
                                         href="https://apps.apple.com/th/app/worksite/id1447497133"
                                         target="_blank"
@@ -5005,20 +5918,47 @@
                     </article>
 
                     <article
-                        class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        class="project-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        data-reveal-style="pull-right"
                         data-tilt
                     >
-                        <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="project-shell flex flex-col gap-4 h-full">
+                            <div class="project-topline">
+                                <span class="project-index">02</span>
+                                <span
+                                    class="project-ribbon"
+                                    data-en="Secure Access"
+                                    data-th="ระบบยืนยันตัวตน"
+                                    >Secure Access</span
+                                >
+                            </div>
                             <div
-                                class="w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
+                                class="project-art media-shell art-ismart w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
                             >
+                                <div
+                                    class="media-fallback project-fallback"
+                                    aria-hidden="true"
+                                >
+                                    <span
+                                        data-en="Identity Layer"
+                                        data-th="ชั้นยืนยันตัวตน"
+                                        >Identity Layer</span
+                                    >
+                                    <strong>IS</strong>
+                                    <p
+                                        data-en="Secure / Polished UX"
+                                        data-th="ปลอดภัย / UX ลื่น"
+                                    >
+                                        Secure / Polished UX
+                                    </p>
+                                </div>
                                 <img
                                     src="400x400bb-75.jpg"
                                     alt="iSmartLogin"
-                                    class="w-full h-full object-cover"
+                                    class="w-full h-full object-cover media-asset"
                                 />
                             </div>
-                            <div class="flex-1 min-w-0">
+                            <div class="project-copy flex-1 min-w-0">
                                 <h3
                                     class="text-lg font-bold text-slate-900 truncate"
                                 >
@@ -5029,7 +5969,12 @@
                                 >
                                     Secure authentication system. Updated UI/UX.
                                 </p>
-                                <div class="flex gap-2">
+                                <div class="project-tags">
+                                    <span>Auth</span>
+                                    <span>Refactor</span>
+                                    <span>UX Refresh</span>
+                                </div>
+                                <div class="project-links flex gap-2">
                                     <a
                                         href="https://apps.apple.com/th/app/ismartlogin/id1561564431"
                                         target="_blank"
@@ -5048,20 +5993,47 @@
                     </article>
 
                     <article
-                        class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        class="project-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        data-reveal-style="pull-left"
                         data-tilt
                     >
-                        <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="project-shell flex flex-col gap-4 h-full">
+                            <div class="project-topline">
+                                <span class="project-index">03</span>
+                                <span
+                                    class="project-ribbon"
+                                    data-en="Live News Pulse"
+                                    data-th="ข่าวเรียลไทม์"
+                                    >Live News Pulse</span
+                                >
+                            </div>
                             <div
-                                class="w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
+                                class="project-art media-shell art-khaowai w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
                             >
+                                <div
+                                    class="media-fallback project-fallback"
+                                    aria-hidden="true"
+                                >
+                                    <span
+                                        data-en="Realtime Push"
+                                        data-th="แจ้งเตือนสด"
+                                        >Realtime Push</span
+                                    >
+                                    <strong>KW</strong>
+                                    <p
+                                        data-en="News / Badge / Velocity"
+                                        data-th="News / Badge / Velocity"
+                                    >
+                                        News / Badge / Velocity
+                                    </p>
+                                </div>
                                 <img
                                     src="400x400bb-76.jpg"
                                     alt="Khao Wai"
-                                    class="w-full h-full object-cover"
+                                    class="w-full h-full object-cover media-asset"
                                 />
                             </div>
-                            <div class="flex-1 min-w-0">
+                            <div class="project-copy flex-1 min-w-0">
                                 <h3
                                     class="text-lg font-bold text-slate-900 truncate"
                                 >
@@ -5072,7 +6044,12 @@
                                 >
                                     Fast news app with Real-time Push & Badges.
                                 </p>
-                                <div class="flex gap-2">
+                                <div class="project-tags">
+                                    <span>Realtime</span>
+                                    <span>Push</span>
+                                    <span>Badges</span>
+                                </div>
+                                <div class="project-links flex gap-2">
                                     <a
                                         href="https://apps.apple.com/th/app/%E0%B8%82-%E0%B8%B2%E0%B8%A7%E0%B9%84%E0%B8%A7-khao-wai/id6742871320"
                                         target="_blank"
@@ -5091,20 +6068,47 @@
                     </article>
 
                     <article
-                        class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        class="project-card bg-white rounded-2xl p-5 shadow-sm border border-slate-100 reveal"
+                        data-reveal-style="pull-right"
                         data-tilt
                     >
-                        <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="project-shell flex flex-col gap-4 h-full">
+                            <div class="project-topline">
+                                <span class="project-index">04</span>
+                                <span
+                                    class="project-ribbon"
+                                    data-en="Game Realtime"
+                                    data-th="เกมเรียลไทม์"
+                                    >Game Realtime</span
+                                >
+                            </div>
                             <div
-                                class="w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
+                                class="project-art media-shell art-petword w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-slate-100 shadow-sm"
                             >
+                                <div
+                                    class="media-fallback project-fallback"
+                                    aria-hidden="true"
+                                >
+                                    <span
+                                        data-en="Virtual Pet Arena"
+                                        data-th="สนามสัตว์เลี้ยงเสมือน"
+                                        >Virtual Pet Arena</span
+                                    >
+                                    <strong>PW</strong>
+                                    <p
+                                        data-en="Battle / Ranking / Play"
+                                        data-th="Battle / Ranking / Play"
+                                    >
+                                        Battle / Ranking / Play
+                                    </p>
+                                </div>
                                 <img
                                     src="petword.jpg"
                                     alt="Petword"
-                                    class="w-full h-full object-cover"
+                                    class="w-full h-full object-cover media-asset"
                                 />
                             </div>
-                            <div class="flex-1 min-w-0">
+                            <div class="project-copy flex-1 min-w-0">
                                 <h3
                                     class="text-lg font-bold text-slate-900 truncate"
                                 >
@@ -5116,7 +6120,12 @@
                                     Vocab learning with Virtual Pets & Battle
                                     Realtime.
                                 </p>
-                                <div class="flex gap-2">
+                                <div class="project-tags">
+                                    <span>Nakama</span>
+                                    <span>Battle</span>
+                                    <span>Gamified UX</span>
+                                </div>
+                                <div class="project-links flex gap-2">
                                     <a
                                         href="https://apps.apple.com/th/app/%E0%B8%97-%E0%B8%AD%E0%B8%87%E0%B8%A8-%E0%B8%9E%E0%B8%97-petword/id6504467794"
                                         target="_blank"
@@ -5907,6 +6916,41 @@
                     });
             }
 
+            function initMediaFallbacks(scope = document) {
+                scope.querySelectorAll(".media-shell").forEach((shell) => {
+                    if (shell.dataset.mediaReady === "true") return;
+
+                    shell.dataset.mediaReady = "true";
+                    const img = shell.querySelector("img");
+
+                    if (!img) {
+                        shell.classList.add("media-missing");
+                        return;
+                    }
+
+                    const markLoaded = () => {
+                        shell.classList.add("media-loaded");
+                        shell.classList.remove("media-missing");
+                    };
+
+                    const markMissing = () => {
+                        shell.classList.remove("media-loaded");
+                        shell.classList.add("media-missing");
+                    };
+
+                    img.addEventListener("load", markLoaded, { once: true });
+                    img.addEventListener("error", markMissing, { once: true });
+
+                    if (img.complete) {
+                        if (img.naturalWidth > 0) {
+                            markLoaded();
+                        } else {
+                            markMissing();
+                        }
+                    }
+                });
+            }
+
             function updateGravityShells() {
                 const prefersReducedMotion = window.matchMedia(
                     "(prefers-reduced-motion: reduce)",
@@ -6035,6 +7079,10 @@
                 const shiftRange = isMobile ? 36 : 84;
                 const pullRange = isMobile ? 16 : 28;
                 const scrollPull = Math.sin(progress * Math.PI) * pullRange;
+                const solarY = 14 + progress * 66;
+                const solarScale = 0.92 + Math.sin(progress * Math.PI) * 0.16;
+                const solarIntensity =
+                    0.78 + Math.sin(progress * Math.PI) * 0.14;
                 const root = document.documentElement;
 
                 document.getElementById("scroll-progress").style.transform =
@@ -6070,6 +7118,20 @@
                 root.style.setProperty(
                     "--scroll-angle-d",
                     `${(-progress * 64).toFixed(2)}deg`,
+                );
+                root.style.setProperty("--solar-y", `${solarY.toFixed(2)}vh`);
+                root.style.setProperty("--solar-scale", solarScale.toFixed(3));
+                root.style.setProperty(
+                    "--solar-tilt",
+                    `${(-4 + progress * 8).toFixed(2)}deg`,
+                );
+                root.style.setProperty(
+                    "--solar-intensity",
+                    solarIntensity.toFixed(3),
+                );
+                root.style.setProperty(
+                    "--solar-reflection-shift",
+                    `${(progress * 34).toFixed(2)}px`,
                 );
                 document
                     .getElementById("navbar")
@@ -6126,6 +7188,7 @@
             window.addEventListener("load", () => {
                 updateStaticLanguage();
                 initGravityShells();
+                initMediaFallbacks();
                 renderSkills();
                 typeWriter(true);
                 reveal();
