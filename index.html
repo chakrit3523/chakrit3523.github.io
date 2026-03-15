@@ -1920,6 +1920,125 @@
                 min-height: 100%;
             }
 
+            .ai-visual-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .ai-visual-card,
+            .ai-detail-card {
+                position: relative;
+                overflow: hidden;
+                border-radius: 1.7rem;
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.7),
+                    rgba(251, 248, 242, 0.88)
+                );
+                box-shadow: 0 18px 40px rgba(59, 94, 136, 0.1);
+            }
+
+            .ai-visual-card {
+                padding: 1rem;
+                display: grid;
+                gap: 0.8rem;
+            }
+
+            .ai-media {
+                position: relative;
+                min-height: 16rem;
+                border-radius: 1.3rem;
+                border: 1px solid rgba(255, 255, 255, 0.84);
+                background: linear-gradient(
+                    180deg,
+                    rgba(224, 245, 255, 0.8),
+                    rgba(255, 245, 232, 0.82)
+                );
+                overflow: hidden;
+            }
+
+            .ai-gif {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .ai-fallback {
+                gap: 0.5rem;
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 238, 210, 0.72),
+                    rgba(210, 241, 255, 0.76)
+                );
+                border-radius: 1.2rem;
+            }
+
+            .ai-fallback strong {
+                font-size: 1.25rem;
+                color: var(--ink-strong);
+            }
+
+            .ai-fallback span {
+                font-size: 0.88rem;
+                color: var(--ink-soft);
+            }
+
+            .ai-detail-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1rem;
+            }
+
+            .ai-detail-card {
+                padding: 1.1rem;
+                display: grid;
+                gap: 0.65rem;
+                align-content: start;
+            }
+
+            .ai-detail-card h3 {
+                margin: 0;
+                font-size: 1.05rem;
+                line-height: 1.25;
+                color: var(--ink-strong);
+            }
+
+            .ai-list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: grid;
+                gap: 0.6rem;
+            }
+
+            .ai-list li {
+                position: relative;
+                margin: 0;
+                padding-left: 1rem;
+                color: var(--ink-soft);
+                font-size: 0.92rem;
+                line-height: 1.55;
+            }
+
+            .ai-list li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.47rem;
+                width: 0.4rem;
+                height: 0.4rem;
+                border-radius: 999px;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent),
+                    var(--secondary)
+                );
+                box-shadow: 0 0 0 0.2rem rgba(255, 204, 152, 0.26);
+            }
+
             .projects-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -2382,6 +2501,14 @@
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
 
+                .ai-detail-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .ai-detail-card:last-child {
+                    grid-column: 1 / -1;
+                }
+
                 .footer-grid {
                     grid-template-columns: 1fr;
                 }
@@ -2416,7 +2543,9 @@
                 .projects-grid,
                 .web-grid,
                 .expertise-grid,
-                .hero-stats {
+                .hero-stats,
+                .ai-visual-grid,
+                .ai-detail-grid {
                     grid-template-columns: 1fr;
                 }
 
@@ -2440,11 +2569,12 @@
 
                 .nav-links {
                     grid-column: 1 / -1;
-                    display: grid;
-                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: nowrap;
                     gap: 0.35rem;
-                    overflow: visible;
-                    padding-bottom: 0;
+                    overflow-x: auto;
+                    padding-bottom: 0.12rem;
                 }
 
                 .nav-links::-webkit-scrollbar {
@@ -2452,8 +2582,9 @@
                 }
 
                 .nav-link {
-                    min-width: 0;
-                    padding: 0.62rem 0.38rem;
+                    flex: 0 0 auto;
+                    min-width: max-content;
+                    padding: 0.62rem 0.58rem;
                     font-size: 0.62rem;
                     letter-spacing: 0.04em;
                 }
@@ -2565,6 +2696,18 @@
 
                 .project-stage {
                     min-height: 16rem;
+                }
+
+                .ai-media {
+                    min-height: 13.5rem;
+                }
+
+                .ai-detail-card h3 {
+                    font-size: 0.98rem;
+                }
+
+                .ai-list li {
+                    font-size: 0.88rem;
                 }
 
                 .app-icon-stage {
@@ -2931,6 +3074,102 @@
                 </div>
             </section>
 
+            <section class="section-wrap" id="ai-system">
+                <div class="container">
+                    <div class="section-shell accent-warm">
+                        <div class="section-heading reveal" data-reveal="up">
+                            <span id="ai-kicker" class="section-kicker"></span>
+                            <h2 id="ai-title"></h2>
+                            <p id="ai-intro"></p>
+                        </div>
+
+                        <div class="ai-visual-grid">
+                            <article
+                                class="ai-visual-card reveal"
+                                data-reveal="left"
+                            >
+                                <span
+                                    id="ai-visual-one-title"
+                                    class="card-kicker"
+                                ></span>
+                                <div class="ai-media media-shell">
+                                    <div class="media-fallback ai-fallback">
+                                        <strong>AI Workflow</strong>
+                                        <span
+                                            >Input -> Estimate -> Explain</span
+                                        >
+                                    </div>
+                                    <img
+                                        src="Downloads/S__20766722.gif"
+                                        alt="AI repair workflow gif"
+                                        class="media-asset ai-gif"
+                                    />
+                                </div>
+                            </article>
+                            <article
+                                class="ai-visual-card reveal delay-1"
+                                data-reveal="right"
+                            >
+                                <span
+                                    id="ai-visual-two-title"
+                                    class="card-kicker"
+                                ></span>
+                                <div class="ai-media media-shell">
+                                    <div class="media-fallback ai-fallback">
+                                        <strong>AI Architecture</strong>
+                                        <span>Serving + Training Pipeline</span>
+                                    </div>
+                                    <img
+                                        src="Downloads/S__20766723.gif"
+                                        alt="AI repair architecture gif"
+                                        class="media-asset ai-gif"
+                                    />
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="ai-detail-grid">
+                            <article
+                                class="ai-detail-card reveal"
+                                data-reveal="up"
+                                data-tilt
+                            >
+                                <h3 id="ai-workflow-title"></h3>
+                                <ul id="ai-workflow-list" class="ai-list"></ul>
+                            </article>
+                            <article
+                                class="ai-detail-card reveal delay-1"
+                                data-reveal="up"
+                                data-tilt
+                            >
+                                <h3 id="ai-architecture-title"></h3>
+                                <ul
+                                    id="ai-architecture-list"
+                                    class="ai-list"
+                                ></ul>
+                                <h3 id="ai-spec-title"></h3>
+                                <ul id="ai-spec-list" class="ai-list"></ul>
+                            </article>
+                            <article
+                                class="ai-detail-card reveal delay-2"
+                                data-reveal="up"
+                                data-tilt
+                            >
+                                <h3 id="ai-implementation-title"></h3>
+                                <ul
+                                    id="ai-implementation-list"
+                                    class="ai-list"
+                                ></ul>
+                                <h3 id="ai-training-title"></h3>
+                                <ul id="ai-training-list" class="ai-list"></ul>
+                                <h3 id="ai-diff-title"></h3>
+                                <ul id="ai-diff-list" class="ai-list"></ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="section-wrap" id="projects">
                 <div class="container">
                     <div class="section-shell accent-warm">
@@ -3293,6 +3532,56 @@
                                 "Serial Communication",
                             ],
                         },
+                    ],
+                    aiKicker: "AI System Design",
+                    aiTitle:
+                        "Repair Cost Estimation AI, from Workflow to Training",
+                    aiIntro:
+                        "I can design and implement an end-to-end AI estimation system for repair jobs, covering intake workflow, serving architecture, model training, and production operations.",
+                    aiVisualOneTitle: "Workflow Preview",
+                    aiVisualTwoTitle: "Architecture Blueprint",
+                    aiWorkflowTitle: "Workflow",
+                    aiArchitectureTitle: "Architecture",
+                    aiSpecTitle: "Serving Specs",
+                    aiImplementationTitle: "Implementation",
+                    aiTrainingTitle: "Model Training",
+                    aiDiffTitle: "Differentiators",
+                    aiWorkflow: [
+                        "Collect job context: photos, category, location, urgency, and historical repair records.",
+                        "Run quality checks and normalize image angles, lighting, and metadata before inference.",
+                        "Estimate cost range and confidence score, then generate explanation per cost factor.",
+                        "Route low-confidence cases to human review and feed corrected labels back to training.",
+                        "Track outcomes (actual quote vs predicted) for continuous calibration.",
+                    ],
+                    aiArchitecture: [
+                        "Client app -> API gateway -> inference service -> pricing rules -> response composer.",
+                        "Feature store for historical jobs, materials, labor rates, and regional modifiers.",
+                        "Message queue for async image preprocessing and batch re-scoring jobs.",
+                        "Model registry + versioned deployment (shadow/canary) with rollback gates.",
+                    ],
+                    aiSpecs: [
+                        "Inference API target p95 < 1200ms with cached feature lookups.",
+                        "GPU inference for vision models, CPU fallback for rule-only estimation.",
+                        "Object storage for image artifacts with signed URLs and retention policy.",
+                        "Observability: request tracing, model latency, drift alerts, and error budgets.",
+                    ],
+                    aiImplementation: [
+                        "Build domain schema for repair taxonomy, part types, damage severity, and labor units.",
+                        "Compose hybrid pipeline: CV model + tabular regressor + business-rule guardrails.",
+                        "Expose explainable outputs: cost bands, top factors, and recommendation notes.",
+                        "Implement reviewer console for relabeling, override tracking, and QA workflows.",
+                    ],
+                    aiTraining: [
+                        "Create curated dataset with label policy, outlier filtering, and class balancing.",
+                        "Train baseline then fine-tune with transfer learning and hard-example mining.",
+                        "Evaluate by MAE/MAPE, segment-level accuracy, confidence calibration, and fairness checks.",
+                        "Run periodic retraining with new jobs and active-learning samples from reviewer feedback.",
+                    ],
+                    aiDifferentiators: [
+                        "Design for production operations, not only model accuracy metrics.",
+                        "Tight integration between human review loop and automated retraining.",
+                        "Clear explainability for technicians, support teams, and end users.",
+                        "Architecture prepared for scale across multiple repair verticals.",
                     ],
                     projectsKicker: "Launch Gallery",
                     projectsTitle: "Featured Apps",
@@ -3675,6 +3964,56 @@
                             ],
                         },
                     ],
+                    aiKicker: "การออกแบบระบบ AI",
+                    aiTitle:
+                        "AI ประเมินราคางานซ่อม ตั้งแต่ Workflow ถึง Training",
+                    aiIntro:
+                        "ผมสามารถออกแบบและพัฒนาระบบ AI ประเมินงานซ่อมแบบครบวงจรได้ ตั้งแต่ flow รับข้อมูล สถาปัตยกรรมระบบ การ train โมเดล ไปจนถึงการใช้งานจริงใน production.",
+                    aiVisualOneTitle: "ภาพรวม Workflow",
+                    aiVisualTwoTitle: "ภาพรวม Architecture",
+                    aiWorkflowTitle: "Workflow",
+                    aiArchitectureTitle: "Architecture",
+                    aiSpecTitle: "สเปกฝั่ง Serving",
+                    aiImplementationTitle: "การ Implement ระบบ",
+                    aiTrainingTitle: "การ Training Model",
+                    aiDiffTitle: "จุดแตกต่าง",
+                    aiWorkflow: [
+                        "รับข้อมูลหน้างาน: รูป, ประเภทงาน, พื้นที่, ความเร่งด่วน และประวัติซ่อมย้อนหลัง.",
+                        "ตรวจคุณภาพข้อมูลและปรับภาพให้อยู่ในมาตรฐานก่อนส่งเข้า inference.",
+                        "ทำนายช่วงราคา + confidence score พร้อมเหตุผลของปัจจัยราคา.",
+                        "กรณีความมั่นใจต่ำส่งให้ผู้เชี่ยวชาญรีวิว แล้วนำ label กลับไปปรับ training.",
+                        "ติดตามผลจริงเทียบผลทำนายเพื่อปรับ calibration ต่อเนื่อง.",
+                    ],
+                    aiArchitecture: [
+                        "Client app -> API gateway -> inference service -> pricing rules -> response.",
+                        "Feature store เก็บข้อมูลหน้างานย้อนหลัง, วัสดุ, ค่าแรง, และบริบทพื้นที่.",
+                        "Message queue สำหรับ preprocess รูปและงาน batch re-scoring.",
+                        "Model registry พร้อม versioning, canary/shadow deploy และ rollback.",
+                    ],
+                    aiSpecs: [
+                        "กำหนดเป้า p95 ของ API ไม่เกิน 1200ms พร้อม cache ของ feature หลัก.",
+                        "ใช้ GPU สำหรับ vision inference และมี CPU fallback สำหรับโหมดกฎธุรกิจ.",
+                        "เก็บรูปใน object storage พร้อม signed URL และนโยบาย retention.",
+                        "มี observability ครบ: tracing, latency, drift alert, error budget.",
+                    ],
+                    aiImplementation: [
+                        "ออกแบบ domain schema สำหรับประเภทงานซ่อม, severity, parts และ labor units.",
+                        "ผสาน hybrid pipeline: vision model + tabular regressor + rule guardrails.",
+                        "ส่งผลแบบอธิบายได้: ช่วงราคา, ปัจจัยหลัก, และคำแนะนำให้ทีมช่าง.",
+                        "ทำ reviewer console สำหรับ relabel, override และ QA workflow.",
+                    ],
+                    aiTraining: [
+                        "จัดชุดข้อมูลด้วยนโยบาย label ที่ชัดเจน, กรอง outlier และ balance class.",
+                        "เริ่มจาก baseline แล้ว fine-tune ด้วย transfer learning และ hard-example mining.",
+                        "ประเมินด้วย MAE/MAPE, ความแม่นยำราย segment, calibration และ fairness.",
+                        "ทำ periodic retraining จากข้อมูลใหม่และ active-learning จาก reviewer feedback.",
+                    ],
+                    aiDifferentiators: [
+                        "ออกแบบให้ใช้งาน production ได้จริง ไม่ใช่แค่คะแนนโมเดลสวย.",
+                        "เชื่อม human review loop เข้ากับรอบ retraining อย่างเป็นระบบ.",
+                        "ให้ผลที่อธิบายได้สำหรับช่าง, ทีม support และผู้ใช้งานปลายทาง.",
+                        "ขยายต่อได้กับหลายหมวดงานซ่อมโดยไม่รื้อสถาปัตยกรรมหลัก.",
+                    ],
                     projectsKicker: "แกลเลอรีผลงาน",
                     projectsTitle: "แอปพลิเคชันเด่น",
                     projectsIntro:
@@ -3775,9 +4114,10 @@
             const uiCopy = {
                 en: {
                     navLinks: [
-                        { href: "#expertise", label: "Expertise" },
-                        { href: "#experience", label: "Experience" },
+                        { href: "#expertise", label: "Expert" },
+                        { href: "#experience", label: "Career" },
                         { href: "#skills", label: "Systems" },
+                        { href: "#ai-system", label: "AI" },
                         { href: "#projects", label: "Apps" },
                         { href: "#web-systems", label: "Web" },
                     ],
@@ -3788,6 +4128,7 @@
                         { href: "#expertise", label: "จุดเด่น" },
                         { href: "#experience", label: "ประสบการณ์" },
                         { href: "#skills", label: "ระบบงาน" },
+                        { href: "#ai-system", label: "AI" },
                         { href: "#projects", label: "แอป" },
                         { href: "#web-systems", label: "เว็บ" },
                     ],
@@ -3867,6 +4208,27 @@
                     lang.skillsTitle;
                 document.getElementById("skills-intro").textContent =
                     lang.skillsIntro;
+
+                document.getElementById("ai-kicker").textContent =
+                    lang.aiKicker;
+                document.getElementById("ai-title").textContent = lang.aiTitle;
+                document.getElementById("ai-intro").textContent = lang.aiIntro;
+                document.getElementById("ai-visual-one-title").textContent =
+                    lang.aiVisualOneTitle;
+                document.getElementById("ai-visual-two-title").textContent =
+                    lang.aiVisualTwoTitle;
+                document.getElementById("ai-workflow-title").textContent =
+                    lang.aiWorkflowTitle;
+                document.getElementById("ai-architecture-title").textContent =
+                    lang.aiArchitectureTitle;
+                document.getElementById("ai-spec-title").textContent =
+                    lang.aiSpecTitle;
+                document.getElementById("ai-implementation-title").textContent =
+                    lang.aiImplementationTitle;
+                document.getElementById("ai-training-title").textContent =
+                    lang.aiTrainingTitle;
+                document.getElementById("ai-diff-title").textContent =
+                    lang.aiDiffTitle;
 
                 document.getElementById("projects-kicker").textContent =
                     lang.projectsKicker;
@@ -4048,6 +4410,22 @@
                         `,
                     )
                     .join("");
+            }
+
+            function renderAISystem() {
+                const lang = content[currentLang];
+                document.getElementById("ai-workflow-list").innerHTML =
+                    htmlForBullets(lang.aiWorkflow);
+                document.getElementById("ai-architecture-list").innerHTML =
+                    htmlForBullets(lang.aiArchitecture);
+                document.getElementById("ai-spec-list").innerHTML =
+                    htmlForBullets(lang.aiSpecs);
+                document.getElementById("ai-implementation-list").innerHTML =
+                    htmlForBullets(lang.aiImplementation);
+                document.getElementById("ai-training-list").innerHTML =
+                    htmlForBullets(lang.aiTraining);
+                document.getElementById("ai-diff-list").innerHTML =
+                    htmlForBullets(lang.aiDifferentiators);
             }
 
             function renderProjects() {
@@ -4427,6 +4805,7 @@
                 renderExpertise();
                 renderExperience();
                 renderSkills();
+                renderAISystem();
                 renderProjects();
                 renderWeb();
                 initMediaFallbacks();
