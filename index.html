@@ -231,6 +231,43 @@
                     );
             }
 
+            #moon-overlay {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: clamp(6.4rem, 9.2vw, 9rem);
+                height: clamp(6.4rem, 9.2vw, 9rem);
+                transform: translate3d(
+                        calc(var(--moon-x) + 7vw),
+                        calc(var(--moon-y) - 2vh),
+                        0
+                    )
+                    scale(calc(var(--moon-scale) * 0.88));
+                opacity: calc(var(--moon-opacity) * 0.72);
+                pointer-events: none;
+                z-index: 1;
+                filter: drop-shadow(0 0 26px rgba(223, 236, 255, 0.26));
+                mix-blend-mode: screen;
+            }
+
+            #moon-overlay::before {
+                content: "";
+                position: absolute;
+                inset: -34%;
+                border-radius: 999px;
+                background: radial-gradient(
+                    circle,
+                    rgba(223, 236, 255, 0.34),
+                    rgba(223, 236, 255, 0) 70%
+                );
+                filter: blur(18px);
+            }
+
+            #moon-overlay .moon {
+                inset: 0;
+                border: 1px solid rgba(176, 196, 233, 0.52);
+            }
+
             #sky-scene::before,
             #sky-scene::after {
                 content: "";
@@ -3483,16 +3520,57 @@
             }
 
             @media (max-width: 720px) {
+                #moon-overlay {
+                    transform: translate3d(calc(100vw - 5.8rem), 8.8rem, 0)
+                        scale(0.9);
+                    opacity: calc(var(--moon-opacity) * 0.92);
+                    mix-blend-mode: normal;
+                    z-index: 12;
+                    filter: drop-shadow(0 0 20px rgba(217, 230, 255, 0.4));
+                }
+
                 #navbar {
-                    top: 0.65rem;
-                    width: min(1240px, calc(100% - 0.5rem));
+                    top: 0.35rem;
+                    left: 0.35rem;
+                    right: 0.35rem;
+                    width: auto;
+                    transform: none;
                 }
 
                 .nav-shell {
                     grid-template-columns: 1fr auto;
-                    row-gap: 0.75rem;
-                    padding: 0.8rem;
-                    border-radius: 1.3rem;
+                    row-gap: 0.45rem;
+                    padding: 0.62rem 0.68rem 0.56rem;
+                    border-radius: 1.08rem;
+                    box-shadow:
+                        0 14px 34px rgba(66, 99, 143, 0.12),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                }
+
+                .nav-brand {
+                    gap: 0.5rem;
+                    min-width: 0;
+                }
+
+                .brand-mark {
+                    width: 2.2rem;
+                    height: 2.2rem;
+                    border-radius: 0.82rem;
+                    font-size: 0.94rem;
+                }
+
+                .brand-copy {
+                    gap: 0.06rem;
+                }
+
+                .brand-copy strong {
+                    font-size: 0.84rem;
+                    line-height: 1.08;
+                    letter-spacing: -0.02em;
+                }
+
+                .brand-copy small {
+                    display: none;
                 }
 
                 .nav-links {
@@ -3500,9 +3578,12 @@
                     display: flex;
                     align-items: center;
                     flex-wrap: nowrap;
-                    gap: 0.35rem;
+                    justify-content: flex-start;
+                    gap: 0.28rem;
                     overflow-x: auto;
-                    padding-bottom: 0.12rem;
+                    padding: 0.1rem 0 0.02rem;
+                    margin: 0 -0.08rem;
+                    scrollbar-width: none;
                 }
 
                 .nav-links::-webkit-scrollbar {
@@ -3512,39 +3593,51 @@
                 .nav-link {
                     flex: 0 0 auto;
                     min-width: max-content;
-                    padding: 0.62rem 0.58rem;
-                    font-size: 0.62rem;
-                    letter-spacing: 0.04em;
+                    padding: 0.46rem 0.56rem;
+                    font-size: 0.54rem;
+                    line-height: 1;
+                    letter-spacing: 0.05em;
+                    border-radius: 0.8rem;
+                    border-color: rgba(255, 255, 255, 0.68);
+                    background: rgba(255, 255, 255, 0.56);
                 }
 
                 .status-badge {
-                    padding-inline: 0.8rem;
-                    font-size: 0.64rem;
-                }
-
-                .brand-copy strong {
-                    font-size: 0.88rem;
+                    display: none;
                 }
 
                 .nav-actions {
                     justify-content: flex-end;
+                    gap: 0.3rem;
+                }
+
+                .lang-button {
+                    min-width: 3rem;
+                    min-height: 2.45rem;
+                    padding: 0.58rem 0.78rem;
+                    font-size: 0.72rem;
                 }
 
                 main {
-                    padding-top: 8.2rem;
+                    padding-top: 7.55rem;
                 }
 
                 .container {
-                    width: min(1240px, calc(100% - 0.75rem));
+                    width: min(1240px, calc(100% - 0.7rem));
                 }
 
                 .section-wrap {
-                    padding-bottom: 0.75rem;
+                    padding-bottom: 0.68rem;
                 }
 
                 .section-shell {
                     border-radius: 1.68rem;
-                    padding: 1.25rem;
+                    padding: 1.16rem;
+                }
+
+                .hero-shell {
+                    padding-top: 1.6rem;
+                    padding-bottom: 1.2rem;
                 }
 
                 .hero-orchestra,
@@ -3553,8 +3646,8 @@
                 }
 
                 .hero-intro {
-                    gap: 0.72rem;
-                    margin-bottom: 1.65rem;
+                    gap: 0.68rem;
+                    margin-bottom: 1.32rem;
                 }
 
                 .hero-center,
@@ -3580,17 +3673,19 @@
                 .expert-card li,
                 .web-copy p,
                 .stat-card p {
-                    font-size: 0.96rem;
-                    line-height: 1.68;
+                    font-size: 0.95rem;
+                    line-height: 1.6;
                 }
 
                 .hero-title {
-                    font-size: clamp(2.6rem, 10.6vw, 3.45rem);
+                    max-width: 9.2ch;
+                    font-size: clamp(2.28rem, 11vw, 3rem);
+                    line-height: 0.94;
                 }
 
                 .hero-eyebrow {
-                    gap: 0.55rem;
-                    margin-bottom: 0.8rem;
+                    gap: 0.42rem;
+                    margin-bottom: 0.5rem;
                 }
 
                 .eyebrow-pill,
@@ -3606,7 +3701,7 @@
 
                 .section-heading {
                     gap: 0.72rem;
-                    margin-bottom: 1.3rem;
+                    margin-bottom: 1.18rem;
                     max-width: none;
                 }
 
@@ -3634,6 +3729,36 @@
                 .focus-title {
                     font-size: clamp(1.58rem, 8.4vw, 2.25rem);
                     max-width: 100%;
+                }
+
+                .hero-typewriter {
+                    width: 100%;
+                }
+
+                .typewriter-shell {
+                    min-height: 0;
+                    padding: 0.82rem 0.92rem;
+                    margin-bottom: 0.72rem;
+                }
+
+                .typing-text {
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                }
+
+                .hero-pill-row {
+                    gap: 0.45rem;
+                    margin-bottom: 0.62rem;
+                }
+
+                .hero-pill {
+                    padding: 0.58rem 0.74rem;
+                    font-size: 0.64rem;
+                }
+
+                .hero-action-row,
+                .hero-contact-row {
+                    gap: 0.6rem;
                 }
 
                 .focus-canvas {
@@ -3865,6 +3990,13 @@
                 <span class="star s12"></span>
             </div>
             <div class="horizon-glow"></div>
+        </div>
+        <div id="moon-overlay" aria-hidden="true">
+            <div class="moon">
+                <span class="moon-crater crater-one"></span>
+                <span class="moon-crater crater-two"></span>
+                <span class="moon-crater crater-three"></span>
+            </div>
         </div>
 
         <nav id="navbar">
