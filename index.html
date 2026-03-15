@@ -1920,14 +1920,51 @@
                 min-height: 100%;
             }
 
-            .ai-visual-grid {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 1rem;
-                margin-bottom: 1rem;
+            .ai-mode-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.35rem;
+                margin: 0 auto 1rem;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.84);
+                background: rgba(255, 255, 255, 0.7);
+                box-shadow: 0 14px 28px rgba(63, 94, 135, 0.1);
             }
 
-            .ai-visual-card,
+            .ai-mode-button {
+                border: 0;
+                border-radius: 999px;
+                padding: 0.62rem 1rem;
+                font-family: inherit;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                color: var(--ink-soft);
+                background: transparent;
+                cursor: pointer;
+                transition:
+                    background 180ms ease,
+                    color 180ms ease,
+                    box-shadow 180ms ease,
+                    transform 180ms ease;
+            }
+
+            .ai-mode-button.active {
+                color: var(--ink-strong);
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 241, 217, 0.95),
+                    rgba(208, 236, 255, 0.94)
+                );
+                box-shadow: 0 10px 20px rgba(67, 103, 147, 0.14);
+            }
+
+            .ai-mode-button:hover {
+                transform: translateY(-1px);
+            }
+
             .ai-detail-card {
                 position: relative;
                 overflow: hidden;
@@ -1939,51 +1976,6 @@
                     rgba(251, 248, 242, 0.88)
                 );
                 box-shadow: 0 18px 40px rgba(59, 94, 136, 0.1);
-            }
-
-            .ai-visual-card {
-                padding: 1rem;
-                display: grid;
-                gap: 0.8rem;
-            }
-
-            .ai-media {
-                position: relative;
-                min-height: 16rem;
-                border-radius: 1.3rem;
-                border: 1px solid rgba(255, 255, 255, 0.84);
-                background: linear-gradient(
-                    180deg,
-                    rgba(224, 245, 255, 0.8),
-                    rgba(255, 245, 232, 0.82)
-                );
-                overflow: hidden;
-            }
-
-            .ai-gif {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .ai-fallback {
-                gap: 0.5rem;
-                background: linear-gradient(
-                    135deg,
-                    rgba(255, 238, 210, 0.72),
-                    rgba(210, 241, 255, 0.76)
-                );
-                border-radius: 1.2rem;
-            }
-
-            .ai-fallback strong {
-                font-size: 1.25rem;
-                color: var(--ink-strong);
-            }
-
-            .ai-fallback span {
-                font-size: 0.88rem;
-                color: var(--ink-soft);
             }
 
             .ai-detail-grid {
@@ -2544,7 +2536,6 @@
                 .web-grid,
                 .expertise-grid,
                 .hero-stats,
-                .ai-visual-grid,
                 .ai-detail-grid {
                     grid-template-columns: 1fr;
                 }
@@ -2696,10 +2687,6 @@
 
                 .project-stage {
                     min-height: 16rem;
-                }
-
-                .ai-media {
-                    min-height: 13.5rem;
                 }
 
                 .ai-detail-card h3 {
@@ -3083,49 +3070,17 @@
                             <p id="ai-intro"></p>
                         </div>
 
-                        <div class="ai-visual-grid">
-                            <article
-                                class="ai-visual-card reveal"
-                                data-reveal="left"
-                            >
-                                <span
-                                    id="ai-visual-one-title"
-                                    class="card-kicker"
-                                ></span>
-                                <div class="ai-media media-shell">
-                                    <div class="media-fallback ai-fallback">
-                                        <strong>AI Workflow</strong>
-                                        <span
-                                            >Input -> Estimate -> Explain</span
-                                        >
-                                    </div>
-                                    <img
-                                        src="Downloads/S__20766722.gif"
-                                        alt="AI repair workflow gif"
-                                        class="media-asset ai-gif"
-                                    />
-                                </div>
-                            </article>
-                            <article
-                                class="ai-visual-card reveal delay-1"
-                                data-reveal="right"
-                            >
-                                <span
-                                    id="ai-visual-two-title"
-                                    class="card-kicker"
-                                ></span>
-                                <div class="ai-media media-shell">
-                                    <div class="media-fallback ai-fallback">
-                                        <strong>AI Architecture</strong>
-                                        <span>Serving + Training Pipeline</span>
-                                    </div>
-                                    <img
-                                        src="Downloads/S__20766723.gif"
-                                        alt="AI repair architecture gif"
-                                        class="media-asset ai-gif"
-                                    />
-                                </div>
-                            </article>
+                        <div class="ai-mode-toggle reveal" data-reveal="up">
+                            <button
+                                id="ai-mode-recruiter"
+                                class="ai-mode-button"
+                                type="button"
+                            ></button>
+                            <button
+                                id="ai-mode-technical"
+                                class="ai-mode-button"
+                                type="button"
+                            ></button>
                         </div>
 
                         <div class="ai-detail-grid">
@@ -3535,54 +3490,98 @@
                     ],
                     aiKicker: "AI System Design",
                     aiTitle:
-                        "Repair Cost Estimation AI, from Workflow to Training",
-                    aiIntro:
-                        "I can design and implement an end-to-end AI estimation system for repair jobs, covering intake workflow, serving architecture, model training, and production operations.",
-                    aiVisualOneTitle: "Workflow Preview",
-                    aiVisualTwoTitle: "Architecture Blueprint",
-                    aiWorkflowTitle: "Workflow",
-                    aiArchitectureTitle: "Architecture",
-                    aiSpecTitle: "Serving Specs",
-                    aiImplementationTitle: "Implementation",
-                    aiTrainingTitle: "Model Training",
-                    aiDiffTitle: "Differentiators",
-                    aiWorkflow: [
-                        "Collect job context: photos, category, location, urgency, and historical repair records.",
-                        "Run quality checks and normalize image angles, lighting, and metadata before inference.",
-                        "Estimate cost range and confidence score, then generate explanation per cost factor.",
-                        "Route low-confidence cases to human review and feed corrected labels back to training.",
-                        "Track outcomes (actual quote vs predicted) for continuous calibration.",
-                    ],
-                    aiArchitecture: [
-                        "Client app -> API gateway -> inference service -> pricing rules -> response composer.",
-                        "Feature store for historical jobs, materials, labor rates, and regional modifiers.",
-                        "Message queue for async image preprocessing and batch re-scoring jobs.",
-                        "Model registry + versioned deployment (shadow/canary) with rollback gates.",
-                    ],
-                    aiSpecs: [
-                        "Inference API target p95 < 1200ms with cached feature lookups.",
-                        "GPU inference for vision models, CPU fallback for rule-only estimation.",
-                        "Object storage for image artifacts with signed URLs and retention policy.",
-                        "Observability: request tracing, model latency, drift alerts, and error budgets.",
-                    ],
-                    aiImplementation: [
-                        "Build domain schema for repair taxonomy, part types, damage severity, and labor units.",
-                        "Compose hybrid pipeline: CV model + tabular regressor + business-rule guardrails.",
-                        "Expose explainable outputs: cost bands, top factors, and recommendation notes.",
-                        "Implement reviewer console for relabeling, override tracking, and QA workflows.",
-                    ],
-                    aiTraining: [
-                        "Create curated dataset with label policy, outlier filtering, and class balancing.",
-                        "Train baseline then fine-tune with transfer learning and hard-example mining.",
-                        "Evaluate by MAE/MAPE, segment-level accuracy, confidence calibration, and fairness checks.",
-                        "Run periodic retraining with new jobs and active-learning samples from reviewer feedback.",
-                    ],
-                    aiDifferentiators: [
-                        "Design for production operations, not only model accuracy metrics.",
-                        "Tight integration between human review loop and automated retraining.",
-                        "Clear explainability for technicians, support teams, and end users.",
-                        "Architecture prepared for scale across multiple repair verticals.",
-                    ],
+                        "Repair Cost Estimation AI, switchable by audience",
+                    aiModeRecruiterLabel: "Recruiter Pitch",
+                    aiModeTechnicalLabel: "Technical",
+                    aiProfiles: {
+                        recruiter: {
+                            aiIntro:
+                                "I can lead an end-to-end AI repair estimation system that improves quote speed, keeps quality controlled, and stays explainable for business and operations teams.",
+                            aiWorkflowTitle: "Workflow",
+                            aiWorkflow: [
+                                "Capture repair context from app intake: photos, issue category, and urgency.",
+                                "Auto-estimate cost range with confidence and plain-language explanation.",
+                                "Escalate uncertain cases to human reviewer before final quote.",
+                                "Feed reviewed outcomes back to improve future predictions.",
+                            ],
+                            aiArchitectureTitle: "Architecture",
+                            aiArchitecture: [
+                                "Mobile/web intake connected to API and AI inference service.",
+                                "Business-rule layer to keep estimates aligned with policy.",
+                                "Reviewer console for approval, overrides, and QA traceability.",
+                                "Monitoring dashboard for latency, confidence, and model drift.",
+                            ],
+                            aiSpecTitle: "Delivery Value",
+                            aiSpecs: [
+                                "Faster first quote turnaround for service teams.",
+                                "Reduced manual triage effort on repetitive repair cases.",
+                                "Audit-friendly explanations for support and customer trust.",
+                            ],
+                            aiImplementationTitle: "Implementation Scope",
+                            aiImplementation: [
+                                "Defined data contracts across app, backend, and AI services.",
+                                "Built confidence-based routing for AI-only vs reviewer-assisted decisions.",
+                                "Integrated quote explanation payloads into existing workflow UI.",
+                            ],
+                            aiTrainingTitle: "Model Ops",
+                            aiTraining: [
+                                "Continuous improvement loop from real accepted/rejected quotes.",
+                                "Regular retraining schedule with quality gates before deployment.",
+                            ],
+                            aiDiffTitle: "Why Different",
+                            aiDifferentiators: [
+                                "Designed for production operation, not demo-only metrics.",
+                                "Balances speed, explainability, and business control in one loop.",
+                            ],
+                        },
+                        technical: {
+                            aiIntro:
+                                "I can design and implement an end-to-end AI estimation system for repair jobs, covering intake workflow, serving architecture, model training, and production operations.",
+                            aiWorkflowTitle: "Workflow",
+                            aiWorkflow: [
+                                "Collect job context: photos, category, location, urgency, and historical repair records.",
+                                "Run quality checks and normalize image angles, lighting, and metadata before inference.",
+                                "Estimate cost range and confidence score, then generate explanation per cost factor.",
+                                "Route low-confidence cases to human review and feed corrected labels back to training.",
+                                "Track outcomes (actual quote vs predicted) for continuous calibration.",
+                            ],
+                            aiArchitectureTitle: "Architecture",
+                            aiArchitecture: [
+                                "Client app -> API gateway -> inference service -> pricing rules -> response composer.",
+                                "Feature store for historical jobs, materials, labor rates, and regional modifiers.",
+                                "Message queue for async image preprocessing and batch re-scoring jobs.",
+                                "Model registry + versioned deployment (shadow/canary) with rollback gates.",
+                            ],
+                            aiSpecTitle: "Serving Specs",
+                            aiSpecs: [
+                                "Inference API target p95 < 1200ms with cached feature lookups.",
+                                "GPU inference for vision models, CPU fallback for rule-only estimation.",
+                                "Object storage for image artifacts with signed URLs and retention policy.",
+                                "Observability: request tracing, model latency, drift alerts, and error budgets.",
+                            ],
+                            aiImplementationTitle: "Implementation",
+                            aiImplementation: [
+                                "Build domain schema for repair taxonomy, part types, damage severity, and labor units.",
+                                "Compose hybrid pipeline: CV model + tabular regressor + business-rule guardrails.",
+                                "Expose explainable outputs: cost bands, top factors, and recommendation notes.",
+                                "Implement reviewer console for relabeling, override tracking, and QA workflows.",
+                            ],
+                            aiTrainingTitle: "Model Training",
+                            aiTraining: [
+                                "Create curated dataset with label policy, outlier filtering, and class balancing.",
+                                "Train baseline then fine-tune with transfer learning and hard-example mining.",
+                                "Evaluate by MAE/MAPE, segment-level accuracy, confidence calibration, and fairness checks.",
+                                "Run periodic retraining with new jobs and active-learning samples from reviewer feedback.",
+                            ],
+                            aiDiffTitle: "Differentiators",
+                            aiDifferentiators: [
+                                "Design for production operations, not only model accuracy metrics.",
+                                "Tight integration between human review loop and automated retraining.",
+                                "Clear explainability for technicians, support teams, and end users.",
+                                "Architecture prepared for scale across multiple repair verticals.",
+                            ],
+                        },
+                    },
                     projectsKicker: "Launch Gallery",
                     projectsTitle: "Featured Apps",
                     projectsIntro:
@@ -3965,55 +3964,98 @@
                         },
                     ],
                     aiKicker: "การออกแบบระบบ AI",
-                    aiTitle:
-                        "AI ประเมินราคางานซ่อม ตั้งแต่ Workflow ถึง Training",
-                    aiIntro:
-                        "ผมสามารถออกแบบและพัฒนาระบบ AI ประเมินงานซ่อมแบบครบวงจรได้ ตั้งแต่ flow รับข้อมูล สถาปัตยกรรมระบบ การ train โมเดล ไปจนถึงการใช้งานจริงใน production.",
-                    aiVisualOneTitle: "ภาพรวม Workflow",
-                    aiVisualTwoTitle: "ภาพรวม Architecture",
-                    aiWorkflowTitle: "Workflow",
-                    aiArchitectureTitle: "Architecture",
-                    aiSpecTitle: "สเปกฝั่ง Serving",
-                    aiImplementationTitle: "การ Implement ระบบ",
-                    aiTrainingTitle: "การ Training Model",
-                    aiDiffTitle: "จุดแตกต่าง",
-                    aiWorkflow: [
-                        "รับข้อมูลหน้างาน: รูป, ประเภทงาน, พื้นที่, ความเร่งด่วน และประวัติซ่อมย้อนหลัง.",
-                        "ตรวจคุณภาพข้อมูลและปรับภาพให้อยู่ในมาตรฐานก่อนส่งเข้า inference.",
-                        "ทำนายช่วงราคา + confidence score พร้อมเหตุผลของปัจจัยราคา.",
-                        "กรณีความมั่นใจต่ำส่งให้ผู้เชี่ยวชาญรีวิว แล้วนำ label กลับไปปรับ training.",
-                        "ติดตามผลจริงเทียบผลทำนายเพื่อปรับ calibration ต่อเนื่อง.",
-                    ],
-                    aiArchitecture: [
-                        "Client app -> API gateway -> inference service -> pricing rules -> response.",
-                        "Feature store เก็บข้อมูลหน้างานย้อนหลัง, วัสดุ, ค่าแรง, และบริบทพื้นที่.",
-                        "Message queue สำหรับ preprocess รูปและงาน batch re-scoring.",
-                        "Model registry พร้อม versioning, canary/shadow deploy และ rollback.",
-                    ],
-                    aiSpecs: [
-                        "กำหนดเป้า p95 ของ API ไม่เกิน 1200ms พร้อม cache ของ feature หลัก.",
-                        "ใช้ GPU สำหรับ vision inference และมี CPU fallback สำหรับโหมดกฎธุรกิจ.",
-                        "เก็บรูปใน object storage พร้อม signed URL และนโยบาย retention.",
-                        "มี observability ครบ: tracing, latency, drift alert, error budget.",
-                    ],
-                    aiImplementation: [
-                        "ออกแบบ domain schema สำหรับประเภทงานซ่อม, severity, parts และ labor units.",
-                        "ผสาน hybrid pipeline: vision model + tabular regressor + rule guardrails.",
-                        "ส่งผลแบบอธิบายได้: ช่วงราคา, ปัจจัยหลัก, และคำแนะนำให้ทีมช่าง.",
-                        "ทำ reviewer console สำหรับ relabel, override และ QA workflow.",
-                    ],
-                    aiTraining: [
-                        "จัดชุดข้อมูลด้วยนโยบาย label ที่ชัดเจน, กรอง outlier และ balance class.",
-                        "เริ่มจาก baseline แล้ว fine-tune ด้วย transfer learning และ hard-example mining.",
-                        "ประเมินด้วย MAE/MAPE, ความแม่นยำราย segment, calibration และ fairness.",
-                        "ทำ periodic retraining จากข้อมูลใหม่และ active-learning จาก reviewer feedback.",
-                    ],
-                    aiDifferentiators: [
-                        "ออกแบบให้ใช้งาน production ได้จริง ไม่ใช่แค่คะแนนโมเดลสวย.",
-                        "เชื่อม human review loop เข้ากับรอบ retraining อย่างเป็นระบบ.",
-                        "ให้ผลที่อธิบายได้สำหรับช่าง, ทีม support และผู้ใช้งานปลายทาง.",
-                        "ขยายต่อได้กับหลายหมวดงานซ่อมโดยไม่รื้อสถาปัตยกรรมหลัก.",
-                    ],
+                    aiTitle: "AI ประเมินงานซ่อมแบบสลับมุมมองได้ในหน้าเดียว",
+                    aiModeRecruiterLabel: "Recruiter Pitch",
+                    aiModeTechnicalLabel: "Technical",
+                    aiProfiles: {
+                        recruiter: {
+                            aiIntro:
+                                "ผมสามารถนำระบบ AI ประเมินงานซ่อมแบบครบวงจรได้ โดยเน้นความเร็วในการเสนอราคา การควบคุมคุณภาพ และผลลัพธ์ที่อธิบายได้สำหรับทีมธุรกิจและปฏิบัติการ.",
+                            aiWorkflowTitle: "Workflow",
+                            aiWorkflow: [
+                                "รับข้อมูลหน้างานจากแอป: รูป, ประเภทงาน, และระดับความเร่งด่วน.",
+                                "AI ประเมินช่วงราคา พร้อมความมั่นใจและคำอธิบายที่อ่านเข้าใจง่าย.",
+                                "เคสที่ความมั่นใจต่ำถูกส่งให้ผู้เชี่ยวชาญตรวจสอบก่อนยืนยันราคา.",
+                                "นำผลรีวิวกลับไปปรับปรุงระบบให้แม่นยำขึ้นต่อเนื่อง.",
+                            ],
+                            aiArchitectureTitle: "Architecture",
+                            aiArchitecture: [
+                                "ชั้นรับข้อมูลจากแอป/เว็บ เชื่อม API และ AI inference service.",
+                                "ชั้น business-rule เพื่อคุมการประเมินให้อยู่ในนโยบายบริษัท.",
+                                "หน้าจอ reviewer สำหรับอนุมัติ แก้ไข และตรวจสอบย้อนหลัง.",
+                                "แดชบอร์ดติดตาม latency, confidence และ model drift.",
+                            ],
+                            aiSpecTitle: "คุณค่าที่ส่งมอบ",
+                            aiSpecs: [
+                                "ลดเวลาประเมินราคาเบื้องต้นของทีมบริการ.",
+                                "ลดภาระงานคัดกรองเคสซ้ำของทีมปฏิบัติการ.",
+                                "เพิ่มความน่าเชื่อถือด้วยผลลัพธ์ที่อธิบายได้.",
+                            ],
+                            aiImplementationTitle: "ขอบเขตการ Implement",
+                            aiImplementation: [
+                                "กำหนด data contract ระหว่างแอป, backend และ AI service.",
+                                "ทำ confidence-based routing ระหว่าง AI อัตโนมัติกับ human review.",
+                                "เชื่อมคำอธิบายผลประเมินเข้าหน้า workflow เดิมของทีม.",
+                            ],
+                            aiTrainingTitle: "Model Ops",
+                            aiTraining: [
+                                "ปรับปรุงโมเดลต่อเนื่องจากเคสที่ยืนยันราคาแล้วในงานจริง.",
+                                "กำหนดรอบ retraining พร้อม quality gate ก่อน deploy.",
+                            ],
+                            aiDiffTitle: "จุดแตกต่าง",
+                            aiDifferentiators: [
+                                "ออกแบบเพื่อใช้งาน production จริง ไม่ใช่แค่โชว์เดโม.",
+                                "บาลานซ์ความเร็ว ความแม่น และความอธิบายได้ใน flow เดียว.",
+                            ],
+                        },
+                        technical: {
+                            aiIntro:
+                                "ผมสามารถออกแบบและพัฒนาระบบ AI ประเมินงานซ่อมแบบครบวงจรได้ ตั้งแต่ flow รับข้อมูล สถาปัตยกรรมระบบ การ train โมเดล ไปจนถึงการใช้งานจริงใน production.",
+                            aiWorkflowTitle: "Workflow",
+                            aiWorkflow: [
+                                "รับข้อมูลหน้างาน: รูป, ประเภทงาน, พื้นที่, ความเร่งด่วน และประวัติซ่อมย้อนหลัง.",
+                                "ตรวจคุณภาพข้อมูลและปรับภาพให้อยู่ในมาตรฐานก่อนส่งเข้า inference.",
+                                "ทำนายช่วงราคา + confidence score พร้อมเหตุผลของปัจจัยราคา.",
+                                "กรณีความมั่นใจต่ำส่งให้ผู้เชี่ยวชาญรีวิว แล้วนำ label กลับไปปรับ training.",
+                                "ติดตามผลจริงเทียบผลทำนายเพื่อปรับ calibration ต่อเนื่อง.",
+                            ],
+                            aiArchitectureTitle: "Architecture",
+                            aiArchitecture: [
+                                "Client app -> API gateway -> inference service -> pricing rules -> response.",
+                                "Feature store เก็บข้อมูลหน้างานย้อนหลัง, วัสดุ, ค่าแรง, และบริบทพื้นที่.",
+                                "Message queue สำหรับ preprocess รูปและงาน batch re-scoring.",
+                                "Model registry พร้อม versioning, canary/shadow deploy และ rollback.",
+                            ],
+                            aiSpecTitle: "สเปกฝั่ง Serving",
+                            aiSpecs: [
+                                "กำหนดเป้า p95 ของ API ไม่เกิน 1200ms พร้อม cache ของ feature หลัก.",
+                                "ใช้ GPU สำหรับ vision inference และมี CPU fallback สำหรับโหมดกฎธุรกิจ.",
+                                "เก็บรูปใน object storage พร้อม signed URL และนโยบาย retention.",
+                                "มี observability ครบ: tracing, latency, drift alert, error budget.",
+                            ],
+                            aiImplementationTitle: "การ Implement ระบบ",
+                            aiImplementation: [
+                                "ออกแบบ domain schema สำหรับประเภทงานซ่อม, severity, parts และ labor units.",
+                                "ผสาน hybrid pipeline: vision model + tabular regressor + rule guardrails.",
+                                "ส่งผลแบบอธิบายได้: ช่วงราคา, ปัจจัยหลัก, และคำแนะนำให้ทีมช่าง.",
+                                "ทำ reviewer console สำหรับ relabel, override และ QA workflow.",
+                            ],
+                            aiTrainingTitle: "การ Training Model",
+                            aiTraining: [
+                                "จัดชุดข้อมูลด้วยนโยบาย label ที่ชัดเจน, กรอง outlier และ balance class.",
+                                "เริ่มจาก baseline แล้ว fine-tune ด้วย transfer learning และ hard-example mining.",
+                                "ประเมินด้วย MAE/MAPE, ความแม่นยำราย segment, calibration และ fairness.",
+                                "ทำ periodic retraining จากข้อมูลใหม่และ active-learning จาก reviewer feedback.",
+                            ],
+                            aiDiffTitle: "จุดแตกต่าง",
+                            aiDifferentiators: [
+                                "ออกแบบให้ใช้งาน production ได้จริง ไม่ใช่แค่คะแนนโมเดลสวย.",
+                                "เชื่อม human review loop เข้ากับรอบ retraining อย่างเป็นระบบ.",
+                                "ให้ผลที่อธิบายได้สำหรับช่าง, ทีม support และผู้ใช้งานปลายทาง.",
+                                "ขยายต่อได้กับหลายหมวดงานซ่อมโดยไม่รื้อสถาปัตยกรรมหลัก.",
+                            ],
+                        },
+                    },
                     projectsKicker: "แกลเลอรีผลงาน",
                     projectsTitle: "แอปพลิเคชันเด่น",
                     projectsIntro:
@@ -4137,6 +4179,7 @@
             };
 
             let currentLang = "en";
+            let aiMode = "recruiter";
             let typewriterTimer;
             let typewriterIndex = 0;
             let revealObserver;
@@ -4212,23 +4255,10 @@
                 document.getElementById("ai-kicker").textContent =
                     lang.aiKicker;
                 document.getElementById("ai-title").textContent = lang.aiTitle;
-                document.getElementById("ai-intro").textContent = lang.aiIntro;
-                document.getElementById("ai-visual-one-title").textContent =
-                    lang.aiVisualOneTitle;
-                document.getElementById("ai-visual-two-title").textContent =
-                    lang.aiVisualTwoTitle;
-                document.getElementById("ai-workflow-title").textContent =
-                    lang.aiWorkflowTitle;
-                document.getElementById("ai-architecture-title").textContent =
-                    lang.aiArchitectureTitle;
-                document.getElementById("ai-spec-title").textContent =
-                    lang.aiSpecTitle;
-                document.getElementById("ai-implementation-title").textContent =
-                    lang.aiImplementationTitle;
-                document.getElementById("ai-training-title").textContent =
-                    lang.aiTrainingTitle;
-                document.getElementById("ai-diff-title").textContent =
-                    lang.aiDiffTitle;
+                document.getElementById("ai-mode-recruiter").textContent =
+                    lang.aiModeRecruiterLabel;
+                document.getElementById("ai-mode-technical").textContent =
+                    lang.aiModeTechnicalLabel;
 
                 document.getElementById("projects-kicker").textContent =
                     lang.projectsKicker;
@@ -4414,18 +4444,66 @@
 
             function renderAISystem() {
                 const lang = content[currentLang];
+                const profiles = lang.aiProfiles || {};
+                if (!profiles[aiMode]) {
+                    aiMode = "recruiter";
+                }
+                const profile = profiles[aiMode] || {};
+
+                document.getElementById("ai-intro").textContent =
+                    profile.aiIntro || "";
+                document.getElementById("ai-workflow-title").textContent =
+                    profile.aiWorkflowTitle || "";
+                document.getElementById("ai-architecture-title").textContent =
+                    profile.aiArchitectureTitle || "";
+                document.getElementById("ai-spec-title").textContent =
+                    profile.aiSpecTitle || "";
+                document.getElementById("ai-implementation-title").textContent =
+                    profile.aiImplementationTitle || "";
+                document.getElementById("ai-training-title").textContent =
+                    profile.aiTrainingTitle || "";
+                document.getElementById("ai-diff-title").textContent =
+                    profile.aiDiffTitle || "";
+
                 document.getElementById("ai-workflow-list").innerHTML =
-                    htmlForBullets(lang.aiWorkflow);
+                    htmlForBullets(profile.aiWorkflow || []);
                 document.getElementById("ai-architecture-list").innerHTML =
-                    htmlForBullets(lang.aiArchitecture);
+                    htmlForBullets(profile.aiArchitecture || []);
                 document.getElementById("ai-spec-list").innerHTML =
-                    htmlForBullets(lang.aiSpecs);
+                    htmlForBullets(profile.aiSpecs || []);
                 document.getElementById("ai-implementation-list").innerHTML =
-                    htmlForBullets(lang.aiImplementation);
+                    htmlForBullets(profile.aiImplementation || []);
                 document.getElementById("ai-training-list").innerHTML =
-                    htmlForBullets(lang.aiTraining);
+                    htmlForBullets(profile.aiTraining || []);
                 document.getElementById("ai-diff-list").innerHTML =
-                    htmlForBullets(lang.aiDifferentiators);
+                    htmlForBullets(profile.aiDifferentiators || []);
+
+                const recruiterButton =
+                    document.getElementById("ai-mode-recruiter");
+                const technicalButton =
+                    document.getElementById("ai-mode-technical");
+                const recruiterActive = aiMode === "recruiter";
+
+                recruiterButton.classList.toggle("active", recruiterActive);
+                technicalButton.classList.toggle("active", !recruiterActive);
+                recruiterButton.setAttribute(
+                    "aria-pressed",
+                    recruiterActive ? "true" : "false",
+                );
+                technicalButton.setAttribute(
+                    "aria-pressed",
+                    recruiterActive ? "false" : "true",
+                );
+            }
+
+            function setAIMode(mode) {
+                if (mode !== "recruiter" && mode !== "technical") return;
+                if (aiMode === mode) return;
+                aiMode = mode;
+                renderAISystem();
+                requestAnimationFrame(() => {
+                    reveal();
+                });
             }
 
             function renderProjects() {
@@ -4826,6 +4904,13 @@
             document
                 .getElementById("lang-toggle")
                 .addEventListener("click", toggleLanguage);
+
+            document
+                .getElementById("ai-mode-recruiter")
+                .addEventListener("click", () => setAIMode("recruiter"));
+            document
+                .getElementById("ai-mode-technical")
+                .addEventListener("click", () => setAIMode("technical"));
 
             window.addEventListener("scroll", scheduleScrollState, {
                 passive: true,
