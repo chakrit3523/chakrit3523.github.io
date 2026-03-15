@@ -1914,6 +1914,87 @@
                 grid-template-columns: repeat(4, minmax(0, 1fr));
             }
 
+            .language-band {
+                margin: 0 0 1rem;
+                padding: 0.95rem 1rem;
+                border-radius: 1.35rem;
+                border: 1px solid rgba(255, 255, 255, 0.78);
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.72),
+                    rgba(247, 252, 255, 0.76)
+                );
+                box-shadow: 0 14px 30px rgba(67, 102, 142, 0.08);
+                display: grid;
+                gap: 0.7rem;
+            }
+
+            .language-title {
+                margin: 0;
+                color: var(--ink-soft);
+                font-size: 0.74rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .language-subtitle {
+                margin: 0;
+                color: var(--ink-soft);
+                font-size: 0.86rem;
+                line-height: 1.45;
+            }
+
+            .language-row {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.6rem;
+            }
+
+            .language-chip {
+                padding: 0.68rem 0.78rem;
+                border-radius: 1rem;
+                border: 1px solid rgba(159, 191, 227, 0.34);
+                background: rgba(255, 255, 255, 0.8);
+                color: var(--ink-strong);
+                display: grid;
+                gap: 0.38rem;
+            }
+
+            .language-chip-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.55rem;
+            }
+
+            .language-chip strong {
+                color: var(--ink-strong);
+                font-size: 0.85rem;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .language-level {
+                flex-shrink: 0;
+                border-radius: 999px;
+                padding: 0.24rem 0.54rem;
+                font-size: 0.66rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--ink-soft);
+                background: rgba(217, 237, 255, 0.68);
+                border: 1px solid rgba(144, 183, 224, 0.34);
+            }
+
+            .language-chip small {
+                display: block;
+                color: var(--ink-soft);
+                font-size: 0.76rem;
+                line-height: 1.45;
+            }
+
             .skill-card {
                 display: grid;
                 gap: 1rem;
@@ -2493,6 +2574,10 @@
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
 
+                .language-row {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
                 .ai-detail-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
@@ -2683,6 +2768,10 @@
                 .web-link,
                 .footer-link {
                     width: 100%;
+                }
+
+                .language-row {
+                    grid-template-columns: 1fr;
                 }
 
                 .project-stage {
@@ -3056,6 +3145,37 @@
                             <h2 id="skills-title"></h2>
                             <p id="skills-intro"></p>
                         </div>
+                        <div class="language-band reveal" data-reveal="up">
+                            <p
+                                id="code-languages-title"
+                                class="language-title"
+                            ></p>
+                            <p
+                                id="code-languages-intro"
+                                class="language-subtitle"
+                            ></p>
+                            <div
+                                id="code-languages-list"
+                                class="language-row"
+                            ></div>
+                        </div>
+                        <div
+                            class="language-band reveal delay-1"
+                            data-reveal="up"
+                        >
+                            <p
+                                id="design-skills-title"
+                                class="language-title"
+                            ></p>
+                            <p
+                                id="design-skills-intro"
+                                class="language-subtitle"
+                            ></p>
+                            <div
+                                id="design-skills-list"
+                                class="language-row"
+                            ></div>
+                        </div>
                         <div id="skills-grid" class="skills-grid"></div>
                     </div>
                 </div>
@@ -3380,6 +3500,111 @@
                     skillsTitle: "Tools, Platforms, and Product Systems",
                     skillsIntro:
                         "Grouped by the way the work is actually delivered: mobile, backend, AI workflows, infrastructure, frontend craft, and operational tooling.",
+                    codeLanguagesTitle: "Programming Languages (Full)",
+                    codeLanguagesIntro:
+                        "Complete view of coding languages used in production work, including level and real usage context.",
+                    codeLanguages: [
+                        {
+                            name: "Dart",
+                            level: "Expert",
+                            note: "Primary language for Flutter apps and release pipelines.",
+                        },
+                        {
+                            name: "JavaScript",
+                            level: "Advanced",
+                            note: "Realtime web flows, tooling scripts, and integration logic.",
+                        },
+                        {
+                            name: "TypeScript",
+                            level: "Advanced",
+                            note: "Typed backend/frontend modules for maintainable product systems.",
+                        },
+                        {
+                            name: "PHP",
+                            level: "Advanced",
+                            note: "CodeIgniter/Laravel systems and legacy modernization work.",
+                        },
+                        {
+                            name: "SQL",
+                            level: "Advanced",
+                            note: "Complex queries, optimization, and production data maintenance.",
+                        },
+                        {
+                            name: "Python",
+                            level: "Intermediate",
+                            note: "Automation, AI workflow utilities, and data processing tasks.",
+                        },
+                        {
+                            name: "C / C++",
+                            level: "Intermediate",
+                            note: "Embedded and ESP32 hardware-side implementation.",
+                        },
+                        {
+                            name: "Bash",
+                            level: "Intermediate",
+                            note: "Deployment automation and server operations scripting.",
+                        },
+                        {
+                            name: "Swift",
+                            level: "Intermediate",
+                            note: "iOS native integration and SwiftUI support scope.",
+                        },
+                    ],
+                    designSkillsTitle: "Design / UX Skills (Full)",
+                    designSkillsIntro:
+                        "Detailed design skillset used in real product delivery, not only visual mockups.",
+                    designSkills: [
+                        {
+                            name: "UX Research Synthesis",
+                            level: "Advanced",
+                            note: "Translate stakeholder and user signals into practical product direction.",
+                        },
+                        {
+                            name: "User Flow Mapping",
+                            level: "Advanced",
+                            note: "Design end-to-end journeys for onboarding, task completion, and recovery paths.",
+                        },
+                        {
+                            name: "Information Architecture",
+                            level: "Advanced",
+                            note: "Structure screens and navigation so features stay discoverable as products scale.",
+                        },
+                        {
+                            name: "Wireframing",
+                            level: "Advanced",
+                            note: "Rapid low/high-fidelity frames to validate interaction logic before implementation.",
+                        },
+                        {
+                            name: "UI Design Systems",
+                            level: "Advanced",
+                            note: "Build reusable components, spacing rules, and visual tokens for consistent delivery.",
+                        },
+                        {
+                            name: "Interaction Design",
+                            level: "Advanced",
+                            note: "Define states, transitions, and micro-interactions for clear feedback and flow.",
+                        },
+                        {
+                            name: "Prototyping (Figma)",
+                            level: "Advanced",
+                            note: "Interactive prototypes for stakeholder reviews and faster implementation handoff.",
+                        },
+                        {
+                            name: "Responsive UX",
+                            level: "Advanced",
+                            note: "Design layouts that preserve hierarchy and usability across mobile and desktop.",
+                        },
+                        {
+                            name: "Accessibility Basics",
+                            level: "Intermediate",
+                            note: "Apply contrast, readable hierarchy, and interaction clarity as baseline standards.",
+                        },
+                        {
+                            name: "Frontend Implementation",
+                            level: "Advanced",
+                            note: "Convert UX/UI intent into production-ready interfaces with motion and polish.",
+                        },
+                    ],
                     skills: [
                         {
                             icon: "devicon-flutter-plain",
@@ -3855,6 +4080,111 @@
                     skillsTitle: "เครื่องมือ แพลตฟอร์ม และระบบที่ใช้งานจริง",
                     skillsIntro:
                         "จัดกลุ่มตามลักษณะการส่งมอบงานจริง: mobile, backend, AI workflow, infrastructure, frontend craft และงาน operation.",
+                    codeLanguagesTitle: "Programming Languages (ครบ)",
+                    codeLanguagesIntro:
+                        "แสดงครบทั้งภาษาที่ใช้จริง ระดับความถนัด และบริบทที่นำไปส่งมอบงานใน production.",
+                    codeLanguages: [
+                        {
+                            name: "Dart",
+                            level: "เชี่ยวชาญ",
+                            note: "ภาษาหลักสำหรับพัฒนา Flutter และจัดการ release pipeline.",
+                        },
+                        {
+                            name: "JavaScript",
+                            level: "สูง",
+                            note: "ใช้กับ flow เว็บแบบเรียลไทม์ งาน tooling และ integration.",
+                        },
+                        {
+                            name: "TypeScript",
+                            level: "สูง",
+                            note: "ใช้ทำโมดูล typed ทั้งฝั่ง backend/front-end เพื่อให้ดูแลง่าย.",
+                        },
+                        {
+                            name: "PHP",
+                            level: "สูง",
+                            note: "ใช้กับระบบ CodeIgniter/Laravel และงานยกระดับระบบเดิม.",
+                        },
+                        {
+                            name: "SQL",
+                            level: "สูง",
+                            note: "เขียน query ซับซ้อน ปรับประสิทธิภาพ และดูแลข้อมูลระดับ production.",
+                        },
+                        {
+                            name: "Python",
+                            level: "กลาง",
+                            note: "ใช้กับ automation, AI workflow utility และงาน data processing.",
+                        },
+                        {
+                            name: "C / C++",
+                            level: "กลาง",
+                            note: "ใช้กับงาน embedded และการพัฒนาฝั่งฮาร์ดแวร์ ESP32.",
+                        },
+                        {
+                            name: "Bash",
+                            level: "กลาง",
+                            note: "เขียนสคริปต์ deployment automation และงาน server operations.",
+                        },
+                        {
+                            name: "Swift",
+                            level: "กลาง",
+                            note: "ใช้ในงาน iOS native integration และขอบเขต SwiftUI.",
+                        },
+                    ],
+                    designSkillsTitle: "Design / UX Skills (ครบ)",
+                    designSkillsIntro:
+                        "สรุปสกิลงานออกแบบที่ใช้ส่งมอบ product จริง ไม่ใช่แค่ทำ mockup สวย.",
+                    designSkills: [
+                        {
+                            name: "UX Research Synthesis",
+                            level: "สูง",
+                            note: "สังเคราะห์ข้อมูลจากผู้ใช้งานและผู้มีส่วนร่วมเพื่อกำหนดทิศทางฟีเจอร์.",
+                        },
+                        {
+                            name: "User Flow Mapping",
+                            level: "สูง",
+                            note: "ออกแบบเส้นทางการใช้งานครบวงจร ตั้งแต่เริ่มใช้งานจนถึง recovery flow.",
+                        },
+                        {
+                            name: "Information Architecture",
+                            level: "สูง",
+                            note: "จัดโครงสร้างเมนูและหน้าจอให้ค้นหาและใช้งานฟีเจอร์ได้ง่ายเมื่อระบบโตขึ้น.",
+                        },
+                        {
+                            name: "Wireframing",
+                            level: "สูง",
+                            note: "ทำ wireframe ทั้ง low/high-fidelity เพื่อตรวจตรรกะก่อนลงมือพัฒนาจริง.",
+                        },
+                        {
+                            name: "UI Design Systems",
+                            level: "สูง",
+                            note: "วาง component, spacing และ token เพื่อให้ภาพรวมงานสม่ำเสมอ.",
+                        },
+                        {
+                            name: "Interaction Design",
+                            level: "สูง",
+                            note: "กำหนด state, transition และ micro-interaction ให้ผู้ใช้เข้าใจสถานะระบบชัดเจน.",
+                        },
+                        {
+                            name: "Prototyping (Figma)",
+                            level: "สูง",
+                            note: "ทำ interactive prototype เพื่อ review ร่วมทีมและส่งต่องานพัฒนาเร็วขึ้น.",
+                        },
+                        {
+                            name: "Responsive UX",
+                            level: "สูง",
+                            note: "ออกแบบเลย์เอาต์ให้รักษาลำดับความสำคัญและความง่ายในการใช้บนทุกหน้าจอ.",
+                        },
+                        {
+                            name: "Accessibility Basics",
+                            level: "กลาง",
+                            note: "คุม contrast, hierarchy และความชัดเจนของการโต้ตอบให้เป็นมาตรฐานพื้นฐาน.",
+                        },
+                        {
+                            name: "Frontend Implementation",
+                            level: "สูง",
+                            note: "แปลงงาน UX/UI เป็นหน้าจอ production ที่มี motion และคุณภาพงานจริง.",
+                        },
+                    ],
                     skills: [
                         {
                             icon: "devicon-flutter-plain",
@@ -4424,6 +4754,47 @@
 
             function renderSkills() {
                 const lang = content[currentLang];
+                document.getElementById("code-languages-title").textContent =
+                    lang.codeLanguagesTitle || "Programming Languages";
+                document.getElementById("code-languages-intro").textContent =
+                    lang.codeLanguagesIntro || "";
+                document.getElementById("code-languages-list").innerHTML = (
+                    lang.codeLanguages || []
+                )
+                    .map((item) => {
+                        if (typeof item === "string") {
+                            return `<article class="language-chip"><div class="language-chip-head"><strong>${item}</strong></div></article>`;
+                        }
+                        return `<article class="language-chip">
+                            <div class="language-chip-head">
+                                <strong>${item.name || ""}</strong>
+                                <span class="language-level">${item.level || ""}</span>
+                            </div>
+                            <small>${item.note || ""}</small>
+                        </article>`;
+                    })
+                    .join("");
+                document.getElementById("design-skills-title").textContent =
+                    lang.designSkillsTitle || "Design / UX Skills";
+                document.getElementById("design-skills-intro").textContent =
+                    lang.designSkillsIntro || "";
+                document.getElementById("design-skills-list").innerHTML = (
+                    lang.designSkills || []
+                )
+                    .map((item) => {
+                        if (typeof item === "string") {
+                            return `<article class="language-chip"><div class="language-chip-head"><strong>${item}</strong></div></article>`;
+                        }
+                        return `<article class="language-chip">
+                            <div class="language-chip-head">
+                                <strong>${item.name || ""}</strong>
+                                <span class="language-level">${item.level || ""}</span>
+                            </div>
+                            <small>${item.note || ""}</small>
+                        </article>`;
+                    })
+                    .join("");
+
                 document.getElementById("skills-grid").innerHTML = lang.skills
                     .map(
                         (item, index) => `
