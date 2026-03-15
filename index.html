@@ -84,6 +84,9 @@
                     var(--sky-bottom) 100%
                 );
                 color-scheme: light;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
 
             body {
@@ -133,6 +136,11 @@
             small,
             em {
                 font-family: inherit;
+            }
+
+            p,
+            li {
+                text-wrap: pretty;
             }
 
             a {
@@ -1204,19 +1212,14 @@
                 );
             }
 
-            .hero-intro,
-            .section-heading {
-                position: relative;
-                max-width: 48rem;
-                margin: 0 auto;
-                text-align: center;
-            }
-
             .hero-intro {
+                position: relative;
                 display: grid;
                 justify-items: center;
-                gap: 0.82rem;
-                margin-bottom: clamp(1.75rem, 4vw, 3rem);
+                max-width: 50rem;
+                margin: 0 auto clamp(2rem, 4vw, 3.3rem);
+                text-align: center;
+                gap: 0.92rem;
             }
 
             .hero-intro .hero-action-row,
@@ -1264,6 +1267,7 @@
                 line-height: 0.92;
                 margin: 0;
                 text-shadow: 0 16px 34px rgba(56, 92, 138, 0.14);
+                text-wrap: balance;
             }
 
             .hero-title span {
@@ -1281,7 +1285,23 @@
                 filter: saturate(1.1);
             }
 
-            .hero-summary,
+            .hero-summary {
+                max-width: 44rem;
+                margin: 0 auto;
+                font-size: clamp(1.06rem, 1.9vw, 1.18rem);
+                line-height: 1.72;
+                color: var(--ink-soft);
+            }
+
+            .section-heading {
+                position: relative;
+                display: grid;
+                gap: 0.9rem;
+                max-width: 43rem;
+                margin: 0 auto clamp(1.75rem, 3vw, 2.35rem);
+                text-align: center;
+            }
+
             .section-heading p,
             .footer-copy p,
             .project-copy p,
@@ -1293,14 +1313,14 @@
             .web-copy p,
             .stat-card p {
                 margin: 0;
-                font-size: clamp(1rem, 1.8vw, 1.08rem);
-                line-height: 1.8;
+                font-size: clamp(0.98rem, 1.45vw, 1.04rem);
+                line-height: 1.72;
                 color: var(--ink-soft);
             }
 
-            .hero-summary {
-                max-width: 42rem;
-                margin: 0 auto;
+            .section-heading p {
+                max-width: 39rem;
+                margin-inline: auto;
             }
 
             .hero-orchestra {
@@ -1424,11 +1444,11 @@
             }
 
             .profile-panel {
-                padding: 1.45rem;
+                padding: 1.55rem;
                 border-radius: 2rem;
                 text-align: left;
                 display: grid;
-                gap: 1rem;
+                gap: 1.05rem;
             }
 
             .project-stage,
@@ -1920,6 +1940,7 @@
                     box-shadow 220ms ease,
                     background 220ms ease,
                     border-color 220ms ease;
+                font-weight: 700;
             }
 
             .button:hover,
@@ -1992,7 +2013,7 @@
             .expert-card,
             .skill-card,
             .web-card {
-                padding: 1.2rem;
+                padding: 1.3rem;
             }
 
             .overview-head,
@@ -2020,8 +2041,10 @@
             .timeline-card h3,
             .project-copy h3,
             .web-copy h3 {
-                font-size: clamp(1.05rem, 2vw, 1.3rem);
-                line-height: 1.3;
+                font-size: clamp(1.08rem, 1.9vw, 1.34rem);
+                line-height: 1.24;
+                letter-spacing: -0.03em;
+                text-wrap: balance;
             }
 
             .stat-card {
@@ -2036,12 +2059,6 @@
                 letter-spacing: 0.06em;
                 font-size: 0.72rem;
                 font-weight: 700;
-            }
-
-            .section-heading {
-                display: grid;
-                gap: 0.8rem;
-                margin-bottom: 1.5rem;
             }
 
             .section-kicker,
@@ -2065,6 +2082,16 @@
                 background-clip: text;
                 color: transparent;
                 text-shadow: 0 10px 24px rgba(44, 82, 125, 0.12);
+                text-wrap: balance;
+            }
+
+            .section-heading h2 {
+                max-width: 15ch;
+                margin-inline: auto;
+            }
+
+            .footer-copy h2 {
+                max-width: 13ch;
             }
 
             .expertise-grid {
@@ -2074,7 +2101,7 @@
             .expert-card {
                 display: grid;
                 gap: 1rem;
-                padding: 1.4rem;
+                padding: 1.45rem;
             }
 
             .expert-card ul,
@@ -2109,7 +2136,7 @@
             .timeline {
                 position: relative;
                 display: grid;
-                gap: 1.4rem;
+                gap: 1.55rem;
                 max-width: 1060px;
                 margin: 0 auto;
             }
@@ -2180,9 +2207,9 @@
             }
 
             .timeline-card {
-                padding: 1.35rem;
+                padding: 1.45rem 1.4rem 1.45rem 1.6rem;
                 display: grid;
-                gap: 0.9rem;
+                gap: 0.96rem;
                 background: linear-gradient(
                     145deg,
                     rgba(255, 255, 255, 0.84),
@@ -2266,8 +2293,8 @@
             }
 
             .language-band {
-                margin: 0 0 1rem;
-                padding: 0.95rem 1rem;
+                margin: 0 0 1.1rem;
+                padding: 1.05rem;
                 border-radius: 1.5rem;
                 border: 1px solid rgba(255, 255, 255, 0.86);
                 background: linear-gradient(
@@ -2280,7 +2307,7 @@
                     0 16px 32px rgba(67, 102, 142, 0.11),
                     inset 0 1px 0 rgba(255, 255, 255, 0.92);
                 display: grid;
-                gap: 0.7rem;
+                gap: 0.78rem;
             }
 
             #skills .section-shell {
@@ -2301,8 +2328,8 @@
             .language-title {
                 margin: 0;
                 color: var(--ink-soft);
-                font-size: 0.74rem;
-                letter-spacing: 0.18em;
+                font-size: 0.72rem;
+                letter-spacing: 0.17em;
                 text-transform: uppercase;
                 font-weight: 700;
             }
@@ -2310,8 +2337,8 @@
             .language-subtitle {
                 margin: 0;
                 color: var(--ink-soft);
-                font-size: 0.86rem;
-                line-height: 1.45;
+                font-size: 0.88rem;
+                line-height: 1.55;
             }
 
             .language-row {
@@ -2503,9 +2530,9 @@
             }
 
             .ai-detail-card {
-                padding: 1.1rem;
+                padding: 1.18rem;
                 display: grid;
-                gap: 0.65rem;
+                gap: 0.72rem;
                 align-content: start;
             }
 
@@ -2554,9 +2581,9 @@
             }
 
             .project-card {
-                padding: 1.25rem;
+                padding: 1.38rem;
                 display: grid;
-                gap: 1rem;
+                gap: 1.08rem;
                 min-height: 100%;
                 background: linear-gradient(
                     145deg,
@@ -2740,7 +2767,7 @@
 
             .project-copy {
                 display: grid;
-                gap: 0.8rem;
+                gap: 0.86rem;
             }
 
             .project-links {
@@ -2795,8 +2822,8 @@
             .web-card {
                 display: grid;
                 grid-template-columns: minmax(170px, 220px) 1fr;
-                gap: 1.1rem;
-                padding: 1.2rem;
+                gap: 1.18rem;
+                padding: 1.3rem;
                 align-items: stretch;
                 background: linear-gradient(
                     145deg,
@@ -2849,7 +2876,7 @@
 
             .web-copy {
                 display: grid;
-                gap: 0.85rem;
+                gap: 0.92rem;
                 align-content: center;
             }
 
@@ -2882,7 +2909,7 @@
 
             .footer-copy {
                 display: grid;
-                gap: 0.8rem;
+                gap: 0.9rem;
             }
 
             .footer-actions {
@@ -3102,6 +3129,10 @@
             }
 
             @media (max-width: 1100px) {
+                .section-heading {
+                    max-width: 40rem;
+                }
+
                 .hero-orchestra {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
                 }
@@ -3139,6 +3170,14 @@
             }
 
             @media (max-width: 900px) {
+                .section-heading {
+                    max-width: 38rem;
+                }
+
+                .timeline {
+                    gap: 1.2rem;
+                }
+
                 .timeline::before {
                     left: 1rem;
                     transform: none;
@@ -3234,8 +3273,8 @@
                 }
 
                 .section-shell {
-                    border-radius: 1.6rem;
-                    padding: 1.15rem;
+                    border-radius: 1.68rem;
+                    padding: 1.25rem;
                 }
 
                 .hero-orchestra,
@@ -3243,9 +3282,20 @@
                     grid-template-columns: 1fr;
                 }
 
+                .hero-intro {
+                    gap: 0.72rem;
+                    margin-bottom: 1.65rem;
+                }
+
                 .hero-center,
                 .hero-rail {
                     max-width: none;
+                    width: 100%;
+                }
+
+                .hero-intro .hero-action-row,
+                .hero-intro .hero-contact-row,
+                .hero-intro .hero-pill-row {
                     width: 100%;
                 }
 
@@ -3260,17 +3310,55 @@
                 .expert-card li,
                 .web-copy p,
                 .stat-card p {
-                    font-size: 0.97rem;
-                    line-height: 1.72;
+                    font-size: 0.96rem;
+                    line-height: 1.68;
                 }
 
                 .hero-title {
-                    font-size: clamp(2.55rem, 10.8vw, 3.45rem);
+                    font-size: clamp(2.6rem, 10.6vw, 3.45rem);
+                }
+
+                .hero-eyebrow {
+                    gap: 0.55rem;
+                    margin-bottom: 0.8rem;
+                }
+
+                .eyebrow-pill,
+                .eyebrow-line,
+                .section-kicker,
+                .mini-kicker,
+                .project-index,
+                .project-ribbon,
+                .timeline-phase,
+                .status-pill {
+                    padding: 0.58rem 0.78rem;
+                }
+
+                .section-heading {
+                    gap: 0.72rem;
+                    margin-bottom: 1.3rem;
+                    max-width: none;
+                }
+
+                .section-heading h2,
+                .footer-copy h2 {
+                    font-size: clamp(1.82rem, 7.6vw, 2.45rem);
+                    max-width: none;
                 }
 
                 .profile-panel {
-                    padding: 1rem;
+                    padding: 1.08rem;
                     border-radius: 1.5rem;
+                    gap: 0.88rem;
+                }
+
+                .overview-card,
+                .signal-card,
+                .stat-card,
+                .expert-card,
+                .skill-card,
+                .web-card {
+                    padding: 1.08rem;
                 }
 
                 .focus-title {
@@ -3311,14 +3399,38 @@
                 .web-link,
                 .footer-link {
                     width: 100%;
+                    min-height: 3.15rem;
+                    padding: 0.86rem 0.98rem;
                 }
 
                 .language-row {
                     grid-template-columns: 1fr;
                 }
 
+                .language-band {
+                    padding: 0.92rem;
+                    gap: 0.68rem;
+                    margin-bottom: 0.95rem;
+                }
+
                 .project-stage {
                     min-height: 16rem;
+                }
+
+                .project-card {
+                    padding: 1.14rem;
+                    gap: 0.92rem;
+                }
+
+                .project-copy,
+                .web-copy,
+                .footer-copy {
+                    gap: 0.78rem;
+                }
+
+                .timeline-card {
+                    padding: 1.12rem 0.95rem 1.12rem 1.16rem;
+                    gap: 0.82rem;
                 }
 
                 .ai-detail-card h3 {
@@ -3327,6 +3439,11 @@
 
                 .ai-list li {
                     font-size: 0.88rem;
+                }
+
+                .ai-detail-card {
+                    padding: 1rem;
+                    gap: 0.65rem;
                 }
 
                 .app-icon-stage {
